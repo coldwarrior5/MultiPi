@@ -77,11 +77,18 @@ jQuery(document).ready(function($) {
 			}
 		});
 		if( ferror ) return false; 
-			else var str = $(this).serialize();		
+		var name = document.getElementById("name").value;
+		var fromEmail = document.getElementById("email").value;
+		var subject = document.getElementById("subject").value;
+		var message = document.getElementById("userMessage").value;
+		var data = "{'name': '" + name + "', 'fromEmail': '" +
+                   fromEmail + "', 'subject': '" + subject + "', 'message': '" + message + "'}";
 				$.ajax({
 				type: "POST",
-				url: "contact/contact.php",
-				data: str,
+				url: "SendEmail.aspx/SendMessage",
+				data: data,
+				contentType: "application/json; charset=utf-8",
+				dataType: "json",
 				success: function(msg){
 			$("#sendmessage").addClass("show");
 			$("#errormessage").ajaxComplete(function(event, request, settings){

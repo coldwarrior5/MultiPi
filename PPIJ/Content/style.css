@@ -22,7 +22,7 @@ body {
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-	font-family: 'Lato', sans-serif;
+	font-family: 'Oxygen', Verdana;
 }
 h1, h2, h3, h4, h5, h6 {
 	color:#222;
@@ -335,10 +335,10 @@ section.section {
 	background-image: url(../Images/parallax/img1.jpg);
 }
 #parallax2{	
-	background-image: url(../Images/parallax/img2.jpg);
+	background-image: url(../Images/parallax/math.jpg);
 }
 #testimonials{	
-	background-image: url(../Images/parallax/img3.jpg);
+	background-image: url(../Images/parallax/multiplicationtable.jpg);
 }
 /*===========================
   --- Header & menu ----
@@ -432,7 +432,8 @@ h1 a.navbar-brand {
 
 section.featured {
 	padding: 200px 0 60px;
-	background: #70B9B0;
+//	background: #70B9B0;
+	background: #007800;
 	color: #fdfdfd;
 }
 
@@ -587,7 +588,7 @@ section.featured.inner {
 
 .fullwidthbanner a.btn {
 	color: #fff;
-}
+	}
 
 /*==========================
 About
