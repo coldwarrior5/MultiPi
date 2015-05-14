@@ -55,11 +55,11 @@ namespace PPIJ.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class LoginModel
+    public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Username")]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -70,11 +70,17 @@ namespace PPIJ.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterModel
+
+    public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Username")]
+        public string Username { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -84,8 +90,18 @@ namespace PPIJ.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "First name")]
+        [DataType(DataType.Text)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last name")]
+        [DataType(DataType.Text)]
+        public string LastName { get; set; }
     }
 
     public class ExternalLogin
