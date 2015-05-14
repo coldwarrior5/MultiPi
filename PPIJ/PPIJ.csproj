@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -182,6 +184,50 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="korisnik.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="odgovor.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pitanje.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="podrucje.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="povijest_odgovor.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="povijest_pitanje.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="povijest_test.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PPIJef.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="predmet.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="slika.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tema.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="test.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="test_pitanje.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
+    <Compile Include="uputa.cs">
+      <DependentUpon>PPIJef.tt</DependentUpon>
+    </Compile>
     <Content Include="Images\parallax\img4.jpg" />
     <Content Include="Images\parallax\math.jpg" />
     <Content Include="Images\parallax\multiplicationtable.jpg" />
@@ -192,6 +238,16 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="PPIJef.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPIJef.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PPIJef.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPIJef.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +329,23 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.woff2" />
+    <EntityDeploy Include="PPIJef.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PPIJef.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="PPIJef.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PPIJef.edmx</DependentUpon>
+      <LastGenOutput>PPIJef.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="PPIJef.edmx.diagram">
+      <DependentUpon>PPIJef.edmx</DependentUpon>
+    </Content>
+    <Content Include="PPIJef.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PPIJef.edmx</DependentUpon>
+      <LastGenOutput>PPIJef.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\MultiPi.pubxml" />
     <None Include="Properties\PublishProfiles\WindowsHosting.pubxml" />
     <Content Include="Images\parallax\img1.jpg" />
@@ -375,6 +448,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

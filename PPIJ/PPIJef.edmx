@@ -1,0 +1,958 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ppijModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="korisnik">
+          <Key>
+            <PropertyRef Name="id_korisnik" />
+          </Key>
+          <Property Name="id_korisnik" Type="int" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="char" MaxLength="12" Nullable="false" />
+          <Property Name="lozinka" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="ime" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="prezime" Type="nvarchar" MaxLength="64" />
+          <Property Name="email" Type="char" MaxLength="80" />
+          <Property Name="administrator" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="odgovor">
+          <Key>
+            <PropertyRef Name="id_odgovor" />
+          </Key>
+          <Property Name="id_odgovor" Type="int" Nullable="false" />
+          <Property Name="odgovor" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="id_slika" Type="int" />
+          <Property Name="id_pitanja" Type="int" Nullable="false" />
+          <Property Name="tocan" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="pitanje">
+          <Key>
+            <PropertyRef Name="id_pitanje" />
+          </Key>
+          <Property Name="id_pitanje" Type="int" Nullable="false" />
+          <Property Name="pitanje" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="id_slika" Type="int" />
+          <Property Name="id_uputa" Type="int" Nullable="false" />
+          <Property Name="id_tema" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="podrucje">
+          <Key>
+            <PropertyRef Name="id_podrucje" />
+          </Key>
+          <Property Name="id_podrucje" Type="int" Nullable="false" />
+          <Property Name="podrucje" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="id_predmet" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="povijest_odgovor">
+          <Key>
+            <PropertyRef Name="id_povijest_odgovor" />
+          </Key>
+          <Property Name="id_povijest_odgovor" Type="int" Nullable="false" />
+          <Property Name="redoslijed_odgovor" Type="int" Nullable="false" />
+          <Property Name="id_odgovor" Type="int" Nullable="false" />
+          <Property Name="id_povijest_pitanje" Type="int" Nullable="false" />
+          <Property Name="odabran" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="povijest_pitanje">
+          <Key>
+            <PropertyRef Name="id_povijest_pitanje" />
+          </Key>
+          <Property Name="id_povijest_pitanje" Type="int" Nullable="false" />
+          <Property Name="redoslijed_pitanje" Type="int" Nullable="false" />
+          <Property Name="id_test_pitanje" Type="int" Nullable="false" />
+          <Property Name="id_povijest_test" Type="int" Nullable="false" />
+          <Property Name="rijesen" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="povijest_test">
+          <Key>
+            <PropertyRef Name="id_povijest_test" />
+          </Key>
+          <Property Name="id_povijest_test" Type="int" Nullable="false" />
+          <Property Name="pocetak" Type="datetime" Nullable="false" />
+          <Property Name="zavrsetak" Type="datetime" />
+          <Property Name="id_test" Type="int" Nullable="false" />
+          <Property Name="id_korisnik" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="predmet">
+          <Key>
+            <PropertyRef Name="id_predmet" />
+          </Key>
+          <Property Name="id_predmet" Type="int" Nullable="false" />
+          <Property Name="predmet" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="slika">
+          <Key>
+            <PropertyRef Name="id_slika" />
+          </Key>
+          <Property Name="id_slika" Type="int" Nullable="false" />
+          <Property Name="slika" Type="image" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tema">
+          <Key>
+            <PropertyRef Name="id_tema" />
+          </Key>
+          <Property Name="id_tema" Type="int" Nullable="false" />
+          <Property Name="tema" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="opis" Type="nvarchar" MaxLength="4000" />
+          <Property Name="razred" Type="int" Nullable="false" />
+          <Property Name="id_podrucje" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="id_test" />
+          </Key>
+          <Property Name="id_test" Type="int" Nullable="false" />
+          <Property Name="naziv_test" Type="nvarchar" MaxLength="200" />
+          <Property Name="broj_odgovora" Type="int" Nullable="false" />
+          <Property Name="bodovi_tocan" Type="int" Nullable="false" />
+          <Property Name="bodovi_netocan" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="test_pitanje">
+          <Key>
+            <PropertyRef Name="id_test_pitanje" />
+          </Key>
+          <Property Name="id_test_pitanje" Type="int" Nullable="false" />
+          <Property Name="multiplikator_bodova" Type="int" Nullable="false" />
+          <Property Name="id_pitanje" Type="int" Nullable="false" />
+          <Property Name="id_test" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="uputa">
+          <Key>
+            <PropertyRef Name="id_uputa" />
+          </Key>
+          <Property Name="id_uputa" Type="int" Nullable="false" />
+          <Property Name="uputa" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="jedan_tocan_odgovor" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_odgovor_pitanje">
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="1" />
+          <End Role="odgovor" Type="Self.odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pitanje">
+              <PropertyRef Name="id_pitanje" />
+            </Principal>
+            <Dependent Role="odgovor">
+              <PropertyRef Name="id_pitanja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_odgovor_slika">
+          <End Role="slika" Type="Self.slika" Multiplicity="0..1" />
+          <End Role="odgovor" Type="Self.odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slika">
+              <PropertyRef Name="id_slika" />
+            </Principal>
+            <Dependent Role="odgovor">
+              <PropertyRef Name="id_slika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pitanje_slika">
+          <End Role="slika" Type="Self.slika" Multiplicity="0..1" />
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slika">
+              <PropertyRef Name="id_slika" />
+            </Principal>
+            <Dependent Role="pitanje">
+              <PropertyRef Name="id_slika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pitanje_tema">
+          <End Role="tema" Type="Self.tema" Multiplicity="1" />
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tema">
+              <PropertyRef Name="id_tema" />
+            </Principal>
+            <Dependent Role="pitanje">
+              <PropertyRef Name="id_tema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pitanje_uputa">
+          <End Role="uputa" Type="Self.uputa" Multiplicity="1" />
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uputa">
+              <PropertyRef Name="id_uputa" />
+            </Principal>
+            <Dependent Role="pitanje">
+              <PropertyRef Name="id_uputa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_podrucje_predmet">
+          <End Role="predmet" Type="Self.predmet" Multiplicity="1" />
+          <End Role="podrucje" Type="Self.podrucje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="predmet">
+              <PropertyRef Name="id_predmet" />
+            </Principal>
+            <Dependent Role="podrucje">
+              <PropertyRef Name="id_predmet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_odgovor_odgovor">
+          <End Role="odgovor" Type="Self.odgovor" Multiplicity="1" />
+          <End Role="povijest_odgovor" Type="Self.povijest_odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="odgovor">
+              <PropertyRef Name="id_odgovor" />
+            </Principal>
+            <Dependent Role="povijest_odgovor">
+              <PropertyRef Name="id_odgovor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_odgovor_povijest_pitanje">
+          <End Role="povijest_pitanje" Type="Self.povijest_pitanje" Multiplicity="1" />
+          <End Role="povijest_odgovor" Type="Self.povijest_odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="povijest_pitanje">
+              <PropertyRef Name="id_povijest_pitanje" />
+            </Principal>
+            <Dependent Role="povijest_odgovor">
+              <PropertyRef Name="id_povijest_pitanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_pitanje_povijest_test">
+          <End Role="povijest_test" Type="Self.povijest_test" Multiplicity="1" />
+          <End Role="povijest_pitanje" Type="Self.povijest_pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="povijest_test">
+              <PropertyRef Name="id_povijest_test" />
+            </Principal>
+            <Dependent Role="povijest_pitanje">
+              <PropertyRef Name="id_povijest_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_pitanje_test_pitanje">
+          <End Role="test_pitanje" Type="Self.test_pitanje" Multiplicity="1" />
+          <End Role="povijest_pitanje" Type="Self.povijest_pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test_pitanje">
+              <PropertyRef Name="id_test_pitanje" />
+            </Principal>
+            <Dependent Role="povijest_pitanje">
+              <PropertyRef Name="id_test_pitanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_test_korisnik">
+          <End Role="korisnik" Type="Self.korisnik" Multiplicity="1" />
+          <End Role="povijest_test" Type="Self.povijest_test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="korisnik">
+              <PropertyRef Name="id_korisnik" />
+            </Principal>
+            <Dependent Role="povijest_test">
+              <PropertyRef Name="id_korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_test_test">
+          <End Role="test" Type="Self.test" Multiplicity="1" />
+          <End Role="povijest_test" Type="Self.povijest_test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="id_test" />
+            </Principal>
+            <Dependent Role="povijest_test">
+              <PropertyRef Name="id_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tema_podrucje">
+          <End Role="podrucje" Type="Self.podrucje" Multiplicity="1" />
+          <End Role="tema" Type="Self.tema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="podrucje">
+              <PropertyRef Name="id_podrucje" />
+            </Principal>
+            <Dependent Role="tema">
+              <PropertyRef Name="id_podrucje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_pitanje_pitanje">
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="1" />
+          <End Role="test_pitanje" Type="Self.test_pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pitanje">
+              <PropertyRef Name="id_pitanje" />
+            </Principal>
+            <Dependent Role="test_pitanje">
+              <PropertyRef Name="id_pitanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_pitanje_test">
+          <End Role="test" Type="Self.test" Multiplicity="1" />
+          <End Role="test_pitanje" Type="Self.test_pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="id_test" />
+            </Principal>
+            <Dependent Role="test_pitanje">
+              <PropertyRef Name="id_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ppijModelStoreContainer">
+          <EntitySet Name="korisnik" EntityType="Self.korisnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="odgovor" EntityType="Self.odgovor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pitanje" EntityType="Self.pitanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="podrucje" EntityType="Self.podrucje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="povijest_odgovor" EntityType="Self.povijest_odgovor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="povijest_pitanje" EntityType="Self.povijest_pitanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="povijest_test" EntityType="Self.povijest_test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="predmet" EntityType="Self.predmet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="slika" EntityType="Self.slika" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tema" EntityType="Self.tema" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test" EntityType="Self.test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="test_pitanje" EntityType="Self.test_pitanje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="uputa" EntityType="Self.uputa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_odgovor_pitanje" Association="Self.FK_odgovor_pitanje">
+            <End Role="pitanje" EntitySet="pitanje" />
+            <End Role="odgovor" EntitySet="odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_odgovor_slika" Association="Self.FK_odgovor_slika">
+            <End Role="slika" EntitySet="slika" />
+            <End Role="odgovor" EntitySet="odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pitanje_slika" Association="Self.FK_pitanje_slika">
+            <End Role="slika" EntitySet="slika" />
+            <End Role="pitanje" EntitySet="pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pitanje_tema" Association="Self.FK_pitanje_tema">
+            <End Role="tema" EntitySet="tema" />
+            <End Role="pitanje" EntitySet="pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pitanje_uputa" Association="Self.FK_pitanje_uputa">
+            <End Role="uputa" EntitySet="uputa" />
+            <End Role="pitanje" EntitySet="pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_podrucje_predmet" Association="Self.FK_podrucje_predmet">
+            <End Role="predmet" EntitySet="predmet" />
+            <End Role="podrucje" EntitySet="podrucje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_odgovor_odgovor" Association="Self.FK_povijest_odgovor_odgovor">
+            <End Role="odgovor" EntitySet="odgovor" />
+            <End Role="povijest_odgovor" EntitySet="povijest_odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_odgovor_povijest_pitanje" Association="Self.FK_povijest_odgovor_povijest_pitanje">
+            <End Role="povijest_pitanje" EntitySet="povijest_pitanje" />
+            <End Role="povijest_odgovor" EntitySet="povijest_odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_pitanje_povijest_test" Association="Self.FK_povijest_pitanje_povijest_test">
+            <End Role="povijest_test" EntitySet="povijest_test" />
+            <End Role="povijest_pitanje" EntitySet="povijest_pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_pitanje_test_pitanje" Association="Self.FK_povijest_pitanje_test_pitanje">
+            <End Role="test_pitanje" EntitySet="test_pitanje" />
+            <End Role="povijest_pitanje" EntitySet="povijest_pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_test_korisnik" Association="Self.FK_povijest_test_korisnik">
+            <End Role="korisnik" EntitySet="korisnik" />
+            <End Role="povijest_test" EntitySet="povijest_test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_test_test" Association="Self.FK_povijest_test_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="povijest_test" EntitySet="povijest_test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tema_podrucje" Association="Self.FK_tema_podrucje">
+            <End Role="podrucje" EntitySet="podrucje" />
+            <End Role="tema" EntitySet="tema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_pitanje_pitanje" Association="Self.FK_test_pitanje_pitanje">
+            <End Role="pitanje" EntitySet="pitanje" />
+            <End Role="test_pitanje" EntitySet="test_pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_pitanje_test" Association="Self.FK_test_pitanje_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="test_pitanje" EntitySet="test_pitanje" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ppijModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="korisnik">
+          <Key>
+            <PropertyRef Name="id_korisnik" />
+          </Key>
+          <Property Name="id_korisnik" Type="Int32" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ime" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prezime" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="80" FixedLength="true" Unicode="false" />
+          <Property Name="administrator" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="povijest_test" Relationship="Self.FK_povijest_test_korisnik" FromRole="korisnik" ToRole="povijest_test" />
+        </EntityType>
+        <EntityType Name="odgovor">
+          <Key>
+            <PropertyRef Name="id_odgovor" />
+          </Key>
+          <Property Name="id_odgovor" Type="Int32" Nullable="false" />
+          <Property Name="odgovor1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_slika" Type="Int32" />
+          <Property Name="id_pitanja" Type="Int32" Nullable="false" />
+          <Property Name="tocan" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="pitanje" Relationship="Self.FK_odgovor_pitanje" FromRole="odgovor" ToRole="pitanje" />
+          <NavigationProperty Name="slika" Relationship="Self.FK_odgovor_slika" FromRole="odgovor" ToRole="slika" />
+          <NavigationProperty Name="povijest_odgovor" Relationship="Self.FK_povijest_odgovor_odgovor" FromRole="odgovor" ToRole="povijest_odgovor" />
+        </EntityType>
+        <EntityType Name="pitanje">
+          <Key>
+            <PropertyRef Name="id_pitanje" />
+          </Key>
+          <Property Name="id_pitanje" Type="Int32" Nullable="false" />
+          <Property Name="pitanje1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_slika" Type="Int32" />
+          <Property Name="id_uputa" Type="Int32" Nullable="false" />
+          <Property Name="id_tema" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="odgovor" Relationship="Self.FK_odgovor_pitanje" FromRole="pitanje" ToRole="odgovor" />
+          <NavigationProperty Name="slika" Relationship="Self.FK_pitanje_slika" FromRole="pitanje" ToRole="slika" />
+          <NavigationProperty Name="tema" Relationship="Self.FK_pitanje_tema" FromRole="pitanje" ToRole="tema" />
+          <NavigationProperty Name="uputa" Relationship="Self.FK_pitanje_uputa" FromRole="pitanje" ToRole="uputa" />
+          <NavigationProperty Name="test_pitanje" Relationship="Self.FK_test_pitanje_pitanje" FromRole="pitanje" ToRole="test_pitanje" />
+        </EntityType>
+        <EntityType Name="podrucje">
+          <Key>
+            <PropertyRef Name="id_podrucje" />
+          </Key>
+          <Property Name="id_podrucje" Type="Int32" Nullable="false" />
+          <Property Name="podrucje1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="id_predmet" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="predmet" Relationship="Self.FK_podrucje_predmet" FromRole="podrucje" ToRole="predmet" />
+          <NavigationProperty Name="tema" Relationship="Self.FK_tema_podrucje" FromRole="podrucje" ToRole="tema" />
+        </EntityType>
+        <EntityType Name="povijest_odgovor">
+          <Key>
+            <PropertyRef Name="id_povijest_odgovor" />
+          </Key>
+          <Property Name="id_povijest_odgovor" Type="Int32" Nullable="false" />
+          <Property Name="redoslijed_odgovor" Type="Int32" Nullable="false" />
+          <Property Name="id_odgovor" Type="Int32" Nullable="false" />
+          <Property Name="id_povijest_pitanje" Type="Int32" Nullable="false" />
+          <Property Name="odabran" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="odgovor" Relationship="Self.FK_povijest_odgovor_odgovor" FromRole="povijest_odgovor" ToRole="odgovor" />
+          <NavigationProperty Name="povijest_pitanje" Relationship="Self.FK_povijest_odgovor_povijest_pitanje" FromRole="povijest_odgovor" ToRole="povijest_pitanje" />
+        </EntityType>
+        <EntityType Name="povijest_pitanje">
+          <Key>
+            <PropertyRef Name="id_povijest_pitanje" />
+          </Key>
+          <Property Name="id_povijest_pitanje" Type="Int32" Nullable="false" />
+          <Property Name="redoslijed_pitanje" Type="Int32" Nullable="false" />
+          <Property Name="id_test_pitanje" Type="Int32" Nullable="false" />
+          <Property Name="id_povijest_test" Type="Int32" Nullable="false" />
+          <Property Name="rijesen" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="povijest_odgovor" Relationship="Self.FK_povijest_odgovor_povijest_pitanje" FromRole="povijest_pitanje" ToRole="povijest_odgovor" />
+          <NavigationProperty Name="povijest_test" Relationship="Self.FK_povijest_pitanje_povijest_test" FromRole="povijest_pitanje" ToRole="povijest_test" />
+          <NavigationProperty Name="test_pitanje" Relationship="Self.FK_povijest_pitanje_test_pitanje" FromRole="povijest_pitanje" ToRole="test_pitanje" />
+        </EntityType>
+        <EntityType Name="povijest_test">
+          <Key>
+            <PropertyRef Name="id_povijest_test" />
+          </Key>
+          <Property Name="id_povijest_test" Type="Int32" Nullable="false" />
+          <Property Name="pocetak" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="zavrsetak" Type="DateTime" Precision="3" />
+          <Property Name="id_test" Type="Int32" Nullable="false" />
+          <Property Name="id_korisnik" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="korisnik" Relationship="Self.FK_povijest_test_korisnik" FromRole="povijest_test" ToRole="korisnik" />
+          <NavigationProperty Name="povijest_pitanje" Relationship="Self.FK_povijest_pitanje_povijest_test" FromRole="povijest_test" ToRole="povijest_pitanje" />
+          <NavigationProperty Name="test" Relationship="Self.FK_povijest_test_test" FromRole="povijest_test" ToRole="test" />
+        </EntityType>
+        <EntityType Name="predmet">
+          <Key>
+            <PropertyRef Name="id_predmet" />
+          </Key>
+          <Property Name="id_predmet" Type="Int32" Nullable="false" />
+          <Property Name="predmet1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="podrucje" Relationship="Self.FK_podrucje_predmet" FromRole="predmet" ToRole="podrucje" />
+        </EntityType>
+        <EntityType Name="slika">
+          <Key>
+            <PropertyRef Name="id_slika" />
+          </Key>
+          <Property Name="id_slika" Type="Int32" Nullable="false" />
+          <Property Name="slika1" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="odgovor" Relationship="Self.FK_odgovor_slika" FromRole="slika" ToRole="odgovor" />
+          <NavigationProperty Name="pitanje" Relationship="Self.FK_pitanje_slika" FromRole="slika" ToRole="pitanje" />
+        </EntityType>
+        <EntityType Name="tema">
+          <Key>
+            <PropertyRef Name="id_tema" />
+          </Key>
+          <Property Name="id_tema" Type="Int32" Nullable="false" />
+          <Property Name="tema1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="opis" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="razred" Type="Int32" Nullable="false" />
+          <Property Name="id_podrucje" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pitanje" Relationship="Self.FK_pitanje_tema" FromRole="tema" ToRole="pitanje" />
+          <NavigationProperty Name="podrucje" Relationship="Self.FK_tema_podrucje" FromRole="tema" ToRole="podrucje" />
+        </EntityType>
+        <EntityType Name="test">
+          <Key>
+            <PropertyRef Name="id_test" />
+          </Key>
+          <Property Name="id_test" Type="Int32" Nullable="false" />
+          <Property Name="naziv_test" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="broj_odgovora" Type="Int32" Nullable="false" />
+          <Property Name="bodovi_tocan" Type="Int32" Nullable="false" />
+          <Property Name="bodovi_netocan" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="povijest_test" Relationship="Self.FK_povijest_test_test" FromRole="test" ToRole="povijest_test" />
+          <NavigationProperty Name="test_pitanje" Relationship="Self.FK_test_pitanje_test" FromRole="test" ToRole="test_pitanje" />
+        </EntityType>
+        <EntityType Name="test_pitanje">
+          <Key>
+            <PropertyRef Name="id_test_pitanje" />
+          </Key>
+          <Property Name="id_test_pitanje" Type="Int32" Nullable="false" />
+          <Property Name="multiplikator_bodova" Type="Int32" Nullable="false" />
+          <Property Name="id_pitanje" Type="Int32" Nullable="false" />
+          <Property Name="id_test" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="pitanje" Relationship="Self.FK_test_pitanje_pitanje" FromRole="test_pitanje" ToRole="pitanje" />
+          <NavigationProperty Name="povijest_pitanje" Relationship="Self.FK_povijest_pitanje_test_pitanje" FromRole="test_pitanje" ToRole="povijest_pitanje" />
+          <NavigationProperty Name="test" Relationship="Self.FK_test_pitanje_test" FromRole="test_pitanje" ToRole="test" />
+        </EntityType>
+        <EntityType Name="uputa">
+          <Key>
+            <PropertyRef Name="id_uputa" />
+          </Key>
+          <Property Name="id_uputa" Type="Int32" Nullable="false" />
+          <Property Name="uputa1" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="jedan_tocan_odgovor" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="pitanje" Relationship="Self.FK_pitanje_uputa" FromRole="uputa" ToRole="pitanje" />
+        </EntityType>
+        <Association Name="FK_povijest_test_korisnik">
+          <End Role="korisnik" Type="Self.korisnik" Multiplicity="1" />
+          <End Role="povijest_test" Type="Self.povijest_test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="korisnik">
+              <PropertyRef Name="id_korisnik" />
+            </Principal>
+            <Dependent Role="povijest_test">
+              <PropertyRef Name="id_korisnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_odgovor_pitanje">
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="1" />
+          <End Role="odgovor" Type="Self.odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pitanje">
+              <PropertyRef Name="id_pitanje" />
+            </Principal>
+            <Dependent Role="odgovor">
+              <PropertyRef Name="id_pitanja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_odgovor_slika">
+          <End Role="slika" Type="Self.slika" Multiplicity="0..1" />
+          <End Role="odgovor" Type="Self.odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slika">
+              <PropertyRef Name="id_slika" />
+            </Principal>
+            <Dependent Role="odgovor">
+              <PropertyRef Name="id_slika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_odgovor_odgovor">
+          <End Role="odgovor" Type="Self.odgovor" Multiplicity="1" />
+          <End Role="povijest_odgovor" Type="Self.povijest_odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="odgovor">
+              <PropertyRef Name="id_odgovor" />
+            </Principal>
+            <Dependent Role="povijest_odgovor">
+              <PropertyRef Name="id_odgovor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pitanje_slika">
+          <End Role="slika" Type="Self.slika" Multiplicity="0..1" />
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slika">
+              <PropertyRef Name="id_slika" />
+            </Principal>
+            <Dependent Role="pitanje">
+              <PropertyRef Name="id_slika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pitanje_tema">
+          <End Role="tema" Type="Self.tema" Multiplicity="1" />
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tema">
+              <PropertyRef Name="id_tema" />
+            </Principal>
+            <Dependent Role="pitanje">
+              <PropertyRef Name="id_tema" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pitanje_uputa">
+          <End Role="uputa" Type="Self.uputa" Multiplicity="1" />
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="uputa">
+              <PropertyRef Name="id_uputa" />
+            </Principal>
+            <Dependent Role="pitanje">
+              <PropertyRef Name="id_uputa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_pitanje_pitanje">
+          <End Role="pitanje" Type="Self.pitanje" Multiplicity="1" />
+          <End Role="test_pitanje" Type="Self.test_pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pitanje">
+              <PropertyRef Name="id_pitanje" />
+            </Principal>
+            <Dependent Role="test_pitanje">
+              <PropertyRef Name="id_pitanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_podrucje_predmet">
+          <End Role="predmet" Type="Self.predmet" Multiplicity="1" />
+          <End Role="podrucje" Type="Self.podrucje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="predmet">
+              <PropertyRef Name="id_predmet" />
+            </Principal>
+            <Dependent Role="podrucje">
+              <PropertyRef Name="id_predmet" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tema_podrucje">
+          <End Role="podrucje" Type="Self.podrucje" Multiplicity="1" />
+          <End Role="tema" Type="Self.tema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="podrucje">
+              <PropertyRef Name="id_podrucje" />
+            </Principal>
+            <Dependent Role="tema">
+              <PropertyRef Name="id_podrucje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_odgovor_povijest_pitanje">
+          <End Role="povijest_pitanje" Type="Self.povijest_pitanje" Multiplicity="1" />
+          <End Role="povijest_odgovor" Type="Self.povijest_odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="povijest_pitanje">
+              <PropertyRef Name="id_povijest_pitanje" />
+            </Principal>
+            <Dependent Role="povijest_odgovor">
+              <PropertyRef Name="id_povijest_pitanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_pitanje_povijest_test">
+          <End Role="povijest_test" Type="Self.povijest_test" Multiplicity="1" />
+          <End Role="povijest_pitanje" Type="Self.povijest_pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="povijest_test">
+              <PropertyRef Name="id_povijest_test" />
+            </Principal>
+            <Dependent Role="povijest_pitanje">
+              <PropertyRef Name="id_povijest_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_pitanje_test_pitanje">
+          <End Role="test_pitanje" Type="Self.test_pitanje" Multiplicity="1" />
+          <End Role="povijest_pitanje" Type="Self.povijest_pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test_pitanje">
+              <PropertyRef Name="id_test_pitanje" />
+            </Principal>
+            <Dependent Role="povijest_pitanje">
+              <PropertyRef Name="id_test_pitanje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_povijest_test_test">
+          <End Role="test" Type="Self.test" Multiplicity="1" />
+          <End Role="povijest_test" Type="Self.povijest_test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="id_test" />
+            </Principal>
+            <Dependent Role="povijest_test">
+              <PropertyRef Name="id_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_test_pitanje_test">
+          <End Role="test" Type="Self.test" Multiplicity="1" />
+          <End Role="test_pitanje" Type="Self.test_pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="test">
+              <PropertyRef Name="id_test" />
+            </Principal>
+            <Dependent Role="test_pitanje">
+              <PropertyRef Name="id_test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ppijEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="korisnik" EntityType="Self.korisnik" />
+          <EntitySet Name="odgovor" EntityType="Self.odgovor" />
+          <EntitySet Name="pitanje" EntityType="Self.pitanje" />
+          <EntitySet Name="podrucje" EntityType="Self.podrucje" />
+          <EntitySet Name="povijest_odgovor" EntityType="Self.povijest_odgovor" />
+          <EntitySet Name="povijest_pitanje" EntityType="Self.povijest_pitanje" />
+          <EntitySet Name="povijest_test" EntityType="Self.povijest_test" />
+          <EntitySet Name="predmet" EntityType="Self.predmet" />
+          <EntitySet Name="slika" EntityType="Self.slika" />
+          <EntitySet Name="tema" EntityType="Self.tema" />
+          <EntitySet Name="test" EntityType="Self.test" />
+          <EntitySet Name="test_pitanje" EntityType="Self.test_pitanje" />
+          <EntitySet Name="uputa" EntityType="Self.uputa" />
+          <AssociationSet Name="FK_povijest_test_korisnik" Association="Self.FK_povijest_test_korisnik">
+            <End Role="korisnik" EntitySet="korisnik" />
+            <End Role="povijest_test" EntitySet="povijest_test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_odgovor_pitanje" Association="Self.FK_odgovor_pitanje">
+            <End Role="pitanje" EntitySet="pitanje" />
+            <End Role="odgovor" EntitySet="odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_odgovor_slika" Association="Self.FK_odgovor_slika">
+            <End Role="slika" EntitySet="slika" />
+            <End Role="odgovor" EntitySet="odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_odgovor_odgovor" Association="Self.FK_povijest_odgovor_odgovor">
+            <End Role="odgovor" EntitySet="odgovor" />
+            <End Role="povijest_odgovor" EntitySet="povijest_odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pitanje_slika" Association="Self.FK_pitanje_slika">
+            <End Role="slika" EntitySet="slika" />
+            <End Role="pitanje" EntitySet="pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pitanje_tema" Association="Self.FK_pitanje_tema">
+            <End Role="tema" EntitySet="tema" />
+            <End Role="pitanje" EntitySet="pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pitanje_uputa" Association="Self.FK_pitanje_uputa">
+            <End Role="uputa" EntitySet="uputa" />
+            <End Role="pitanje" EntitySet="pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_pitanje_pitanje" Association="Self.FK_test_pitanje_pitanje">
+            <End Role="pitanje" EntitySet="pitanje" />
+            <End Role="test_pitanje" EntitySet="test_pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_podrucje_predmet" Association="Self.FK_podrucje_predmet">
+            <End Role="predmet" EntitySet="predmet" />
+            <End Role="podrucje" EntitySet="podrucje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tema_podrucje" Association="Self.FK_tema_podrucje">
+            <End Role="podrucje" EntitySet="podrucje" />
+            <End Role="tema" EntitySet="tema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_odgovor_povijest_pitanje" Association="Self.FK_povijest_odgovor_povijest_pitanje">
+            <End Role="povijest_pitanje" EntitySet="povijest_pitanje" />
+            <End Role="povijest_odgovor" EntitySet="povijest_odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_pitanje_povijest_test" Association="Self.FK_povijest_pitanje_povijest_test">
+            <End Role="povijest_test" EntitySet="povijest_test" />
+            <End Role="povijest_pitanje" EntitySet="povijest_pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_pitanje_test_pitanje" Association="Self.FK_povijest_pitanje_test_pitanje">
+            <End Role="test_pitanje" EntitySet="test_pitanje" />
+            <End Role="povijest_pitanje" EntitySet="povijest_pitanje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_povijest_test_test" Association="Self.FK_povijest_test_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="povijest_test" EntitySet="povijest_test" />
+          </AssociationSet>
+          <AssociationSet Name="FK_test_pitanje_test" Association="Self.FK_test_pitanje_test">
+            <End Role="test" EntitySet="test" />
+            <End Role="test_pitanje" EntitySet="test_pitanje" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ppijModelStoreContainer" CdmEntityContainer="ppijEntities">
+          <EntitySetMapping Name="korisnik">
+            <EntityTypeMapping TypeName="ppijModel.korisnik">
+              <MappingFragment StoreEntitySet="korisnik">
+                <ScalarProperty Name="id_korisnik" ColumnName="id_korisnik" />
+                <ScalarProperty Name="korisnicko_ime" ColumnName="korisnicko_ime" />
+                <ScalarProperty Name="lozinka" ColumnName="lozinka" />
+                <ScalarProperty Name="ime" ColumnName="ime" />
+                <ScalarProperty Name="prezime" ColumnName="prezime" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="administrator" ColumnName="administrator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="odgovor">
+            <EntityTypeMapping TypeName="ppijModel.odgovor">
+              <MappingFragment StoreEntitySet="odgovor">
+                <ScalarProperty Name="id_odgovor" ColumnName="id_odgovor" />
+                <ScalarProperty Name="odgovor1" ColumnName="odgovor" />
+                <ScalarProperty Name="id_slika" ColumnName="id_slika" />
+                <ScalarProperty Name="id_pitanja" ColumnName="id_pitanja" />
+                <ScalarProperty Name="tocan" ColumnName="tocan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pitanje">
+            <EntityTypeMapping TypeName="ppijModel.pitanje">
+              <MappingFragment StoreEntitySet="pitanje">
+                <ScalarProperty Name="id_pitanje" ColumnName="id_pitanje" />
+                <ScalarProperty Name="pitanje1" ColumnName="pitanje" />
+                <ScalarProperty Name="id_slika" ColumnName="id_slika" />
+                <ScalarProperty Name="id_uputa" ColumnName="id_uputa" />
+                <ScalarProperty Name="id_tema" ColumnName="id_tema" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="podrucje">
+            <EntityTypeMapping TypeName="ppijModel.podrucje">
+              <MappingFragment StoreEntitySet="podrucje">
+                <ScalarProperty Name="id_podrucje" ColumnName="id_podrucje" />
+                <ScalarProperty Name="podrucje1" ColumnName="podrucje" />
+                <ScalarProperty Name="id_predmet" ColumnName="id_predmet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="povijest_odgovor">
+            <EntityTypeMapping TypeName="ppijModel.povijest_odgovor">
+              <MappingFragment StoreEntitySet="povijest_odgovor">
+                <ScalarProperty Name="id_povijest_odgovor" ColumnName="id_povijest_odgovor" />
+                <ScalarProperty Name="redoslijed_odgovor" ColumnName="redoslijed_odgovor" />
+                <ScalarProperty Name="id_odgovor" ColumnName="id_odgovor" />
+                <ScalarProperty Name="id_povijest_pitanje" ColumnName="id_povijest_pitanje" />
+                <ScalarProperty Name="odabran" ColumnName="odabran" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="povijest_pitanje">
+            <EntityTypeMapping TypeName="ppijModel.povijest_pitanje">
+              <MappingFragment StoreEntitySet="povijest_pitanje">
+                <ScalarProperty Name="id_povijest_pitanje" ColumnName="id_povijest_pitanje" />
+                <ScalarProperty Name="redoslijed_pitanje" ColumnName="redoslijed_pitanje" />
+                <ScalarProperty Name="id_test_pitanje" ColumnName="id_test_pitanje" />
+                <ScalarProperty Name="id_povijest_test" ColumnName="id_povijest_test" />
+                <ScalarProperty Name="rijesen" ColumnName="rijesen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="povijest_test">
+            <EntityTypeMapping TypeName="ppijModel.povijest_test">
+              <MappingFragment StoreEntitySet="povijest_test">
+                <ScalarProperty Name="id_povijest_test" ColumnName="id_povijest_test" />
+                <ScalarProperty Name="pocetak" ColumnName="pocetak" />
+                <ScalarProperty Name="zavrsetak" ColumnName="zavrsetak" />
+                <ScalarProperty Name="id_test" ColumnName="id_test" />
+                <ScalarProperty Name="id_korisnik" ColumnName="id_korisnik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="predmet">
+            <EntityTypeMapping TypeName="ppijModel.predmet">
+              <MappingFragment StoreEntitySet="predmet">
+                <ScalarProperty Name="id_predmet" ColumnName="id_predmet" />
+                <ScalarProperty Name="predmet1" ColumnName="predmet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slika">
+            <EntityTypeMapping TypeName="ppijModel.slika">
+              <MappingFragment StoreEntitySet="slika">
+                <ScalarProperty Name="id_slika" ColumnName="id_slika" />
+                <ScalarProperty Name="slika1" ColumnName="slika" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tema">
+            <EntityTypeMapping TypeName="ppijModel.tema">
+              <MappingFragment StoreEntitySet="tema">
+                <ScalarProperty Name="id_tema" ColumnName="id_tema" />
+                <ScalarProperty Name="tema1" ColumnName="tema" />
+                <ScalarProperty Name="opis" ColumnName="opis" />
+                <ScalarProperty Name="razred" ColumnName="razred" />
+                <ScalarProperty Name="id_podrucje" ColumnName="id_podrucje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test">
+            <EntityTypeMapping TypeName="ppijModel.test">
+              <MappingFragment StoreEntitySet="test">
+                <ScalarProperty Name="id_test" ColumnName="id_test" />
+                <ScalarProperty Name="naziv_test" ColumnName="naziv_test" />
+                <ScalarProperty Name="broj_odgovora" ColumnName="broj_odgovora" />
+                <ScalarProperty Name="bodovi_tocan" ColumnName="bodovi_tocan" />
+                <ScalarProperty Name="bodovi_netocan" ColumnName="bodovi_netocan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="test_pitanje">
+            <EntityTypeMapping TypeName="ppijModel.test_pitanje">
+              <MappingFragment StoreEntitySet="test_pitanje">
+                <ScalarProperty Name="id_test_pitanje" ColumnName="id_test_pitanje" />
+                <ScalarProperty Name="multiplikator_bodova" ColumnName="multiplikator_bodova" />
+                <ScalarProperty Name="id_pitanje" ColumnName="id_pitanje" />
+                <ScalarProperty Name="id_test" ColumnName="id_test" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="uputa">
+            <EntityTypeMapping TypeName="ppijModel.uputa">
+              <MappingFragment StoreEntitySet="uputa">
+                <ScalarProperty Name="id_uputa" ColumnName="id_uputa" />
+                <ScalarProperty Name="uputa1" ColumnName="uputa" />
+                <ScalarProperty Name="jedan_tocan_odgovor" ColumnName="jedan_tocan_odgovor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

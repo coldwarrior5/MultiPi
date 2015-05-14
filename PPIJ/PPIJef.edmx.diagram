@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="620c2afd85ba40e0b3de6b8fbce21e8c" Name="Diagram1">
+        <EntityTypeShape EntityType="ppijModel.korisnik" Width="1.5" PointX="9" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.odgovor" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.pitanje" Width="1.5" PointX="6" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.podrucje" Width="1.5" PointX="1.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.povijest_odgovor" Width="1.5" PointX="8.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.povijest_pitanje" Width="1.5" PointX="13.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.povijest_test" Width="1.5" PointX="11.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.predmet" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.slika" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.tema" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.test" Width="1.5" PointX="9" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.test_pitanje" Width="1.5" PointX="11.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="ppijModel.uputa" Width="1.5" PointX="3.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="ppijModel.FK_povijest_test_korisnik" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_odgovor_pitanje" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_odgovor_slika" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_povijest_odgovor_odgovor" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_pitanje_slika" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_pitanje_tema" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_pitanje_uputa" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_test_pitanje_pitanje" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_podrucje_predmet" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_tema_podrucje" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_povijest_odgovor_povijest_pitanje" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_povijest_pitanje_povijest_test" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_povijest_pitanje_test_pitanje" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_povijest_test_test" ManuallyRouted="false" />
+        <AssociationConnector Association="ppijModel.FK_test_pitanje_test" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
