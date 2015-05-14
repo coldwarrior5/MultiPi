@@ -105,17 +105,33 @@ namespace PPIJ.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
-                try
+                using (ppijEntities db = new ppijEntities())
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    var newUser = db.korisnik.Create();
+                    bool userExists = db.korisnik.Any(user => user.korisnicko_ime == model.Username);
+                    newUser.korisnicko_ime = model.Username;
+                    newUser.lozinka = model.Password;
+                    newUser.email = model.Email;
+                    newUser.ime = model.FirstName;
+                    newUser.prezime = model.LastName;
+
+                    if (!userExists)
+                    {
+                        db.korisnik.Add(newUser);
+                        db.SaveChanges();
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "The user with this username already exists, please choose another username!");
+                        model.Username = "";
+                        return View(model);
+                    }
                 }
-                catch (MembershipCreateUserException e)
-                {
-                    ModelState.AddModelError("", ErrorCodeToString(e.StatusCode));
-                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Data is not correct");
             }
 
             // If we got this far, something failed, redisplay form
