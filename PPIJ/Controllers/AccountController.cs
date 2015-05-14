@@ -35,13 +35,41 @@ namespace PPIJ.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            /*if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
+            }*/
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            using (ppijEntities db = new ppijEntities())
+            {
+                string username = model.Username;
+                string password = model.Password;
+
+                bool userValid = db.korisnik.Any(user => user.korisnicko_ime == username && user.lozinka == password);
+
+                if (userValid)
+                {
+                    FormsAuthentication.SetAuthCookie(username, false);
+                    var FormsAuthCookie = Response.Cookies[FormsAuthentication.FormsCookieName];
+                    var ExistingTicket = FormsAuthentication.Decrypt(FormsAuthCookie.Value).Name;
+                    if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/"))
+                        return RedirectToLocal(returnUrl);
+                    else return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                }
+
             }
 
             // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            //ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
         }
 
@@ -52,8 +80,9 @@ namespace PPIJ.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
-            WebSecurity.Logout();
+            //WebSecurity.Logout();
 
+            FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
 

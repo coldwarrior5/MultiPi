@@ -55,7 +55,7 @@ namespace PPIJ.Models
         public string ConfirmPassword { get; set; }
     }
 
-    public class LoginViewModel
+    public class LoginModel
     {
         [Required]
         [Display(Name = "Username")]
@@ -71,7 +71,7 @@ namespace PPIJ.Models
     }
 
 
-    public class RegisterViewModel
+    public class RegisterModel
     {
         [Required]
         [Display(Name = "Username")]
