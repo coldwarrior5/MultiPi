@@ -42,14 +42,18 @@
                     <li><a href="#section-about"><i class="fa fa-laptop"></i> O nama</a></li>
                     <li><a href="#section-works"><i class="fa fa-puzzle-piece"></i> Testovi</a></li>
                     <li><a href="#section-contact"><i class="fa fa-phone"></i> Kontakt</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-phone"></i> Registracija</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-phone"></i> Prijava</a></li>
                 </ul>
+
             </div><!--/.navbar-collapse -->
         </div>
     </div>
-
 </head>
 
 <body>
-    @RenderBody()
+@Html.Partial("_Register")
+@Html.Partial("_Login")
+@RenderBody()
 </body>
 </html>
