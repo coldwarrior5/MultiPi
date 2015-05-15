@@ -85,9 +85,9 @@ jQuery(document).ready(function($) {
                    fromEmail + "', 'subject': '" + subject + "', 'message': '" + message + "'}";
 				$.ajax({
 				type: "POST",
-				url: "SendEmail.aspx/SendMessage",
+				url: "SendEmail.aspx",
 				data: data,
-				contentType: "application/json; charset=utf-8",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType: "json",
 				success: function(msg){
 			$("#sendmessage").addClass("show");
