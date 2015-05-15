@@ -1,4 +1,6 @@
-﻿<div class="modal fade" id="myModalR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+﻿@model PPIJ.Models.RegisterModel
+
+<div class="modal fade" id="myModalR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -6,8 +8,51 @@
                 <h4 class="modal-title" id="myModalLabel">Registracija</h4>
             </div>
             <div class="modal-body">
-                ...
-            </div>
+
+                <div class="row">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Korisničko ime", style = "margin-bottom: 15px;" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lozinka", style = "margin-bottom: 15px;" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Potvrdi lozinku", style = "margin-bottom: 15px;" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail adresa", style = "margin-bottom: 15px;" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Ime", style = "margin-bottom: 15px;" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Prezime", style = "margin-bottom: 15px;" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+
+                </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">ZATVORI</button>
                 <button type="button" class="btn btn-primary">REGISTRIRAJ SE</button>
