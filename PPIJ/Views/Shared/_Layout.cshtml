@@ -30,20 +30,19 @@
                     <span class="fa fa-bars color-white"></span>
                 </button>
                 <h1>
-                    <a class="navbar-brand" href="@Url.Action("Index", "Home")" data-0="line-height:90px;" data-300="line-height:50px;">
+                    <a class="navbar-brand" href="#section-featured" data-0="line-height:90px;" data-300="line-height:50px;">
                         Multi&Pi;
                     </a>
                 </h1>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-                    <li class="active"><a href="@Url.Action("Index", "Home")"><i class="fa fa-home"></i> Naslovnica</a></li>
-                    <li><a href="#section-services"><i class="fa fa-gear"></i> Info</a></li>
-                    <li><a href="#section-about"><i class="fa fa-laptop"></i> O nama</a></li>
+                    <li class="active"><a href="#section-featured"><i class="fa fa-home"></i> Naslovnica</a></li>
+                    <li><a href="#section-services"><i class="fa fa-question-circle"></i> Info</a></li>
+                    <li><a href="#section-about"><i class="fa fa-archive"></i> O nama</a></li>
                     <li><a href="#section-works"><i class="fa fa-puzzle-piece"></i> Testovi</a></li>
-                    <li><a href="#section-contact"><i class="fa fa-phone"></i> Kontakt</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#myModalR"><i class="fa fa-phone"></i> Registracija</a></li>
-                    <li><a href="#" data-toggle="modal" data-target="#myModalL"><i class="fa fa-phone"></i> Prijava</a></li>
+                    <li><a href="#section-contact"><i class="fa fa-envelope-o"></i> Kontakt</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModalL"><i class="fa fa-sign-in"></i> Prijava</a></li>
                 </ul>
 
             </div><!--/.navbar-collapse -->
@@ -52,8 +51,7 @@
 </head>
 
 <body>
-@Html.Partial("_Register")
-@Html.Partial("_Login")
-@RenderBody()
+    @Html.Partial("_Login")
+    @RenderBody()
 </body>
 </html>
