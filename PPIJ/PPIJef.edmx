@@ -4,12 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ppijModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ppijModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="korisnik">
           <Key>
             <PropertyRef Name="id_korisnik" />
           </Key>
-          <Property Name="id_korisnik" Type="int" Nullable="false" />
+          <Property Name="id_korisnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="korisnicko_ime" Type="char" MaxLength="12" Nullable="false" />
           <Property Name="lozinka" Type="char" MaxLength="40" Nullable="false" />
           <Property Name="ime" Type="nvarchar" MaxLength="64" Nullable="false" />
@@ -41,7 +41,7 @@
           <Key>
             <PropertyRef Name="id_podrucje" />
           </Key>
-          <Property Name="id_podrucje" Type="int" Nullable="false" />
+          <Property Name="id_podrucje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="podrucje" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="id_predmet" Type="int" Nullable="false" />
         </EntityType>
@@ -49,7 +49,7 @@
           <Key>
             <PropertyRef Name="id_povijest_odgovor" />
           </Key>
-          <Property Name="id_povijest_odgovor" Type="int" Nullable="false" />
+          <Property Name="id_povijest_odgovor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="redoslijed_odgovor" Type="int" Nullable="false" />
           <Property Name="id_odgovor" Type="int" Nullable="false" />
           <Property Name="id_povijest_pitanje" Type="int" Nullable="false" />
@@ -59,7 +59,7 @@
           <Key>
             <PropertyRef Name="id_povijest_pitanje" />
           </Key>
-          <Property Name="id_povijest_pitanje" Type="int" Nullable="false" />
+          <Property Name="id_povijest_pitanje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="redoslijed_pitanje" Type="int" Nullable="false" />
           <Property Name="id_test_pitanje" Type="int" Nullable="false" />
           <Property Name="id_povijest_test" Type="int" Nullable="false" />
@@ -69,7 +69,7 @@
           <Key>
             <PropertyRef Name="id_povijest_test" />
           </Key>
-          <Property Name="id_povijest_test" Type="int" Nullable="false" />
+          <Property Name="id_povijest_test" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pocetak" Type="datetime" Nullable="false" />
           <Property Name="zavrsetak" Type="datetime" />
           <Property Name="id_test" Type="int" Nullable="false" />
@@ -79,7 +79,7 @@
           <Key>
             <PropertyRef Name="id_predmet" />
           </Key>
-          <Property Name="id_predmet" Type="int" Nullable="false" />
+          <Property Name="id_predmet" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="predmet" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="slika">
@@ -93,7 +93,7 @@
           <Key>
             <PropertyRef Name="id_tema" />
           </Key>
-          <Property Name="id_tema" Type="int" Nullable="false" />
+          <Property Name="id_tema" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tema" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="opis" Type="nvarchar" MaxLength="4000" />
           <Property Name="razred" Type="int" Nullable="false" />
@@ -103,7 +103,7 @@
           <Key>
             <PropertyRef Name="id_test" />
           </Key>
-          <Property Name="id_test" Type="int" Nullable="false" />
+          <Property Name="id_test" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="naziv_test" Type="nvarchar" MaxLength="200" />
           <Property Name="broj_odgovora" Type="int" Nullable="false" />
           <Property Name="bodovi_tocan" Type="int" Nullable="false" />
@@ -113,7 +113,7 @@
           <Key>
             <PropertyRef Name="id_test_pitanje" />
           </Key>
-          <Property Name="id_test_pitanje" Type="int" Nullable="false" />
+          <Property Name="id_test_pitanje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="multiplikator_bodova" Type="int" Nullable="false" />
           <Property Name="id_pitanje" Type="int" Nullable="false" />
           <Property Name="id_test" Type="int" Nullable="false" />
@@ -381,8 +381,7 @@
             <End Role="test_pitanje" EntitySet="test_pitanje" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ppijModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
