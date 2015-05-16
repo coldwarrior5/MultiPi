@@ -10,18 +10,18 @@
             <PropertyRef Name="id_korisnik" />
           </Key>
           <Property Name="id_korisnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="korisnicko_ime" Type="char" MaxLength="12" Nullable="false" />
-          <Property Name="lozinka" Type="char" MaxLength="40" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="lozinka" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ime" Type="nvarchar" MaxLength="64" Nullable="false" />
           <Property Name="prezime" Type="nvarchar" MaxLength="64" />
-          <Property Name="email" Type="char" MaxLength="80" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="administrator" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="odgovor">
           <Key>
             <PropertyRef Name="id_odgovor" />
           </Key>
-          <Property Name="id_odgovor" Type="int" Nullable="false" />
+          <Property Name="id_odgovor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="odgovor" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="id_slika" Type="int" />
           <Property Name="id_pitanja" Type="int" Nullable="false" />
@@ -31,7 +31,7 @@
           <Key>
             <PropertyRef Name="id_pitanje" />
           </Key>
-          <Property Name="id_pitanje" Type="int" Nullable="false" />
+          <Property Name="id_pitanje" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="pitanje" Type="nvarchar" MaxLength="4000" Nullable="false" />
           <Property Name="id_slika" Type="int" />
           <Property Name="id_uputa" Type="int" Nullable="false" />
@@ -86,7 +86,7 @@
           <Key>
             <PropertyRef Name="id_slika" />
           </Key>
-          <Property Name="id_slika" Type="int" Nullable="false" />
+          <Property Name="id_slika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="slika" Type="image" Nullable="false" />
         </EntityType>
         <EntityType Name="tema">
@@ -122,7 +122,7 @@
           <Key>
             <PropertyRef Name="id_uputa" />
           </Key>
-          <Property Name="id_uputa" Type="int" Nullable="false" />
+          <Property Name="id_uputa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="uputa" Type="nvarchar" MaxLength="1000" Nullable="false" />
           <Property Name="jedan_tocan_odgovor" Type="bit" Nullable="false" />
         </EntityType>
@@ -390,11 +390,11 @@
             <PropertyRef Name="id_korisnik" />
           </Key>
           <Property Name="id_korisnik" Type="Int32" Nullable="false" />
-          <Property Name="korisnicko_ime" Type="String" MaxLength="12" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="lozinka" Type="String" MaxLength="40" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="korisnicko_ime" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ime" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="prezime" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="email" Type="String" MaxLength="80" FixedLength="true" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="administrator" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="povijest_test" Relationship="Self.FK_povijest_test_korisnik" FromRole="korisnik" ToRole="povijest_test" />
         </EntityType>
