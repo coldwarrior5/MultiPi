@@ -24,7 +24,7 @@ namespace PPIJ.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return PartialView();
         }
 
         //
@@ -42,7 +42,7 @@ namespace PPIJ.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return PartialView(model);
             }
 
             using (ppijEntities db = new ppijEntities())
@@ -70,7 +70,7 @@ namespace PPIJ.Controllers
 
             // If we got this far, something failed, redisplay form
             //ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(model);
+            return PartialView(model);
         }
 
         //
@@ -92,7 +92,7 @@ namespace PPIJ.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return PartialView();
         }
 
         //
@@ -125,7 +125,7 @@ namespace PPIJ.Controllers
                     {
                         ModelState.AddModelError("", "The user with this username already exists, please choose another username!");
                         model.Username = "";
-                        return View(model);
+                        return PartialView(model);
                     }
                 }
             }
@@ -135,7 +135,7 @@ namespace PPIJ.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return PartialView(model);
         }
 
         //
