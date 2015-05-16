@@ -70,7 +70,7 @@ namespace PPIJ.Controllers
 
             // If we got this far, something failed, redisplay form
             //ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return RedirectToAction("Index", "Home");
+            return PartialView(model);
         }
 
         //
@@ -135,7 +135,7 @@ namespace PPIJ.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return RedirectToAction("Index", "Home");
+            return PartialView(model);
         }
 
         //
