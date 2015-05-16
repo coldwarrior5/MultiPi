@@ -45,14 +45,18 @@
                     <li><a href="#section-about"><i class="fa fa-archive"></i> O nama</a></li>
                     <li><a href="#section-works"><i class="fa fa-puzzle-piece"></i> Testovi</a></li>
                     <li><a href="#section-contact"><i class="fa fa-envelope-o"></i> Kontakt</a></li>
-                    @if (Request.IsAuthenticated)
-                    {
-                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new {id = "logoutForm"}))
+                    <li style="margin-top:10px;margin-left:10px;font-family:Verdana">
+                        @if (Request.IsAuthenticated)
                         {
-                            @Html.AntiForgeryToken()
-                            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-envelope-o"></i> Odjavi se</a></li>
+
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a style="font-size:13px;text-transform:uppercase;color:white;font-weight: 700;letter-spacing: .1em" href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-share-square-o"></i> Odjavi se</a>
+                            }
+
                         }
-                    }
+                    </li>
                 </ul>
 
             </div><!--/.navbar-collapse -->
