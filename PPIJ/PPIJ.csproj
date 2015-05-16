@@ -26,6 +26,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>12.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -238,6 +239,7 @@
     <Compile Include="uputa.cs">
       <DependentUpon>PPIJef.tt</DependentUpon>
     </Compile>
+    <Content Include="App_Data\aspnet-PPIJ-20150404224400.mdf" />
     <Content Include="Images\parallax\img4.jpg" />
     <Content Include="Images\parallax\math.jpg" />
     <Content Include="Images\parallax\multiplicationtable.jpg" />
@@ -455,9 +457,7 @@
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Shared\_Register.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
