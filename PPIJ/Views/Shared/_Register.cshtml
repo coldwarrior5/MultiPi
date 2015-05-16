@@ -10,7 +10,7 @@
             <div class="modal-body">
 
                 <div class="row">
-                    @using (Html.BeginForm())
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary("", new { @class = "text-danger" })
@@ -18,44 +18,45 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Korisničko ime", style = "margin-bottom: 15px;" })
+                                        @Html.TextBoxFor(m => m.Username, new {@class = "form-control", placeholder = "Korisničko ime", style = "margin-bottom: 15px;"})
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lozinka", style = "margin-bottom: 15px;" })
+                                        @Html.PasswordFor(m => m.Password, new {@class = "form-control", placeholder = "Lozinka", style = "margin-bottom: 15px;"})
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Potvrdi lozinku", style = "margin-bottom: 15px;" })
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new {@class = "form-control", placeholder = "Potvrdi lozinku", style = "margin-bottom: 15px;"})
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail adresa", style = "margin-bottom: 15px;" })
+                                        @Html.TextBoxFor(m => m.Email, new {@class = "form-control", placeholder = "E-mail adresa", style = "margin-bottom: 15px;"})
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Ime", style = "margin-bottom: 15px;" })
+                                        @Html.TextBoxFor(m => m.FirstName, new {@class = "form-control", placeholder = "Ime", style = "margin-bottom: 15px;"})
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Prezime", style = "margin-bottom: 15px;" })
+                                        @Html.TextBoxFor(m => m.LastName, new {@class = "form-control", placeholder = "Prezime", style = "margin-bottom: 15px;"})
                                     </div>
                                 </div>
                             </div>
                         </div>
+    <input class="btn btn-primary" type="submit" value="REGISTRIRAJ SE" />
+
                     }
                 </div>
 
 
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">ZATVORI</button>
-                <button type="button" class="btn btn-primary">REGISTRIRAJ SE</button>
+                <input class="btn btn-default" data-dismiss="modal" value="ZATVORI" />
             </div>
         </div>
     </div>
