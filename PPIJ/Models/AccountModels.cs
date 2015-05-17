@@ -57,49 +57,46 @@ namespace PPIJ.Models
 
     public class LoginModel
     {
-        [Required]
+        [Required(ErrorMessage = "Korisničko ime je potrebno za prijavu")]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Lozinka je potrebna za prijavu")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-
-        [Display(Name = "Remember")]
-        public bool RememberMe { get; set; }
     }
 
 
     public class RegisterModel
     {
-        [Required]
+        [Required(ErrorMessage = "Korisničko ime je potrebno")]
         [Display(Name = "Username")]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Email adresa je potrebna")]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Lozinka je potrebna")]
         [StringLength(100, ErrorMessage = "Lozinka mora biti najmanje {2} znakova duga.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Potrebno je potvrditi lozinku")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Lozinke se ne podudaraju.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Ime je potrebno")]
         [Display(Name = "First name")]
         [DataType(DataType.Text)]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Prezime je potrebno")]
         [Display(Name = "Last name")]
         [DataType(DataType.Text)]
         public string LastName { get; set; }

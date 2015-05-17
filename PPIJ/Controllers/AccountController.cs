@@ -39,7 +39,7 @@ namespace PPIJ.Controllers
             {
                 return RedirectToLocal(returnUrl);
             }*/
-
+            //Needs changing so that it returns AJAX
             if (!ModelState.IsValid)
             {
                 return PartialView(model);
@@ -59,7 +59,7 @@ namespace PPIJ.Controllers
                     var ExistingTicket = FormsAuthentication.Decrypt(FormsAuthCookie.Value).Name;
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/"))
                         return RedirectToLocal(returnUrl);
-                    else return RedirectToAction("Index", "Home");
+                    else return RedirectToAction("Index", "Home"); //successful login
                 }
                 else
                 {
@@ -67,9 +67,7 @@ namespace PPIJ.Controllers
                 }
 
             }
-
-            // If we got this far, something failed, redisplay form
-            //ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            
             return PartialView(model);
         }
 
@@ -109,21 +107,28 @@ namespace PPIJ.Controllers
                 {
                     var newUser = db.korisnik.Create();
                     bool userExists = db.korisnik.Any(user => user.korisnicko_ime == model.Username);
+                    bool emailExists = db.korisnik.Any(user=> user.email == model.Email);
                     newUser.korisnicko_ime = model.Username;
                     newUser.lozinka = model.Password;
                     newUser.email = model.Email;
                     newUser.ime = model.FirstName;
                     newUser.prezime = model.LastName;
 
-                    if (!userExists)
+                    if (!userExists && !emailExists)
                     {
                         db.korisnik.Add(newUser);
                         db.SaveChanges();
                         return RedirectToAction("Index", "Home");
                     }
-                    else
+                    else if(!emailExists)
                     {
                         ModelState.AddModelError("", "To korisničko ime već postoji!");
+                        model.Username = "";
+                        return PartialView(model);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Već postoji korisnik koji koristi tu email adresu!");
                         model.Username = "";
                         return PartialView(model);
                     }
@@ -173,9 +178,9 @@ namespace PPIJ.Controllers
         public ActionResult Manage(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
-                : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Vaša lozinka je imjenjena."
+                : message == ManageMessageId.SetPasswordSuccess ? "Vaša lozinka je postavljena."
+                : message == ManageMessageId.RemoveLoginSuccess ? "Vanjska prijava je uklonjena."
                 : "";
             ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
@@ -213,7 +218,7 @@ namespace PPIJ.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                        ModelState.AddModelError("", "Stara lozinka je netočna ili nova nije ispravna.");
                     }
                 }
             }
@@ -236,7 +241,7 @@ namespace PPIJ.Controllers
                     }
                     catch (Exception)
                     {
-                        ModelState.AddModelError("", String.Format("Unable to create local account. An account with the name \"{0}\" may already exist.", User.Identity.Name));
+                        ModelState.AddModelError("", String.Format("Lokalni račun nije pronađen. Račun sa imenom \"{0}\" možda već postoji.", User.Identity.Name));
                     }
                 }
             }

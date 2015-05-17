@@ -10,7 +10,7 @@
             <div class="modal-body">
 
                 <div class="row">
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "registerForm" }))
+                    @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { UpdateTargetId = "Productresult" }, new { @class = "registerForm" }))
                     {
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary("", new { @class = "text-danger" })
