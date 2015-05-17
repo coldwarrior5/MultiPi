@@ -40,11 +40,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-                    <li class="active"><a href="#section-featured"><i class="fa fa-home"></i> Naslovnica</a></li>
-                    <li><a href="#section-services"><i class="fa fa-question-circle"></i> Info</a></li>
-                    <li><a href="#section-about"><i class="fa fa-archive"></i> O nama</a></li>
-                    <li><a href="#section-works"><i class="fa fa-puzzle-piece"></i> Testovi</a></li>
-                    <li><a href="#section-contact"><i class="fa fa-envelope-o"></i> Kontakt</a></li>
+                    <li class="active"><a href="@Url.Action("Index", "Home")"<i class="fa fa-arrow-left"></i> Povratak</a></li>
                     <li style="margin-top:12px;margin-left:12px;font-family:Verdana">
                         @if (Request.IsAuthenticated)
                         {
@@ -65,7 +61,6 @@
 </head>
 
 <body>
-    @Html.Partial("~/Views/Account/Login.cshtml")
     @RenderBody()
 </body>
 </html>

@@ -63,7 +63,7 @@ namespace PPIJ.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "Korisničko ime ili lozinka su neispravni.");
                 }
 
             }
@@ -123,7 +123,7 @@ namespace PPIJ.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "The user with this username already exists, please choose another username!");
+                        ModelState.AddModelError("", "To korisničko ime već postoji!");
                         model.Username = "";
                         return PartialView(model);
                     }
@@ -131,7 +131,7 @@ namespace PPIJ.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "Data is not correct");
+                ModelState.AddModelError("", "Podatci nisu ispravni");
             }
 
             // If we got this far, something failed, redisplay form
