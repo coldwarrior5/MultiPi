@@ -249,6 +249,9 @@
       <DependentUpon>PPIJef.tt</DependentUpon>
     </Compile>
     <Content Include="App_Data\aspnet-PPIJ-20150404224400.mdf" />
+    <Content Include="App_Data\aspnet-PPIJ-20150404224400_log.ldf">
+      <DependentUpon>aspnet-PPIJ-20150404224400.mdf</DependentUpon>
+    </Content>
     <Content Include="Images\parallax\img4.jpg" />
     <Content Include="Images\parallax\math.jpg" />
     <Content Include="Images\parallax\multiplicationtable.jpg" />
