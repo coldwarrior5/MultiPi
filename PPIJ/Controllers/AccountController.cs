@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Transactions;
 using System.Web;
@@ -87,14 +88,37 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 string username = User.Identity.GetUserName();
+
+                var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+                model.Email = user.email;
+                return View(model);
             }
-            return View();
         }
 
         [HttpPost]
         public async Task<ActionResult> Edit(UserEditModel model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                string username = User.Identity.GetUserName();
+
+                korisnik trenutniKorisnik = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+
+                //Update fields
+                trenutniKorisnik.email = model.Email;
+
+                if (model.OldPassword.Any() && model.NewPassword.Any() && model.NewPasswordConfirm.Any())
+                {
+                    if (model.OldPassword == trenutniKorisnik.lozinka && model.NewPassword == model.NewPasswordConfirm)
+                    {
+                        trenutniKorisnik.lozinka = model.NewPassword;
+                    }
+                }
+                db.Entry(trenutniKorisnik).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home"); // or whatever
+            }
+            return View(model);
         }
 
         //
