@@ -1,4 +1,5 @@
-﻿    <!-- 2:featured -->
+﻿@model PPIJ.Models.MessageModel
+    <!-- 2:featured -->
     <section id="section-featured" class="featured">
         <div class="container">
             <div class="row mar-bot40">
@@ -324,38 +325,41 @@
                 </div>
             </div>
             <div class="row">
+@using (Ajax.BeginForm("Message", "Home", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "sendMessage" }))
+{
                 <div class="col-md-8 col-md-offset-2">
                     <div class="cform" id="contact-form">
-                        <div id="sendmessage">
-                            Poruka je poslana. Hvala!
-                        </div>
-                        <form action="#" role="form" class="contactForm">
+                        <div id="sendMessage"></div>
                             <div class="form-group">
                                 <label for="name">Ime i prezime</label>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Ime i prezime" data-rule="maxlen:4" data-msg="Unesite barem 4 znaka" />
-                                <div class="validation"></div>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Ime i prezime", style = "margin-bottom: 10px;" })
+                                <!--<input type="text" name="name" class="form-control" id="Name" placeholder="Ime i prezime" data-rule="maxlen:4" data-msg="Unesite barem 4 znaka" />-->
+                                @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
                             <div class="form-group">
                                 <label for="email">E-mail adresa</label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail adresa" data-rule="email" data-msg="Unesite ispravnu e-mail adresu" />
-                                <div class="validation"></div>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail adresa", style = "margin-bottom: 10px;" })
+                                <!--<input type="email" class="form-control" name="email" id="Email" placeholder="E-mail adresa" data-rule="email" data-msg="Unesite ispravnu e-mail adresu" />-->
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
                             <div class="form-group">
                                 <label for="subject">Naslov</label>
-                                <input type="text" class="form-control" name="subject" id="subject" placeholder="Naslov" data-rule="maxlen:8" data-msg="Unesite barem 8 znakova za naslov" />
-                                <div class="validation"></div>
+                                @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Naslov", style = "margin-bottom: 10px;" })
+                                <!--<input type="text" class="form-control" name="subject" id="Subject" placeholder="Naslov" data-rule="maxlen:8" data-msg="Unesite barem 8 znakova za naslov" />-->
+                                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
                             <div class="form-group">
                                 <label for="message">Poruka</label>
-                                <textarea class="form-control" name="message" id="userMessage" rows="5" data-rule="required" data-msg="Molimo napišite neku poruku"></textarea>
-                                <div class="validation"></div>
+                                @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = 10, columns = 40, placeholder = "Poruka", style = "margin-bottom: 10px;" })                                
+                                <!--<textarea class="form-control" name="message" id="userMessage" rows="5" data-rule="required" data-msg="Molimo napišite neku poruku"></textarea>-->
+                                @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
                             <div class="g-recaptcha" data-sitekey="6Ldm_gYTAAAAAA3O3izSzBXDVRFKeWcWvTLuhOYl"></div>
                             <button type="submit" class="btn btn-theme pull-left">POŠALJI</button>
-                        </form>
 
                     </div>
                 </div>
+}
                 <!-- ./span12 -->
             </div>
 
@@ -401,7 +405,6 @@
     <script src="~/Scripts/jquery.localscroll-1.2.7-min.js"></script>
     <script src="~/Scripts/stellar.js"></script>
     <script src="~/Scripts/jquery.appear.js"></script>
-    <script src="~/Scripts/validate.js"></script>
     <script src="~/Scripts/main.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.js" type="text/javascript"></script>
     <script src="~/Scripts/jquery.validate.js" type="text/javascript"></script>

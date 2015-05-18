@@ -206,6 +206,7 @@
     <Compile Include="korisnik.cs">
       <DependentUpon>PPIJef.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HomeModels.cs" />
     <Compile Include="odgovor.cs">
       <DependentUpon>PPIJef.tt</DependentUpon>
     </Compile>
@@ -251,7 +252,6 @@
     <Content Include="Images\parallax\img4.jpg" />
     <Content Include="Images\parallax\math.jpg" />
     <Content Include="Images\parallax\multiplicationtable.jpg" />
-    <Content Include="SendEmail.aspx" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -421,7 +421,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\skrollr.min.js" />
     <Content Include="Scripts\stellar.js" />
-    <Content Include="Scripts\validate.js" />
     <Content Include="skin\default.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

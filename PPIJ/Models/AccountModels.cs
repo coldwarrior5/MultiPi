@@ -75,7 +75,7 @@ namespace PPIJ.Models
         public string Username { get; set; }
 
         [Required(ErrorMessage ="Email adresa je potrebna")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Email adresa nije u dobrom formatu")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

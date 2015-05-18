@@ -10,46 +10,50 @@
             <div class="modal-body">
 
                 <div class="row">
-                    @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { UpdateTargetId = "Productresult" }, new { @class = "registerForm" }))
+                    @using (Ajax.BeginForm("Register", "Account", new AjaxOptions { HttpMethod = "post", OnBegin = "BeginClient", UpdateTargetId = "resultRegister" }))
                     {
                         @Html.AntiForgeryToken()
-                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        
                         <div class="row">
+                            <div id="result"></div>
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    <div class="col-md-12" id="resultRegister"></div>
+                                </div>
+                                <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Korisničko ime", style = "margin-bottom: 15px;" })
-                                        <div class="validation"></div>
+                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Korisničko ime", style = "margin-bottom: 10px;" })
+                                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lozinka", style = "margin-bottom: 15px;" })
-                                        <div class="validation"></div>
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lozinka", style = "margin-bottom: 10px;" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Potvrdi lozinku", style = "margin-bottom: 15px;" })
-                                        <div class="validation"></div>
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Potvrdi lozinku", style = "margin-bottom: 10px;" })
+                                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail adresa", style = "margin-bottom: 15px;" })
-                                        <div class="validation"></div>
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail adresa", style = "margin-bottom: 10px;" })
+                                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Ime", style = "margin-bottom: 15px;" })
-                                        <div class="validation"></div>
+                                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Ime", style = "margin-bottom: 10px;" })
+                                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Prezime", style = "margin-bottom: 15px;" })
-                                        <div class="validation"></div>
+                                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Prezime", style = "margin-bottom: 10px;" })
+                                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                                     </div>
                                 </div>
 

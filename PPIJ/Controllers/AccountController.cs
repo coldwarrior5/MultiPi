@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using PPIJ.Filters;
 using PPIJ.Models;
+using System.Security.Cryptography;
 
 namespace PPIJ.Controllers
 {
@@ -40,6 +41,7 @@ namespace PPIJ.Controllers
                 return RedirectToLocal(returnUrl);
             }*/
             //Needs changing so that it returns AJAX
+            System.Text.StringBuilder returnValue = new System.Text.StringBuilder();
             if (!ModelState.IsValid)
             {
                 return PartialView(model);
@@ -48,7 +50,14 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 string username = model.Username;
-                string password = model.Password;
+                string password = "";
+                var data = System.Text.Encoding.UTF8.GetBytes(model.Password);
+                using (SHA256 shaM = new SHA256Managed())
+                {
+                    byte[] hashBytes = shaM.ComputeHash(data);
+                    password = Convert.ToBase64String(hashBytes);
+
+                }
 
                 bool userValid = db.korisnik.Any(user => user.korisnicko_ime == username && user.lozinka == password);
 
@@ -59,16 +68,15 @@ namespace PPIJ.Controllers
                     var ExistingTicket = FormsAuthentication.Decrypt(FormsAuthCookie.Value).Name;
                     if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/"))
                         return RedirectToLocal(returnUrl);
-                    else return RedirectToAction("Index", "Home"); //successful login
+                    else return JavaScript("location.reload(true)");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Korisničko ime ili lozinka su neispravni.");
+                    if (returnValue.Length != 0) returnValue.Append("</br/>");
+                    returnValue.Append("Korisničko ime ili lozinka su neispravni!");
                 }
-
+                return Content(returnValue.ToString());
             }
-            
-            return PartialView(model);
         }
 
         //
@@ -101,6 +109,7 @@ namespace PPIJ.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel model)
         {
+            System.Text.StringBuilder returnValue = new System.Text.StringBuilder();
             if (ModelState.IsValid)
             {
                 using (ppijEntities db = new ppijEntities())
@@ -109,34 +118,41 @@ namespace PPIJ.Controllers
                     bool userExists = db.korisnik.Any(user => user.korisnicko_ime == model.Username);
                     bool emailExists = db.korisnik.Any(user=> user.email == model.Email);
                     newUser.korisnicko_ime = model.Username;
-                    newUser.lozinka = model.Password;
+                    var data = System.Text.Encoding.UTF8.GetBytes(model.Password);
+                    using (SHA256 shaM = new SHA256Managed())
+                    {
+                        byte[] hashBytes = shaM.ComputeHash(data);
+                        newUser.lozinka = Convert.ToBase64String(hashBytes);
+                    }
                     newUser.email = model.Email;
                     newUser.ime = model.FirstName;
                     newUser.prezime = model.LastName;
-
                     if (!userExists && !emailExists)
                     {
                         db.korisnik.Add(newUser);
                         db.SaveChanges();
-                        return RedirectToAction("Index", "Home");
+                        return JavaScript("location.reload(true)");
                     }
-                    else if(!emailExists)
+                    else { if(userExists)
                     {
-                        ModelState.AddModelError("", "To korisničko ime već postoji!");
-                        model.Username = "";
-                        return PartialView(model);
-                    }
-                    else
+                            if (returnValue.Length != 0) returnValue.Append("</br/>");
+                            returnValue.Append("Korisničko ime " + model.Username + " već postoji!");
+                            model.Username = "";
+                        }
+                    if(emailExists)
                     {
-                        ModelState.AddModelError("", "Već postoji korisnik koji koristi tu email adresu!");
-                        model.Username = "";
-                        return PartialView(model);
+                            if (returnValue.Length != 0) returnValue.Append("</br/>");
+                            returnValue.Append("Već postoji korisnik koji koristi tu email adresu!");
+                            model.Email = "";
+                        }
                     }
+                    return Content(returnValue.ToString());
                 }
             }
             else
             {
-                ModelState.AddModelError("", "Podatci nisu ispravni");
+                if (returnValue.Length != 0) returnValue.Append("</br/>");
+                returnValue.Append("Podatci nisu ispravni!");
             }
 
             // If we got this far, something failed, redisplay form

@@ -12,20 +12,22 @@
                 <div class="row">
                     <div class="col-md-12">
                         <section id="loginForm">
-                            @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                            @using (Ajax.BeginForm("Login", "Account", new AjaxOptions { HttpMethod = "post", OnBegin = "BeginClient", UpdateTargetId = "result"}))
                             {
                                 @Html.AntiForgeryToken()
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <div class="col-md-12" id="result"></div>
+                                </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Korisničko ime", style = "margin-bottom: 15px;" })
-                                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Korisničko ime", style = "margin-bottom: 10px;" })
+                                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-12">
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lozinka" })
-                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Lozinka", style = "margin-bottom: 10px;" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                                     </div>
                                 </div>
                                 <div class="form-group">
