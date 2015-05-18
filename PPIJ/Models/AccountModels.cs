@@ -105,6 +105,27 @@ namespace PPIJ.Models
         public string LastName { get; set; }
     }
 
+    public class UserEditModel
+    {
+        public string Username { get; set; }
+
+        [EmailAddress]
+        [Display(Name = "E-mail adresa")]
+        public string Email { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Stara lozinka")]
+        public string OldPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Nova lozinka")]
+        public string NewPassword { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Potvrdi novu lozinku")]
+        public string NewPasswordConfirm { get; set; }
+    }
+
     public class ExternalLogin
     {
         public string Provider { get; set; }

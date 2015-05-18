@@ -49,11 +49,12 @@
 
                 <div class="col-lg-4">
                     <div class="align-center">
-@if (Request.IsAuthenticated)
-{
-                        <a href="@Url.Content("~/Home/Account")">
-                        <i class="fa fa-user fa-5x mar-bot20"></i>
-                        <h4 class="text-bold">Korisnički račun</h4></a>
+                        @if (Request.IsAuthenticated)
+                        {
+                        <a href="@Url.Action("Edit", "Account")">
+                            <i class="fa fa-user fa-5x mar-bot20"></i>
+                            <h4 class="text-bold">Korisnički račun</h4>
+                        </a>
                         <p>
                             Vaša upravljačka ploča.
                         </p>

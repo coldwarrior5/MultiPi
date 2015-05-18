@@ -11,6 +11,8 @@ using WebMatrix.WebData;
 using PPIJ.Filters;
 using PPIJ.Models;
 using System.Security.Cryptography;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Identity;
 
 namespace PPIJ.Controllers
 {
@@ -77,6 +79,22 @@ namespace PPIJ.Controllers
                 }
                 return Content(returnValue.ToString());
             }
+        }
+
+        public ActionResult Edit()
+        {
+            UserEditModel model = new UserEditModel();
+            using (ppijEntities db = new ppijEntities())
+            {
+                string username = User.Identity.GetUserName();
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Edit(UserEditModel model)
+        {
+            return View();
         }
 
         //
