@@ -1,5 +1,6 @@
-﻿@{
-    Layout = "~/Views/Shared/_Exam.cshtml";
+﻿@model PPIJ.Models.RegisterModel
+@{
+    Layout = "~/Views/Shared/_Account.cshtml";
 }
 
 <section id="section-featured" class="featured">
@@ -9,7 +10,7 @@
 
                 <div class="align-center">
 
-                    <h2 class="slogan">Upravljačka ploča korisnika @Html.Raw("Dean")</h2>
+                    <h2 class="slogan">Upravljačka ploča korisnika @Html.Raw(m=>m.FirstName.ToString())</h2>
                     
                     <p>
                         To do the Account

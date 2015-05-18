@@ -254,9 +254,7 @@
       <DependentUpon>PPIJef.tt</DependentUpon>
     </Compile>
     <Content Include="App_Data\aspnet-PPIJ-20150404224400.mdf" />
-    <Content Include="App_Data\aspnet-PPIJ-20150404224400_log.ldf">
-      <DependentUpon>aspnet-PPIJ-20150404224400.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\aspnet-PPIJ-20150404224400_log.ldf" />
     <Content Include="Images\parallax\img4.jpg" />
     <Content Include="Images\parallax\math.jpg" />
     <Content Include="Images\parallax\multiplicationtable.jpg" />
@@ -392,8 +390,10 @@
     <Content Include="Images\team\member2.jpg" />
     <Content Include="Images\team\member3.jpg" />
     <Content Include="Images\team\member4.jpg" />
+    <Content Include="Scripts\controller.js" />
     <Content Include="Scripts\fancybox\Descr.WD3" />
     <Content Include="Scripts\fancybox\Thumbs.db" />
+    <Content Include="Views\Home\activity.json" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\fancybox\blank.gif" />
@@ -424,6 +424,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\main.css" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
@@ -470,6 +471,8 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_Exam.cshtml" />
     <Content Include="Views\Home\Account.cshtml" />
+    <Content Include="Views\Shared\_Account.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
