@@ -49,12 +49,24 @@
 
                 <div class="col-lg-4">
                     <div class="align-center">
+@if (Request.IsAuthenticated)
+{
+                        <a href="@Url.Content("~/Home/Account")">
+                        <i class="fa fa-user fa-5x mar-bot20"></i>
+                        <h4 class="text-bold">Korisnički račun</h4></a>
+                        <p>
+                            Vaša upravljačka ploča.
+                        </p>
+}
+else {
                         <a href="#" data-toggle="modal" data-target="#myModalL">
                         <i class="fa fa-sign-in fa-5x mar-bot20"></i>
-                        <h4 class="text-bold">Prijava</h4></a>
+                        <h4 class="text-bold">Prijava</h4>
+                        </a>
                         <p>
                             Registrirajte se i pratite svoj napredak.
                         </p>
+}
                     </div>
                 </div>
 
@@ -325,7 +337,7 @@
                 </div>
             </div>
             <div class="row">
-@using (Ajax.BeginForm("Message", "Home", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "sendMessage" }))
+@using (Ajax.BeginForm("Message", "Home", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "sendMessage", OnSuccess = "Clear(\"myPost\")" }, new { id = "myPost" }))
 {
                 <div class="col-md-8 col-md-offset-2">
                     <div class="cform" id="contact-form">
@@ -342,6 +354,9 @@
                                 <!--<input type="email" class="form-control" name="email" id="Email" placeholder="E-mail adresa" data-rule="email" data-msg="Unesite ispravnu e-mail adresu" />-->
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
+                            <div class="test-form-group">
+                                @Html.TextBoxFor(m => m.TestEmail, new { id = "test_email" })
+                            </div>
                             <div class="form-group">
                                 <label for="subject">Naslov</label>
                                 @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Naslov", style = "margin-bottom: 10px;" })
@@ -354,7 +369,6 @@
                                 <!--<textarea class="form-control" name="message" id="userMessage" rows="5" data-rule="required" data-msg="Molimo napišite neku poruku"></textarea>-->
                                 @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
-                            <div class="g-recaptcha" data-sitekey="6Ldm_gYTAAAAAA3O3izSzBXDVRFKeWcWvTLuhOYl"></div>
                             <button type="submit" class="btn btn-theme pull-left">POŠALJI</button>
 
                     </div>

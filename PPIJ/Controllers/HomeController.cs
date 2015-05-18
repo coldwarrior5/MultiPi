@@ -28,6 +28,12 @@ namespace PPIJ.Controllers
             return View();
         }
 
+        public ActionResult Account()
+        {
+            return View();
+        }
+
+        // POST: /Home/Index
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Message(MessageModel model)
@@ -37,6 +43,12 @@ namespace PPIJ.Controllers
             {
                 return JavaScript("location.reload(true)");
             }
+            if (!String.IsNullOrEmpty(model.TestEmail))
+            {
+                returnValue = "Ti si računalo!";
+                ModelState.Clear();
+                return Content(returnValue);
+            }
             string name = model.Name;
             string mailFrom = model.Email;
             string title = model.Title;
@@ -44,9 +56,13 @@ namespace PPIJ.Controllers
             string mailTo = "codebistro15@gmail.com";
             using (MailMessage mm = new MailMessage(mailFrom, mailTo))
             {
+                MailMessage um = new MailMessage(mailTo, mailFrom);
                 mm.Subject = title;
+                um.Subject = "Potvrda o zaprimljenom komentaru na MultiPi stranici";
                 mm.Body = "Message from: " + name + " with email address: " + mailFrom + ".\nMessage: "+ message;
+                um.Body = "Ovo je automatski generirana poruka, nemojte pdgpvarati na nju.\nNa datum: "+DateTime.Now.ToString()+" smo zaprimili vaš komentar.\nHvala vam na vašem mišljenju, javiti ćemo vam se na: " + mailFrom+ " prema potrebi.\n\nVaš MultiPi tim.";
                 mm.IsBodyHtml = false;
+                um.IsBodyHtml = false;
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
@@ -55,7 +71,9 @@ namespace PPIJ.Controllers
                 smtp.Credentials = NetworkCred;
                 smtp.Port = 587;
             
-                try { smtp.Send(mm); }
+                try { smtp.Send(mm);
+                    smtp.Send(um);
+                }
                 catch (System.Threading.ThreadAbortException ex) { }
                 catch (Exception ex)
                 {
@@ -65,6 +83,10 @@ namespace PPIJ.Controllers
             ModelState.Clear();
             return Content(returnValue);
         }
+
+
+        // POST: /Home/Account
+
 
     }
 }

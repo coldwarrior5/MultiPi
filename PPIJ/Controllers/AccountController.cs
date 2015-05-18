@@ -112,6 +112,11 @@ namespace PPIJ.Controllers
             System.Text.StringBuilder returnValue = new System.Text.StringBuilder();
             if (ModelState.IsValid)
             {
+                if (!String.IsNullOrEmpty(model.TestEmail))
+                {
+                    returnValue.Append("Ti si računalo!");
+                    return Content(returnValue.ToString());
+                }
                 using (ppijEntities db = new ppijEntities())
                 {
                     var newUser = db.korisnik.Create();
@@ -136,14 +141,16 @@ namespace PPIJ.Controllers
                     else { if(userExists)
                     {
                             if (returnValue.Length != 0) returnValue.Append("</br/>");
+                            ModelState.Remove("Username");
+
                             returnValue.Append("Korisničko ime " + model.Username + " već postoji!");
-                            model.Username = "";
                         }
                     if(emailExists)
                     {
                             if (returnValue.Length != 0) returnValue.Append("</br/>");
+                            ModelState.Remove("Email");
+
                             returnValue.Append("Već postoji korisnik koji koristi tu email adresu!");
-                            model.Email = "";
                         }
                     }
                     return Content(returnValue.ToString());

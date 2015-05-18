@@ -79,6 +79,9 @@ namespace PPIJ.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Display(Name = "TestEmail")]
+        public string TestEmail { get; set; }
+
         [Required(ErrorMessage = "Lozinka je potrebna")]
         [StringLength(100, ErrorMessage = "Lozinka mora biti najmanje {2} znakova duga.", MinimumLength = 6)]
         [DataType(DataType.Password)]

@@ -30,5 +30,9 @@ namespace PPIJ.Models
         [Required(ErrorMessage = "Molimo napišite neku poruku")]
         [Display(Name = "Message")]
         public string Message { get; set; }
+
+        [Display(Name = "TestEmail")]
+        public string TestEmail { get; set; }
+
     }
 }
