@@ -22,14 +22,34 @@ namespace PPIJ.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+            AdminModel model = new AdminModel();
+            using (ppijEntities db = new ppijEntities())
+            {
+                string username = User.Identity.GetUserName();
+
+                var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+                model.Admin = user.administrator;
+
+                return View(model);
+            }
         }
 
         public ActionResult Login()
         {
             return View();
         }
+        public ActionResult Edit()
+        {
+            UserEditModel model = new UserEditModel();
+            using (ppijEntities db = new ppijEntities())
+            {
+                string username = User.Identity.GetUserName();
 
+                var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+                model.Email = user.email;
+                return View(model);
+            }
+        }
         // POST: /Admin/Login
 
         [HttpPost]

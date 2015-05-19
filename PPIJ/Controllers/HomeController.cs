@@ -28,11 +28,6 @@ namespace PPIJ.Controllers
             return View();
         }
 
-        public ActionResult Account()
-        {
-            return View();
-        }
-
         // POST: /Home/Index
         [HttpPost]
         [AllowAnonymous]

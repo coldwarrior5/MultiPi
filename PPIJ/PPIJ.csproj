@@ -1240,13 +1240,13 @@
     <Content Include="Views\Home\Exam.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_Exam.cshtml" />
-    <Content Include="Views\Home\Account.cshtml" />
     <Content Include="Views\Shared\_Account.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_Login_Admin.cshtml" />
     <Content Include="Views\Admin\Login.cshtml" />
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

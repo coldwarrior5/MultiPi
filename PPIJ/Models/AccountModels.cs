@@ -29,6 +29,7 @@ namespace PPIJ.Models
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int UserId { get; set; }
         public string UserName { get; set; }
+        public bool Admin { get; set; }
     }
 
     public class RegisterExternalLoginModel
@@ -107,6 +108,14 @@ namespace PPIJ.Models
         [Display(Name = "Last name")]
         [DataType(DataType.Text)]
         public string LastName { get; set; }
+    }
+
+    public class AdminModel
+    {
+        public string Username { get; set; }
+
+        public bool Admin { get; set; }
+
     }
 
     public class UserEditModel

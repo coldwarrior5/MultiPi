@@ -75,6 +75,7 @@ namespace PPIJ.Controllers
                 }
                 else
                 {
+                    model.Password = string.Empty;
                     if (returnValue.Length != 0) returnValue.Append("</br/>");
                     returnValue.Append("Korisničko ime ili lozinka su neispravni!");
                 }
@@ -206,14 +207,13 @@ namespace PPIJ.Controllers
                     else { if(userExists)
                     {
                             if (returnValue.Length != 0) returnValue.Append("</br/>");
-                            ModelState.Remove("Username");
-
+                            model.Username = string.Empty;
                             returnValue.Append("Korisničko ime " + model.Username + " već postoji!");
                         }
                     if(emailExists)
                     {
                             if (returnValue.Length != 0) returnValue.Append("</br/>");
-                            ModelState.Remove("Email");
+                            model.Email = string.Empty;
 
                             returnValue.Append("Već postoji korisnik koji koristi tu email adresu!");
                         }

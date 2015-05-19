@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <section id="loginForm">
-                            @using (Ajax.BeginForm("Login", "Account", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "result", OnSuccess = "Clear(\"myLogin\")" }, new { id = "myLogin" }))
+                            @using (Ajax.BeginForm("Login", "Account", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "result"}))
                             {
                                 @Html.AntiForgeryToken()
                                 <div class="form-group">
