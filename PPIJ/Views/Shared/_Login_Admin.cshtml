@@ -29,6 +29,25 @@
     <!-- Custom Fonts -->
     <link href="~/Content/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <script type="text/javascript">
+        function Clear(id) {
+            document.getElementById(id).reset();
+            setTimeout(function () {
+                document.getElementById("result").innerText = "";
+            },3000);
+        }
+        function BeginClient(xhr) {
+            securityToken = $('[name=__RequestVerificationToken]').val();
+            xhr.setRequestHeader('__RequestVerificationToken', securityToken);
+        }
+        $.ajaxSetup({
+            'beforeSend': function (xhr) {
+                securityToken = $('[name=__RequestVerificationToken]').val();
+                xhr.setRequestHeader("__RequestVerificationToken", securityToken);
+            }
+        });
+    </script>
+
 </head>
 
 <body>

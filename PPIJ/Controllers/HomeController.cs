@@ -72,21 +72,21 @@ namespace PPIJ.Controllers
                 smtp.Port = 587;
             
                 try { smtp.Send(mm);
-                    smtp.Send(um);
                 }
-                catch (System.Threading.ThreadAbortException ex) { }
+                catch (System.Threading.ThreadAbortException ex) {
+                    ex.ToString();
+                }
                 catch (Exception ex)
                 {
+                    ex.ToString();
                     returnValue = "Greška prilikom slanja";
                 }
+                smtp.Send(um);
             }
+            
             ModelState.Clear();
             return Content(returnValue);
         }
-
-
-        // POST: /Home/Account
-
 
     }
 }

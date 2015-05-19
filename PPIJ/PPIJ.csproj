@@ -807,6 +807,8 @@
     <Content Include="Images\parallax\Thumbs.db" />
     <Content Include="Images\pi.png" />
     <Content Include="Images\portfolio\Thumbs.db" />
+    <Content Include="Images\quizbg.png" />
+    <Content Include="Images\SB.JPG" />
     <Content Include="Images\team\Thumbs.db" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />

@@ -83,9 +83,9 @@ else {
                 <div class="col-lg-12">
                     <div class="align-center">
                         <div class="testimonial pad-top40 pad-bot40 clearfix">
-                            <h5>
-                                Ponavljanje je majka učenja.
-                            </h5>
+                            <h3 style="color:white">
+                                Ponavljanje je majka znanja.
+                            </h3>
                             <br />
 
                         </div>
@@ -346,13 +346,11 @@ else {
                             <div class="form-group">
                                 <label for="name">Ime i prezime</label>
                                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Ime i prezime", style = "margin-bottom: 10px;" })
-                                <!--<input type="text" name="name" class="form-control" id="Name" placeholder="Ime i prezime" data-rule="maxlen:4" data-msg="Unesite barem 4 znaka" />-->
                                 @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
                             <div class="form-group">
                                 <label for="email">E-mail adresa</label>
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "E-mail adresa", style = "margin-bottom: 10px;" })
-                                <!--<input type="email" class="form-control" name="email" id="Email" placeholder="E-mail adresa" data-rule="email" data-msg="Unesite ispravnu e-mail adresu" />-->
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
                             <div class="test-form-group">
@@ -361,13 +359,11 @@ else {
                             <div class="form-group">
                                 <label for="subject">Naslov</label>
                                 @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Naslov", style = "margin-bottom: 10px;" })
-                                <!--<input type="text" class="form-control" name="subject" id="Subject" placeholder="Naslov" data-rule="maxlen:8" data-msg="Unesite barem 8 znakova za naslov" />-->
                                 @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
                             <div class="form-group">
                                 <label for="message">Poruka</label>
                                 @Html.TextAreaFor(m => m.Message, new { @class = "form-control", rows = 10, columns = 40, placeholder = "Poruka", style = "margin-bottom: 10px;" })                                
-                                <!--<textarea class="form-control" name="message" id="userMessage" rows="5" data-rule="required" data-msg="Molimo napišite neku poruku"></textarea>-->
                                 @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger", style = "margin-bottom: 10px;" })
                             </div>
                             <button type="submit" class="btn btn-theme pull-left">POŠALJI</button>
