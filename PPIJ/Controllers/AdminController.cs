@@ -31,7 +31,10 @@ namespace PPIJ.Controllers
 
                     var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
                     model.Admin = user.administrator;
-
+                    if (!model.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
                     return View(model);
                 }
             }
@@ -94,8 +97,18 @@ namespace PPIJ.Controllers
                 }
                 else
                 {
-                    if (returnValue.Length != 0) returnValue.Append("</br/>");
-                    returnValue.Append("Korisničko ime ili lozinka su neispravni!");
+                    bool userValid = db.korisnik.Any(user => user.korisnicko_ime == username && user.lozinka == password);
+                    if (userValid)
+                    {
+                        if (returnValue.Length != 0) returnValue.Append("</br/>");
+                        returnValue.Append("Nemate administratorska prava!");
+                    }
+                    else
+                    {
+                        if (returnValue.Length != 0) returnValue.Append("</br/>");
+                        returnValue.Append("Korisničko ime ili lozinka su neispravni!");
+                    }
+                    
                 }
                 return Content(returnValue.ToString());
             }
