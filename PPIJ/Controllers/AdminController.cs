@@ -22,16 +22,24 @@ namespace PPIJ.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            AdminModel model = new AdminModel();
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                string username = User.Identity.GetUserName();
+                AdminModel model = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
+                {
+                    string username = User.Identity.GetUserName();
 
-                var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
-                model.Admin = user.administrator;
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+                    model.Admin = user.administrator;
 
-                return View(model);
+                    return View(model);
+                }
             }
+            else
+            {
+                return View();
+            }
+            
         }
 
         public ActionResult Login()
@@ -91,6 +99,18 @@ namespace PPIJ.Controllers
                 }
                 return Content(returnValue.ToString());
             }
+        }
+
+        // POST: /Admin/LogOff
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            //WebSecurity.Logout();
+
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Admin");
         }
     }
 }

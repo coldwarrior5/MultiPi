@@ -34,7 +34,19 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+    function BeginClient(xhr) {
+            securityToken = $('[name=__RequestVerificationToken]').val();
+            xhr.setRequestHeader('__RequestVerificationToken', securityToken);
+        }
+        $.ajaxSetup({
+            'beforeSend': function (xhr) {
+                securityToken = $('[name=__RequestVerificationToken]').val();
+                xhr.setRequestHeader("__RequestVerificationToken", securityToken);
+            }
+        });
+</script>
 
 </head>
 
