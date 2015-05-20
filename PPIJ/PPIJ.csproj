@@ -1251,6 +1251,7 @@
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Korisnik.cshtml" />
+    <Content Include="Views\Admin\Odgovor.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

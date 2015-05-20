@@ -205,11 +205,25 @@ namespace PPIJ.Controllers
         {
             using (ppijEntities db = new ppijEntities())
             {
-                var allUsers = (from k in db.korisnik
+                var query = (from k in db.korisnik
                     select k).ToList();
                 TablesContentModel model = new TablesContentModel
                 {
-                    Users = allUsers
+                    Users = query
+                };
+                return View(model);
+            }
+        }
+
+        public ActionResult Odgovor()
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.odgovor
+                                select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Answers = query
                 };
                 return View(model);
             }
