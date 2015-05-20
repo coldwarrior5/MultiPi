@@ -30,6 +30,10 @@
     <link href="~/Content/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <script type="text/javascript">
+        function createsuccess(data) {
+            if (data.RedirectUrl)
+                window.location.href = data.RedirectUrl;
+        }
         function Clear(id) {
             document.getElementById(id).reset();
             setTimeout(function () {

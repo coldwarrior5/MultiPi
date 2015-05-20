@@ -40,7 +40,7 @@ namespace PPIJ.Controllers
             }
             else
             {
-                return View();
+                return RedirectToAction("Login", "Admin");
             }
             
         }
@@ -93,7 +93,7 @@ namespace PPIJ.Controllers
                     FormsAuthentication.SetAuthCookie(username, false);
                     var FormsAuthCookie = Response.Cookies[FormsAuthentication.FormsCookieName];
                     var ExistingTicket = FormsAuthentication.Decrypt(FormsAuthCookie.Value).Name;
-                    return RedirectToAction("Index", "Admin");
+                    return Json(new { RedirectUrl = Url.Action("Index","Admin") });
                 }
                 else
                 {

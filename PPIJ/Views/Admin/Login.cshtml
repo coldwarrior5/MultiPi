@@ -12,7 +12,7 @@
                     <h3 class="panel-title">Please Sign In</h3>
                 </div>
                 <div class="panel-body">
-                    @using (Ajax.BeginForm("Login", "Admin", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "result" }))
+                    @using (Ajax.BeginForm("Login", "Admin", new AjaxOptions { HttpMethod = "post", UpdateTargetId = "result", OnSuccess = "createsuccess" }))
                     {
                         @Html.AntiForgeryToken()
                             <div id="result"></div>
