@@ -302,7 +302,7 @@
                 <th>Tema</th>
                 <th>Opis teme</th>
                 <th>Razred</th>
-                <th>Broj područja</th>
+                <th>Područje</th>
             </tr>
             @foreach (tema t in Model.Topics)
             {
@@ -311,7 +311,7 @@
                     <td>@t.tema1</td>
                     <td>@t.opis</td>
                     <td>@t.razred</td>
-                    <td>@t.id_podrucje</td>
+                    <td>@t.podrucje.podrucje1</td>
                 </tr>
             }
         </table>

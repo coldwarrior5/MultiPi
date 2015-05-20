@@ -220,7 +220,7 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = (from k in db.odgovor
-                                select k).ToList();
+                                select k).Include(c => c.pitanje).ToList();
                 TablesContentModel model = new TablesContentModel
                 {
                     Answers = query
@@ -234,7 +234,7 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = (from k in db.pitanje
-                             select k).ToList();
+                             select k).Include(c => c.uputa).Include(c => c.tema).ToList();
                 TablesContentModel model = new TablesContentModel
                 {
                     Questions = query
@@ -248,7 +248,7 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = (from k in db.podrucje
-                             select k).ToList();
+                             select k).Include(c => c.predmet).ToList();
                 TablesContentModel model = new TablesContentModel
                 {
                     Areas = query
@@ -290,7 +290,7 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = (from k in db.tema
-                             select k).ToList();
+                             select k).Include(c => c.podrucje).ToList();
                 TablesContentModel model = new TablesContentModel
                 {
                     Topics = query

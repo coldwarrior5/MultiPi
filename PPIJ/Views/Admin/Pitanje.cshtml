@@ -301,17 +301,17 @@
                 <th>#</th>
                 <th>Pitanje</th>
                 <th>Broj slike</th>
-                <th>Broj upute</th>
-                <th>Broj teme</th>
+                <th>Uputa</th>
+                <th>Tema</th>
             </tr>
             @foreach (pitanje p in Model.Questions)
             {
                 <tr>
                     <td style="width: 10%;">@p.id_pitanje</td>
-                    <td>@p.pitanje1</td>
+                    <td style="width: 40%;">@p.pitanje1</td>
                     <td>@p.id_slika</td>
-                    <td>@p.id_uputa</td>
-                    <td>@p.id_tema</td>
+                    <td>@p.uputa.uputa1</td>
+                    <td>@p.tema.tema1</td>
                 </tr>
             }
         </table>
