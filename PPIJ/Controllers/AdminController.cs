@@ -312,5 +312,269 @@ namespace PPIJ.Controllers
                 return View(model);
             }
         }
+
+        public ActionResult KorisnikDelete(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("KorisnikDelete")]
+        public async Task<ActionResult> KorisnikDeleting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult KorisnikEdit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("KorisnikEdit")]
+        public async Task<ActionResult> KorisnikEditing(int id)
+        {
+            return View();
+        }
+
+        public ActionResult KorisnikInsert(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("KorisnikInsert")]
+        public async Task<ActionResult> KorisnikInserting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult OdgovorDelete(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("OdgovorDelete")]
+        public async Task<ActionResult> OdgovorDeleting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult OdgovorEdit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("OdgovorEdit")]
+        public async Task<ActionResult> OdgovorEditing(int id)
+        {
+            return View();
+        }
+
+        public ActionResult OdgovorInsert(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("OdgovorInsert")]
+        public async Task<ActionResult> OdgovorInserting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PitanjeDelete(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PitanjeDelete")]
+        public async Task<ActionResult> PitanjeDeleting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PitanjeEdit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PitanjeEdit")]
+        public async Task<ActionResult> PitanjeEditing(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PitanjeInsert(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PitanjeInsert")]
+        public async Task<ActionResult> PitanjeInserting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PodrucjeEdit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PodrucjeEdit")]
+        public async Task<ActionResult> PodrucjeEditing(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PodrucjeInsert(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PodrucjeInsert")]
+        public async Task<ActionResult> PodrucjeInserting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PodrucjeRemove(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PodrucjeRemove")]
+        public async Task<ActionResult> PodrucjeRemoving(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PredmetEdit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PredmetEdit")]
+        public async Task<ActionResult> PredmetEditing(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PredmetInsert(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PredmetInsert")]
+        public async Task<ActionResult> PredmetInserting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult PredmetRemove(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("PredmetRemove")]
+        public async Task<ActionResult> PredmetRemoving(int id)
+        {
+            return View();
+        }
+
+        public ActionResult SlikaEdit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("SlikaEdit")]
+        public async Task<ActionResult> SlikaEditing(int id)
+        {
+            return View();
+        }
+
+        public ActionResult SlikaInsert(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("SlikaInsert")]
+        public async Task<ActionResult> SlikaInserting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult SlikaRemove(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("SlikaRemove")]
+        public async Task<ActionResult> SlikaRemoving(int id)
+        {
+            return View();
+        }
+
+        public ActionResult TemaEdit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("TemaEdit")]
+        public async Task<ActionResult> TemaEditing(int id)
+        {
+            return View();
+        }
+
+        public ActionResult TemaInsert(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("TemaInsert")]
+        public async Task<ActionResult> TemaInserting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult TemaRemove(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("TemaRemove")]
+        public async Task<ActionResult> TemaRemoving(int id)
+        {
+            return View();
+        }
+
+        public ActionResult UputaEdit(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("UputaEdit")]
+        public async Task<ActionResult> UputaEditing(int id)
+        {
+            return View();
+        }
+
+        public ActionResult UputaInsert(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("UputaInsert")]
+        public async Task<ActionResult> UputaInserting(int id)
+        {
+            return View();
+        }
+
+        public ActionResult UputaRemove(int id)
+        {
+            return View();
+        }
+
+        [HttpPost, ActionName("UputaRemove")]
+        public async Task<ActionResult> UputaRemoving(int id)
+        {
+            return View();
+        }
     }
 }
