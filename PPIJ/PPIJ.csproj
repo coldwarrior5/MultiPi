@@ -715,8 +715,11 @@
     <Content Include="Content\bower_components\raphael\license.txt" />
     <Content Include="Content\bower_components\raphael\raphael-min.js" />
     <Content Include="Content\bower_components\raphael\raphael.js" />
+    <Content Include="Content\Exam.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\timeline.css" />
+    <Content Include="Images\gameOver.jpg" />
+    <Content Include="Images\exam.jpg" />
     <Content Include="Images\parallax\img4.jpg" />
     <Content Include="Images\parallax\math.jpg" />
     <Content Include="Images\parallax\multiplicationtable.jpg" />
@@ -808,7 +811,6 @@
     <Content Include="Images\pi.png" />
     <Content Include="Images\portfolio\Thumbs.db" />
     <Content Include="Images\quizbg.png" />
-    <Content Include="Images\SB.JPG" />
     <Content Include="Images\team\Thumbs.db" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome\fontawesome-webfont.ttf" />
@@ -1158,12 +1160,13 @@
     <Content Include="Images\team\member2.jpg" />
     <Content Include="Images\team\member3.jpg" />
     <Content Include="Images\team\member4.jpg" />
-    <Content Include="Scripts\controller.js" />
+    <Content Include="Scripts\Exam.js" />
     <Content Include="Scripts\fancybox\Descr.WD3" />
     <Content Include="Scripts\fancybox\Thumbs.db" />
     <Content Include="Scripts\flot-data.js" />
     <Content Include="Scripts\morris-data.js" />
     <Content Include="Scripts\sb-admin-2.js" />
+    <Content Include="Scripts\activity.json" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\fancybox\blank.gif" />
@@ -1194,7 +1197,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
-    <Content Include="Scripts\main.css" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2-respond-1.1.0.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />

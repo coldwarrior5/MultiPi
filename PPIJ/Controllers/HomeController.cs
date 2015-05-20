@@ -55,7 +55,7 @@ namespace PPIJ.Controllers
                 mm.Subject = title;
                 um.Subject = "Potvrda o zaprimljenom komentaru na MultiPi stranici";
                 mm.Body = "Message from: " + name + " with email address: " + mailFrom + ".\nMessage: "+ message;
-                um.Body = "Ovo je automatski generirana poruka, nemojte pdgpvarati na nju.\nNa datum: "+DateTime.Now.ToString()+" smo zaprimili vaš komentar.\nHvala vam na vašem mišljenju, javiti ćemo vam se na: " + mailFrom+ " prema potrebi.\n\nVaš MultiPi tim.";
+                um.Body = "Ovo je automatski generirana poruka, nemojte odgovarati na nju.\nNa datum: "+DateTime.Now.ToString()+" smo zaprimili vaš komentar.\nHvala vam na vašem mišljenju, javiti ćemo vam se na: " + mailFrom+ " prema potrebi.\n\nVaš MultiPi tim.";
                 mm.IsBodyHtml = false;
                 um.IsBodyHtml = false;
                 SmtpClient smtp = new SmtpClient();

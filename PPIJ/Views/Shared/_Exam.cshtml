@@ -22,149 +22,22 @@
     <link rel="stylesheet" href="~/Content/bootstrap-theme.css">
     <link rel="stylesheet" href="~/Content/style.css">
     <script src="~/Scripts/jquery.js"></script>
-    <script src="~/Scripts/controller.js"></script>
-    <link href="~/Scripts/main.css" rel="stylesheet" type="text/css" />
     <!-- skin -->
     <link rel="stylesheet" href="~/skin/default.css">
-    <style>
-        body {
-            background-image: url('~/Images/SB.jpg');
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-
-        #ccontainer {
-            width: 550px;
-            margin: 0 auto;
-            margin-top: 100px;
-        }
-
-        #myCanvas {
-            //background:#FFFFFF;
-        }
-    </style>
-    <script>
-		window.onload = function(){
-			var canvas = document.getElementById("myCanvas");
-			var context = canvas.getContext("2d");
-			var quizbg = new Image();
-			var Question = new String;
-			var Option1 = new String;
-			var Option2 = new String;
-			var Option3 = new String;
-			var my=0;
-			var CorrectAnswer = 0;
-			var qnumber = 0;
-			var rightanswers=0;
-			var wronganswers=0;
-			var QuizFinished = false;
-			var lock = false;
-			var textpos1=45;
-			var textpos2=145;
-			var textpos3=230;
-			var textpos4=325;
-			var Questions = ["Koliko je 3+4?","Koliko je 2+9?","Koliko je 1+4?","Koliko je 7+4?","Koliko je 8+7?","Koliko je 1+2?"];
-			var Options = [["7","6","8"] ,["11","13","14"], ["5","8","6"], ["11","9","12"], ["15","16","13"], ["3","2","5"]];
-			SetQuestions = function(){
-                    Question=Questions[qnumber];
-                    CorrectAnswer=1+Math.floor(Math.random()*3);
-
-					if(CorrectAnswer==1){Option1=Options[qnumber][0];Option2=Options[qnumber][1];Option3=Options[qnumber][2];}      if(CorrectAnswer==2){Option1=Options[qnumber][2];Option2=Options[qnumber][0];Option3=Options[qnumber][1];}
-					if(CorrectAnswer==3){Option1=Options[qnumber][1];Option2=Options[qnumber][2];Option3=Options[qnumber][0];}
-
-                    context.textBaseline = "middle";
-                    context.font = "24pt Calibri,Arial";
-                    context.fillText(Question,20,textpos1);
-                    context.font = "18pt Calibri,Arial";
-                    context.fillText(Option1,20,textpos2);
-                    context.fillText(Option2,20,textpos3);
-                    context.fillText(Option3,20,textpos4);
-			}//SetQuestions
-
-			canvas.addEventListener('click',ProcessClick,false);
-
-			function ProcessClick(ev) {
-                      my=ev.y-canvas.offsetTop;
-                      if(ev.y == undefined){
-                                      my = ev.pageY - canvas.offsetTop;
-                      }
-                      if(lock){
-                                      ResetQ();
-                      }//if lock
-
-                      else{
-                                      if(my>110 && my<180){GetFeedback(1);}
-                                      if(my>200 && my<270){GetFeedback(2);}
-                                      if(my>290 && my<360){GetFeedback(3);}
-                      }//!lock
-			}//ProcessClick
-
-			GetFeedback = function(a){
-                      if(a==CorrectAnswer){
-                              context.drawImage(quizbg, 0,400,75,70,480,110+(90*(a-1)),75,70);
-                              rightanswers++;
-
-                        }
-                        else{
-                              context.drawImage(quizbg, 75,400,75,70,480,110+(90*(a-1)),75,70);
-                              wronganswers++;
-                        }
-                        lock=true;
-                        context.font = "14pt Calibri,Arial";
-                        context.fillText("Klikni opet za nastaviti",20,380);
-			}//get feedback
-
-			ResetQ= function(){
-                      lock=false;
-                      context.clearRect(0,0,550,400);
-                      qnumber++;
-                      if(qnumber==Questions.length){EndQuiz();}
-                      else{
-                            context.drawImage(quizbg, 0, 0);
-                            SetQuestions();}
-                      }
-
-			EndQuiz=function(){
-                      canvas.removeEventListener('click',ProcessClick,false);
-                      context.drawImage(quizbg, 0,0,550,90,0,0,550,400);
-                      context.font = "20pt Calibri,Arial";
-                      context.fillText("Završio je kviz!",20,100);
-                      context.font = "16pt Calibri,Arial";
-                      context.fillText("Tocni odgovori: "+String(rightanswers),20,200);
-                      context.fillText("Netocni odgovori: "+String(wronganswers),20,240);
-					  if(rightanswers==Questions.length)
-							context.fillText("Bravo!!",20,280);
-                      }
-
-			quizbg.onload = function(){
-				context.drawImage(quizbg, 0, 0);
-				SetQuestions();
-				}//quizbg
-			quizbg.src = "~/Images/quizbg.png";
-
-
-
-
-
-		};//windowonload
-    </script>
-    <!-- 1:header -->
-    <section id="header" class="appear"></section>
-    <div class="navbar navbar-fixed-top" role="navigation" data-0="line-height:100px; height:100px; background-color:rgba(0,0,0,0.3);" data-300="line-height:60px; height:60px; background-color:rgba(0,0,0,1);">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="fa fa-bars color-white"></span>
-                </button>
+    <link href="~/Content/Exam.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/Exam.js" type="text/javascript"></script>
+    <div class="navbar navbar-default" role="navigation" style="line-height:100px; height:100px; background-color: #005800;background-image:none;border-color:#005800;border-radius:0px">
+        <div class="container" style="height:inherit" >
+            <div class="navbar-header" >
                 <h1>
-                    <a class="navbar-brand" href="#section-featured" data-0="line-height:90px;" data-300="line-height:50px;">
+                    <a class="navbar-brand" href="#section-featured" style="line-height:90px;color:white">
                         Multi&Pi;
                     </a>
                 </h1>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-                    <li class="active"><a href="@Url.Action("Index", "Home")"<i class="fa fa-arrow-left"></i> Povratak</a></li>
+            <div>
+                <ul class="nav navbar-nav" style="margin-top:20px;">
+                    <li><a style="font-size:13px;text-transform:uppercase;color:white;font-weight: 700;letter-spacing: .1em" href="@Url.Action("Index", "Home")"<i class="fa fa-arrow-left"></i> Povratak</a></li>
                     <li style="margin-top:12px;margin-left:12px;font-family:Verdana">
                         @if (Request.IsAuthenticated)
                         {

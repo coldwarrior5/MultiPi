@@ -97,7 +97,7 @@ namespace PPIJ.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Edit(UserEditModel model)
+        public async Task<ActionResult> EditAccount(UserEditModel model)
         {
             using (ppijEntities db = new ppijEntities())
             {
@@ -139,7 +139,7 @@ namespace PPIJ.Controllers
                     }
                     db.Entry(trenutniKorisnik).State = EntityState.Modified;
                     db.SaveChanges();
-                    return RedirectToAction("Index", "Home"); // or whatever
+                    return RedirectToAction("Edit", "Home"); // or whatever
                 }
             }
             return View(model);
