@@ -13,7 +13,7 @@
 
                     <h2 class="slogan">Upravljačka ploča korisnika @User.Identity.GetUserName()</h2>
 
-                        @using (Html.BeginForm("EditAccount","Account", FormMethod.Post, new { style = "margin-top:50px" }))
+                        @using (Html.BeginForm("Edit", "Account", FormMethod.Post, new { style = "margin-top:50px" }))
                         {
                             @Html.AntiForgeryToken()
 
