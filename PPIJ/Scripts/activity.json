@@ -4,19 +4,22 @@
 	"question":"Portuguese is spoken in _______",
 	"option1":"Brazil",
 	"option2":"Argentina",
-	"option3":"Ecuador"
+    "option3": "Ecuador",
+    "trueAnswer": "1"
 	},
 	{
 	"question":"What is the capital of Peru?",
-	"option1":"Lima",
-	"option2":"Bogota",
-	"option3":"San Juan"
+	"option1":"Bogota",
+	"option2":"Lima",
+        "option3": "San Juan",
+        "trueAnswer": "2"
 	},
 	{
 	"question":"Which country is long and thin?",
-	"option1":"Chile",
+	"option1":"Colombia",
 	"option2":"Uruguay",
-	"option3":"Colombia"
+        "option3": "Chile",
+        "trueAnswer": "3"
 	}
 
 ]

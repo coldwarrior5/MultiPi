@@ -55,6 +55,14 @@
             </div><!--/.navbar-collapse -->
         </div>
     </div>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <input id="logged" value="true" style="height:0px;width:0px;visibility:hidden" />
+    }
+    else
+    {
+        <input id="logged" value="false" style="height:0px;width:0px;visibility:hidden" />
+    }
 </head>
 
 <body>
