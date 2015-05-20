@@ -1252,6 +1252,12 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Korisnik.cshtml" />
     <Content Include="Views\Admin\Odgovor.cshtml" />
+    <Content Include="Views\Admin\Pitanje.cshtml" />
+    <Content Include="Views\Admin\Podrucje.cshtml" />
+    <Content Include="Views\Admin\Predmet.cshtml" />
+    <Content Include="Views\Admin\Slika.cshtml" />
+    <Content Include="Views\Admin\Tema.cshtml" />
+    <Content Include="Views\Admin\Uputa.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

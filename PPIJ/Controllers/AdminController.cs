@@ -228,5 +228,89 @@ namespace PPIJ.Controllers
                 return View(model);
             }
         }
+
+        public ActionResult Pitanje()
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.pitanje
+                             select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Questions = query
+                };
+                return View(model);
+            }
+        }
+
+        public ActionResult Podrucje()
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.podrucje
+                             select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Areas = query
+                };
+                return View(model);
+            }
+        }
+
+        public ActionResult Predmet()
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.predmet
+                             select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Subjects = query
+                };
+                return View(model);
+            }
+        }
+
+        public ActionResult Slika()
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.slika
+                             select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Pictures = query
+                };
+                return View(model);
+            }
+        }
+
+        public ActionResult Tema()
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.tema
+                             select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Topics = query
+                };
+                return View(model);
+            }
+        }
+
+        public ActionResult Uputa()
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.uputa
+                             select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Instructions = query
+                };
+                return View(model);
+            }
+        }
     }
 }
