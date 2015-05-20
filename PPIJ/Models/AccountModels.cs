@@ -110,14 +110,6 @@ namespace PPIJ.Models
         public string LastName { get; set; }
     }
 
-    public class AdminModel
-    {
-        public string Username { get; set; }
-
-        public bool Admin { get; set; }
-
-    }
-
     public class UserEditModel
     {
         public string Username { get; set; }

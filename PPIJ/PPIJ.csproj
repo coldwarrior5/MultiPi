@@ -240,6 +240,7 @@
     <Compile Include="korisnik.cs">
       <DependentUpon>PPIJef.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdminModels.cs" />
     <Compile Include="Models\HomeModels.cs" />
     <Compile Include="odgovor.cs">
       <DependentUpon>PPIJef.tt</DependentUpon>
@@ -1249,6 +1250,7 @@
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Admin\Korisnik.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

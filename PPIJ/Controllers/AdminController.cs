@@ -150,7 +150,7 @@ namespace PPIJ.Controllers
             return RedirectToAction("Index", "Admin");
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
         public async Task<ActionResult> EditAccount(UserEditModel model)
         {
             using (ppijEntities db = new ppijEntities())
@@ -199,6 +199,20 @@ namespace PPIJ.Controllers
                 }
             }
             return View(model);
+        }
+
+        public ActionResult Korisnik()
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var allUsers = (from k in db.korisnik
+                    select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Users = allUsers
+                };
+                return View(model);
+            }
         }
     }
 }
