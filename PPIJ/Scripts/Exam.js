@@ -41,18 +41,8 @@
 			correct[i] = parseInt(data.quizlist[i].trueAnswer);
         }
         numberOfQuestions = questionBank.length;
-        var rnd = Math.random() * numberOfQuestions;
-        rnd = Math.ceil(rnd)-1;
-        var rnd3;
-        if (rnd < 2) {
-            rnd += 2;
-        }
-        var rnd4 = Math.random() * (numberOfQuestions - rnd);
-        rnd4 = Math.ceil(rnd4) - 1;
-        rnd3 = numberOfQuestions - rnd - rnd4;
-        numberOfQuestions = rnd;
-        questionNumber = rnd3;
-        displayQuestion(numberOfQuestions);
+
+        displayQuestion(3);
         })
       
 
@@ -83,7 +73,7 @@
                 questionLock = true;
                 //correct answer
                 if (parseInt(this.id) == correct[questionNumber]) {
-                    $(stage).append('<div class="feedback1">Točno</div>');
+                    $(stage).append('<div class="feedback1">Tocno</div>');
                     score++;
                 }
                 //wrong answer	
@@ -249,7 +239,7 @@
         if (stage == "#game1") { stage2 = "#game1"; stage = "#game2"; }
         else { stage2 = "#game2"; stage = "#game1"; }
 
-        if (questionNumber < questionNumber+numberOfQuestions) { displayQuestion(numberOfQuestions); } else { displayFinalSlide(); }
+        if (questionNumber < numberOfQuestions) { displayQuestion(numberOfQuestions); } else { displayFinalSlide(); }
 
         $(stage2).animate({ "right": "+=800px" }, "slow", function () { $(stage2).css('right', '-800px'); $(stage2).empty(); });
         $(stage).animate({ "right": "+=800px" }, "slow", function () { questionLock = false; });
@@ -257,7 +247,7 @@
 
     function displayFinalSlide() {
 
-        $(stage).append('<div class="questionText">Završili ste kviz!<br><br>Ukupno pitanja: ' + numberOfQuestions + '<br>Točni odgovori: ' + score + '</div>');
+        $(stage).append('<div class="questionText">You have finished the quiz!<br><br>Total questions: ' + numberOfQuestions + '<br>Correct answers: ' + score + '</div>');
 
     }//display final slide
 
