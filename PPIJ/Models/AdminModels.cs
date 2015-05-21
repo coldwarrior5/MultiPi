@@ -102,16 +102,23 @@ namespace PPIJ.Models
     public class Topic
     {
         public int ID { get; set; }
+        [Display(Name = "Tema:")]
         public string ChosenTopic { get; set; }
+        [Display(Name = "Opis teme:")]
         public string Description { get; set; }
+        [Display(Name = "Razred:")]
         public int Class { get; set; }
         public int IDarea { get; set; }
+        [Display(Name = "Odaberi područje:")]
+        public SelectList AvailableAreas { get; set; }
     }
 
     public class Instruction
     {
         public int ID { get; set; }
+        [Display(Name = "Uputa:")]
         public string ChosenInstruction { get; set; }
+        [Display(Name = "Više točnih odgovora?")]
         public bool OneCorrect { get; set; }
     }
 }

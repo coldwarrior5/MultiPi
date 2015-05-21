@@ -758,24 +758,52 @@ namespace PPIJ.Controllers
 
         public ActionResult UputaEdit(int id)
         {
-            return View();
+            Instruction model = new Instruction();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.uputa.FirstOrDefault(k => k.id_uputa.Equals(id));
+
+                model.ChosenInstruction = query.uputa1;
+                model.OneCorrect = query.jedan_tocan_odgovor;
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("UputaEdit")]
-        public async Task<ActionResult> UputaEditing(int id)
+        public async Task<ActionResult> UputaEditing(int id, Instruction model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.uputa.FirstOrDefault(k => k.id_uputa.Equals(id));
+
+                query.uputa1 = model.ChosenInstruction;
+                query.jedan_tocan_odgovor = model.OneCorrect;
+
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Uputa", "Admin");
+            }
         }
 
-        public ActionResult UputaInsert(int id)
+        public ActionResult UputaInsert()
         {
             return View();
         }
 
         [HttpPost, ActionName("UputaInsert")]
-        public async Task<ActionResult> UputaInserting(int id)
+        public async Task<ActionResult> UputaInserting(Instruction model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.uputa.Create();
+
+                query.uputa1 = model.ChosenInstruction;
+                query.jedan_tocan_odgovor = model.OneCorrect;
+
+                db.uputa.Add(query);
+                db.SaveChanges();
+                return RedirectToAction("Uputa", "Admin");
+            }
         }
 
         public ActionResult UputaRemove(int id)
@@ -784,9 +812,16 @@ namespace PPIJ.Controllers
         }
 
         [HttpPost, ActionName("UputaRemove")]
-        public async Task<ActionResult> UputaRemoving(int id)
+        public async Task<ActionResult> UputaRemoving(int id, Instruction model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var uputaDelete = db.uputa.Find(id);
+                db.uputa.Remove(uputaDelete);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Uputa", "Admin");
         }
     }
 }

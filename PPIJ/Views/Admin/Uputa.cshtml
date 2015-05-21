@@ -309,6 +309,7 @@
                         <th>#</th>
                         <th>Uputa</th>
                         <th>Jedan točan odgovor?</th>
+                        <th>Actions</th>
                     </tr>
                     @foreach (uputa u in Model.Instructions)
             {
@@ -316,6 +317,11 @@
                             <td style="width: 10%;">@u.id_uputa</td>
                             <td>@u.uputa1</td>
                             <td>@u.jedan_tocan_odgovor</td>
+                            <td>
+                                <a href="@Url.Action("UputaEdit", "Admin", new {id = u.id_uputa})">Edit</a> |
+                                <a href="@Url.Action("UputaInsert", "Admin")">Add new</a> |
+                                <a href="@Url.Action("UputaRemove", "Admin", new {id = u.id_uputa})">Remove</a>
+                            </td>
                         </tr>
                     }
                 </table>
