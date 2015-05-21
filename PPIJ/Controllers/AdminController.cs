@@ -344,7 +344,16 @@ namespace PPIJ.Controllers
         {
             using (ppijEntities db = new ppijEntities())
             {
-                return View();
+                korisnik query = db.korisnik.FirstOrDefault(k => k.id_korisnik.Equals(id));
+
+                query.korisnicko_ime = model.Username;
+                query.email = model.Email;
+                query.ime = model.FirstName;
+                query.prezime = model.LastName;
+
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Korisnik", "Admin");
             }
         }
 
