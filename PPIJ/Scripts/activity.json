@@ -283,14 +283,68 @@
             "trueAnswer": "2"
         },
          {
-            "question": "Razlici brojeva 49 i 27 dodaj broj 17.",
-            "option1": "40",
-            "option2": "42",
-            "option3": "38",
-            "option4": "39",
-            "option5": "35",
-            "trueAnswer": "4"
+            "question": "Kako se zove broj 12 u dijeljenju 12 : 3 = 4 ? ",
+            "option1": "DIJELJENIK",
+            "option2": "DJELJITELJ",
+            "option3": "REZULTAT",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "Broj 16 podijeli brojem 2.",
+            "option1": "8",
+            "option2": "9",
+            "option3": "7",
+            "option4": "6",
+            "option5": "5",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "Koji broj je 10 puta veæi od broja 6?",
+            "option1": "60",
+            "option2": "50",
+            "option3": "70",
+            "option4": "61",
+            "option5": "58",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "Broj 80 podijeli brojem 10.",
+            "option1": "8",
+            "option2": "5",
+            "option3": "7",
+            "option4": "9",
+            "option5": "10",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "Zbroj jednakih pribrojnika 3+3+3+3+3 napiši u obliku množenja i izraèunaj. ",
+            "option1": "5*3=15",
+            "option2": "6*3=18",
+            "option3": "4*3=12",
+            "option4": "6*4=24",
+            "option5": "6*2=12",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "Koliènik brojeva 12 i 3 uveæaj 10 puta.",
+            "option1": "30",
+            "option2": "40",
+            "option3": "50",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "Na stolu je 6 tanjura. Na svakom su tanjuru 1 kolaè. Koliko je ukupno kolaèa na svim tanjurima?",
+            "option1": "6",
+            "option2": "5",
+            "option3": "7",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "0 · 3 =",
+            "option1": "1",
+            "option2": "3",
+            "option3": "0",
+            "trueAnswer": "3"
         }
-		
     ]
 }
