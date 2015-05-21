@@ -55,7 +55,7 @@ namespace PPIJ.Controllers
                 model.Answers = query5;
                 return View(model);
             }*/
-            return View(model);
+            return View();
         }
 
         // POST: /Home/Index
