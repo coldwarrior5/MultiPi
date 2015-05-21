@@ -312,6 +312,7 @@
                         <th>Prezime</th>
                         <th>E-mail adresa</th>
                         <th>Administrator?</th>
+                        <th>Actions</th>
                     </tr>
                     @foreach (korisnik k in Model.Users)
             {
@@ -322,6 +323,7 @@
                             <td>@k.prezime</td>
                             <td>@k.email</td>
                             <td style="width: 15%;">@k.administrator</td>
+                            <td><a href="@Url.Action("KorisnikEdit", "Admin", new {id = k.id_korisnik})">Edit</a></td>
                         </tr>
                     }
                 </table>

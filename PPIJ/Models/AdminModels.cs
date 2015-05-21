@@ -36,9 +36,13 @@ namespace PPIJ.Models
     public class User
     {
         public int ID { get; set; }
+        [Display(Name = "Korisničko ime")]
         public string Username { get; set; }
+        [Display(Name = "Ime")]
         public string FirstName { get; set; }
+        [Display(Name = "Prezime")]
         public string LastName { get; set; }
+        [Display(Name = "E-mail adresa")]
         public string Email { get; set; }
         public bool IsAdmin { get; set; }
     }

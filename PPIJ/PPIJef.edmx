@@ -408,8 +408,8 @@
           <Property Name="id_pitanja" Type="Int32" Nullable="false" />
           <Property Name="tocan" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="pitanje" Relationship="Self.FK_odgovor_pitanje" FromRole="odgovor" ToRole="pitanje" />
-          <NavigationProperty Name="slika" Relationship="Self.FK_odgovor_slika" FromRole="odgovor" ToRole="slika" />
           <NavigationProperty Name="povijest_odgovor" Relationship="Self.FK_povijest_odgovor_odgovor" FromRole="odgovor" ToRole="povijest_odgovor" />
+          <NavigationProperty Name="slika" Relationship="ppijModel.FK_odgovor_slika" FromRole="odgovor" ToRole="slika" />
         </EntityType>
         <EntityType Name="pitanje">
           <Key>
@@ -421,10 +421,10 @@
           <Property Name="id_uputa" Type="Int32" Nullable="false" />
           <Property Name="id_tema" Type="Int32" Nullable="false" />
           <NavigationProperty Name="odgovor" Relationship="Self.FK_odgovor_pitanje" FromRole="pitanje" ToRole="odgovor" />
-          <NavigationProperty Name="slika" Relationship="Self.FK_pitanje_slika" FromRole="pitanje" ToRole="slika" />
           <NavigationProperty Name="tema" Relationship="Self.FK_pitanje_tema" FromRole="pitanje" ToRole="tema" />
           <NavigationProperty Name="uputa" Relationship="Self.FK_pitanje_uputa" FromRole="pitanje" ToRole="uputa" />
           <NavigationProperty Name="test_pitanje" Relationship="Self.FK_test_pitanje_pitanje" FromRole="pitanje" ToRole="test_pitanje" />
+          <NavigationProperty Name="slika" Relationship="ppijModel.FK_pitanje_slika" FromRole="pitanje" ToRole="slika" />
         </EntityType>
         <EntityType Name="podrucje">
           <Key>
@@ -481,15 +481,6 @@
           <Property Name="id_predmet" Type="Int32" Nullable="false" />
           <Property Name="predmet1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="podrucje" Relationship="Self.FK_podrucje_predmet" FromRole="predmet" ToRole="podrucje" />
-        </EntityType>
-        <EntityType Name="slika">
-          <Key>
-            <PropertyRef Name="id_slika" />
-          </Key>
-          <Property Name="id_slika" Type="Int32" Nullable="false" />
-          <Property Name="slika1" Type="String" />
-          <NavigationProperty Name="odgovor" Relationship="Self.FK_odgovor_slika" FromRole="slika" ToRole="odgovor" />
-          <NavigationProperty Name="pitanje" Relationship="Self.FK_pitanje_slika" FromRole="slika" ToRole="pitanje" />
         </EntityType>
         <EntityType Name="tema">
           <Key>
@@ -560,18 +551,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_odgovor_slika">
-          <End Role="slika" Type="Self.slika" Multiplicity="0..1" />
-          <End Role="odgovor" Type="Self.odgovor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="slika">
-              <PropertyRef Name="id_slika" />
-            </Principal>
-            <Dependent Role="odgovor">
-              <PropertyRef Name="id_slika" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_povijest_odgovor_odgovor">
           <End Role="odgovor" Type="Self.odgovor" Multiplicity="1" />
           <End Role="povijest_odgovor" Type="Self.povijest_odgovor" Multiplicity="*" />
@@ -581,18 +560,6 @@
             </Principal>
             <Dependent Role="povijest_odgovor">
               <PropertyRef Name="id_odgovor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_pitanje_slika">
-          <End Role="slika" Type="Self.slika" Multiplicity="0..1" />
-          <End Role="pitanje" Type="Self.pitanje" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="slika">
-              <PropertyRef Name="id_slika" />
-            </Principal>
-            <Dependent Role="pitanje">
-              <PropertyRef Name="id_slika" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -725,7 +692,6 @@
           <EntitySet Name="povijest_pitanje" EntityType="Self.povijest_pitanje" />
           <EntitySet Name="povijest_test" EntityType="Self.povijest_test" />
           <EntitySet Name="predmet" EntityType="Self.predmet" />
-          <EntitySet Name="slika" EntityType="Self.slika" />
           <EntitySet Name="tema" EntityType="Self.tema" />
           <EntitySet Name="test" EntityType="Self.test" />
           <EntitySet Name="test_pitanje" EntityType="Self.test_pitanje" />
@@ -738,17 +704,9 @@
             <End Role="pitanje" EntitySet="pitanje" />
             <End Role="odgovor" EntitySet="odgovor" />
           </AssociationSet>
-          <AssociationSet Name="FK_odgovor_slika" Association="Self.FK_odgovor_slika">
-            <End Role="slika" EntitySet="slika" />
-            <End Role="odgovor" EntitySet="odgovor" />
-          </AssociationSet>
           <AssociationSet Name="FK_povijest_odgovor_odgovor" Association="Self.FK_povijest_odgovor_odgovor">
             <End Role="odgovor" EntitySet="odgovor" />
             <End Role="povijest_odgovor" EntitySet="povijest_odgovor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_pitanje_slika" Association="Self.FK_pitanje_slika">
-            <End Role="slika" EntitySet="slika" />
-            <End Role="pitanje" EntitySet="pitanje" />
           </AssociationSet>
           <AssociationSet Name="FK_pitanje_tema" Association="Self.FK_pitanje_tema">
             <End Role="tema" EntitySet="tema" />
@@ -790,7 +748,49 @@
             <End Role="test" EntitySet="test" />
             <End Role="test_pitanje" EntitySet="test_pitanje" />
           </AssociationSet>
+          <EntitySet Name="slika" EntityType="ppijModel.slika" />
+          <AssociationSet Name="FK_odgovor_slika" Association="ppijModel.FK_odgovor_slika">
+            <End Role="slika" EntitySet="slika" />
+            <End Role="odgovor" EntitySet="odgovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pitanje_slika" Association="ppijModel.FK_pitanje_slika">
+            <End Role="slika" EntitySet="slika" />
+            <End Role="pitanje" EntitySet="pitanje" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="slika">
+          <Key>
+            <PropertyRef Name="id_slika" />
+          </Key>
+          <Property Name="id_slika" Type="Int32" Nullable="false" />
+          <Property Name="slika1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="odgovor" Relationship="ppijModel.FK_odgovor_slika" FromRole="slika" ToRole="odgovor" />
+          <NavigationProperty Name="pitanje" Relationship="ppijModel.FK_pitanje_slika" FromRole="slika" ToRole="pitanje" />
+        </EntityType>
+        <Association Name="FK_odgovor_slika">
+          <End Type="ppijModel.slika" Role="slika" Multiplicity="0..1" />
+          <End Type="ppijModel.odgovor" Role="odgovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slika">
+              <PropertyRef Name="id_slika" />
+            </Principal>
+            <Dependent Role="odgovor">
+              <PropertyRef Name="id_slika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pitanje_slika">
+          <End Type="ppijModel.slika" Role="slika" Multiplicity="0..1" />
+          <End Type="ppijModel.pitanje" Role="pitanje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="slika">
+              <PropertyRef Name="id_slika" />
+            </Principal>
+            <Dependent Role="pitanje">
+              <PropertyRef Name="id_slika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -882,14 +882,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="slika">
-            <EntityTypeMapping TypeName="ppijModel.slika">
-              <MappingFragment StoreEntitySet="slika">
-                <ScalarProperty Name="id_slika" ColumnName="id_slika" />
-                <ScalarProperty Name="slika1" ColumnName="slika" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tema">
             <EntityTypeMapping TypeName="ppijModel.tema">
               <MappingFragment StoreEntitySet="tema">
@@ -928,6 +920,14 @@
                 <ScalarProperty Name="id_uputa" ColumnName="id_uputa" />
                 <ScalarProperty Name="uputa1" ColumnName="uputa" />
                 <ScalarProperty Name="jedan_tocan_odgovor" ColumnName="jedan_tocan_odgovor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slika">
+            <EntityTypeMapping TypeName="ppijModel.slika">
+              <MappingFragment StoreEntitySet="slika">
+                <ScalarProperty Name="slika1" ColumnName="slika" />
+                <ScalarProperty Name="id_slika" ColumnName="id_slika" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
