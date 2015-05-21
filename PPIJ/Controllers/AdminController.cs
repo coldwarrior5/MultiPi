@@ -749,24 +749,80 @@ namespace PPIJ.Controllers
 
         public ActionResult TemaEdit(int id)
         {
-            return View();
+            Topic model = new Topic();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.tema.FirstOrDefault(k => k.id_tema.Equals(id));
+
+                var query1 = (from p in db.podrucje
+                              orderby p.podrucje1
+                              select p).ToList();
+                model.AvailableAreas = new SelectList(query1, "id_podrucje", "podrucje1", query.id_podrucje);
+
+                model.ChosenTopic = query.tema1;
+                model.Description = query.opis;
+                model.Class = query.razred;
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("TemaEdit")]
-        public async Task<ActionResult> TemaEditing(int id)
+        public async Task<ActionResult> TemaEditing(int id, Topic model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.tema.FirstOrDefault(k => k.id_tema.Equals(id));
+
+                query.tema1 = model.ChosenTopic;
+                query.opis = model.Description;
+                query.razred = model.Class;
+
+                if (Request["AreasDD"].Any())
+                {
+                    var podr = Request["AreasDD"];
+                    query.id_podrucje = Convert.ToInt32(podr);
+                }
+
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Tema", "Admin");
+            }
         }
 
-        public ActionResult TemaInsert(int id)
+        public ActionResult TemaInsert()
         {
-            return View();
+            Topic model = new Topic();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query1 = (from p in db.podrucje
+                              orderby p.podrucje1
+                              select p).ToList();
+                model.AvailableAreas = new SelectList(query1, "id_podrucje", "podrucje1");
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("TemaInsert")]
-        public async Task<ActionResult> TemaInserting(int id)
+        public async Task<ActionResult> TemaInserting(Topic model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.tema.Create();
+
+                query.tema1 = model.ChosenTopic;
+                query.opis = model.Description;
+                query.razred = model.Class;
+
+                if (Request["AreasDD"].Any())
+                {
+                    var podr = Request["AreasDD"];
+                    query.id_podrucje = Convert.ToInt32(podr);
+                }
+
+                db.tema.Add(query);
+                db.SaveChanges();
+                return RedirectToAction("Tema", "Admin");
+            }
         }
 
         public ActionResult TemaRemove(int id)
@@ -775,9 +831,16 @@ namespace PPIJ.Controllers
         }
 
         [HttpPost, ActionName("TemaRemove")]
-        public async Task<ActionResult> TemaRemoving(int id)
+        public async Task<ActionResult> TemaRemoving(int id, Topic model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var temaDelete = db.tema.Find(id);
+                db.tema.Remove(temaDelete);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Tema", "Admin");
         }
 
         public ActionResult UputaEdit(int id)

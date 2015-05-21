@@ -311,6 +311,7 @@
                         <th>Opis teme</th>
                         <th>Razred</th>
                         <th>Područje</th>
+                        <th>Actions</th>
                     </tr>
                     @foreach (tema t in Model.Topics)
             {
@@ -320,6 +321,11 @@
                             <td>@t.opis</td>
                             <td>@t.razred</td>
                             <td>@t.podrucje.podrucje1</td>
+                            <td style="width: 15%;">
+                                <a href="@Url.Action("TemaEdit", "Admin", new { id = t.id_tema })">Edit</a> |
+                                <a href="@Url.Action("TemaInsert", "Admin")">Add new</a> |
+                                <a href="@Url.Action("TemaRemove", "Admin", new { id = t.id_tema })">Remove</a>
+                            </td>
                         </tr>
                     }
                 </table>
