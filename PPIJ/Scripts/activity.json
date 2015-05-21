@@ -3,24 +3,59 @@
     "quizlist": [
 
         {
-            "question": "Portuguese is spoken in _______",
-            "option1": "Brazil",
-            "option2": "Argentina",
-            "option3": "Ecuador",
+            "question": "Koliko je 3+4?",
+            "option1": "7",
+            "option2": "6",
+            "option3": "8",
             "trueAnswer": "1"
         },
         {
-            "question": "What is the capital of Peru?",
-            "option1": "Bogota",
-            "option2": "Lima",
-            "option3": "San Juan",
+            "question": "Koliko je 2+9?",
+            "option1": "13",
+            "option2": "11",
+            "option3": "14",
             "trueAnswer": "2"
         },
         {
-            "question": "Which country is long and thin?",
-            "option1": "Colombia",
-            "option2": "Uruguay",
-            "option3": "Chile",
+            "question": "Koliko je 1+4?",
+            "option1": "6",
+            "option2": "8",
+            "option3": "5",
+            "trueAnswer": "3"
+        },
+        {
+            "question": "Koliko je 1+4?",
+            "option1": "6",
+            "option2": "8",
+            "option3": "5",
+            "trueAnswer": "3"
+        },
+        {
+            "question": "Što ima više kutova?",
+            "option1": "Šesterokut",
+            "option2": "Trokut",
+            "option3": "Pravokutnik",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "3_________ 1 JE 2",
+            "option1": "+",
+            "option2": "-",
+            "option3": "*",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "6 + 1 = 7    BROJ 6 ZOVEMO __________  ___________.",
+            "option1": "PRVI PRIBROJNIK",
+            "option2": "DRUGI PRIBROJNIK",
+            "option3": "ZBROJ",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "UMANJITELJ JE 1, RAZLIKA JE 7. KOLIKI JE UMANJENIK?",
+            "option1": "8 – 1 = 6     UMANJENIK JE 8.",
+            "option2": "8 – 1 = 9     UMANJENIK JE 8.",
+            "option3": "8 – 1 = 7     UMANJENIK JE 8.",
             "trueAnswer": "3"
         }
 

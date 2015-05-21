@@ -14,6 +14,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Data.Entity;
 
+
 namespace PPIJ.Controllers
 {
     public class HomeController : Controller
@@ -24,8 +25,37 @@ namespace PPIJ.Controllers
         }
 
         public ActionResult Exam()
-        {
-            return View();
+        {/*
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.podrucje
+                             select k).Include(c => c.predmet).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Areas = query
+                };
+                var query1 = (from k in db.tema
+                             select k).Include(c => c.podrucje).ToList();
+                model.Topics = query1;
+                var query2 = (from k in db.uputa
+                             select k).ToList();
+
+                model.Instructions = query2;
+                var query3 = (from k in db.slika
+                             select k).ToList();
+
+                model.Pictures = query3;
+                var query4 = (from k in db.pitanje
+                             select k).Include(c => c.uputa).Include(c => c.tema).Include(c => c.slika).ToList();
+
+                    model.Questions = query4;
+                var query5 = (from k in db.odgovor
+                             select k).Include(c => c.pitanje).Include(c => c.slika).ToList();
+
+                model.Answers = query5;
+                return View(model);
+            }*/
+            return View(model);
         }
 
         // POST: /Home/Index

@@ -17,8 +17,11 @@
     var subject = "";
     var userChoice = new Array();
     var choiceNumber = 0;
+    var minNumQuestions = 10;
+    var maxNumQuestions = 50;
+    var chosenNumQuestions = minNumQuestions;
 
-    
+    /*
     if (logged) {
         choiceNumber = 0
         displayOptions("Novi ispit", "Stari ispiti");
@@ -26,20 +29,7 @@
     else {
         choiceNumber = 1;
         displayOptions("Kartice za učenje", "Ispit");
-    }/*
-    if (!priorityNew) {
-        scrollOptionBar("Pregled");
-        displayGuestions();
-    }
-    else {
-        choiceNumber=1;
-        changeOptionBar("Kartice za učenje", "Ispit");
-        choiceNumber=2;
-        changeOptionBar("Područje", "Razred");
-        displayQuestion();
-    }
-    
-    */
+    }*/
     $.getJSON('../../Scripts/activity.json', function (data) {
         answered = data.answered;
         for (i = 0; i < data.quizlist.length; i++) {
@@ -51,7 +41,16 @@
 			correct[i] = parseInt(data.quizlist[i].trueAnswer);
         }
         numberOfQuestions = questionBank.length;
-
+        var rnd = Math.random() * numberOfQuestions;
+        rnd = Math.floor(rnd);
+        var rnd3;
+        if (rnd == 1) {
+            rnd += 2;
+        }
+        var rnd4=Math.random() * (numberOfQuestions-rnd);
+        rnd3 = numberOfQuestions - rnd - rnd4;
+        numberOfQuestions = rnd;
+        questionNumber = rnd3;
 
         })
       
@@ -96,15 +95,28 @@
     }//display question
 
     function scrollOptions(choice1, choice2) {
-
-        if (choice2 != "") {
-            $(stage).append('<div id="true" class="scrollText"><span>' + choice1);
-            $(stage).append('</span></div><div id="false" class="scrollText"><span>' + choice2 + '</span></div>');
+        if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
         }
-        else {
-            $(stage).append('<div id="true" class="scrollTextSingle"><span>' + choice1 + '</span></div>');
+        else {// code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         
+        if (choice2 != "") {
+            $(stage).append('<div class="scrollText"><span>' + choice1 + '</span><div> @using (Ajax.BeginForm("ChooseSubject", "Home", new AjaxOptions { HttpMethod = "post"})){');
+            $(stage).append('<select name="Area" onChange="chosenArea(this.value)">');
+            $(stage).append('</select><select name ="Subject" onChange=chosenSubject(this.value)>');
+            $(stage).append('</select><select name ="Number" onChange=chosenNumber(this.value)>');
+            $(stage).append('</select><div id="true" class="begin">Započni</div>}</div></div><div class="scrollText"><span>' + choice2 + '</span><div>@using (Ajax.BeginForm("ChooseClass", "Home", new AjaxOptions { HttpMethod = "post"})){');
+            $(stage).append('<select name="Class" onChange="chosenClass(this.value)">');
+            $(stage).append('</select><select name ="Number" onChange=chosenNumber(this.value)>');
+            $(stage).append('</select><div id="false" class="begin">Započni</div></div>}</div>');
+        }
+        else {
+            $(stage).append('<div class="scrollTextSingle"><span>' + choice1 + '</span><div><form>');
+            $(stage).append('<select name="Test" onChange="chosenTest(this.value)">');
+            $(stage).append('</select><div id="false" class="begin">Započni</div></form></div></div>');
+        }
 
         $('.optionText').click(function () {
             if (questionLock == false) {
