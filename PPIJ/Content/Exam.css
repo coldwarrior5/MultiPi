@@ -33,9 +33,27 @@ background-color:white;
 
 
 .optionText{
-
+    width:370px;
+    height:375px;
+    margin:15px;
+    font-size:30px;
+    font-family:'Berlin Sans FB';
+    color:#FFFFFF; 
+    padding:2px;
+    padding-left:10px;
+    border: 2px solid white;
+    cursor:pointer;
+    background-color:#3399FF;
+    float:left;
+    text-align:center;
+    line-height: 400px;
 }
  
+span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .questionText{
 padding:10px;
 padding-left:10px;
@@ -55,16 +73,65 @@ cursor:pointer;
 background-color:#3399FF;
 }
 
+.optionText:hover{
+border:#FC0 solid 2px;
+color:#FC0;
+}
+
 .option:hover{
 border:#FC0 solid 2px;
 color:#FC0;
 }
 
+.begin{
+    width:50px;
+    height:40px;
+    margin:15px;
+    font-size:18px;
+    color:#FFFFFF; 
+    padding:2px;
+    padding-left:10px;
+    border: 2px solid white;
+    cursor:pointer;
+    background-color:#3399FF;
+}
 
+.begin:hover{
+border:#FC0 solid 2px;
+color:#FC0;
+}
 		
+.scrollText{
+    width:370px;
+    height:375px;
+    margin:15px;
+    font-size:30px;
+    font-family:'Berlin Sans FB';
+    color:#FFFFFF; 
+    padding:2px;
+    padding-left:10px;
+    border: 2px solid white;
+    cursor:pointer;
+    background-color:#3399FF;
+    float:left;
+    text-align:center;
+}
 
-
-
+.scrollTextSingle{
+    width:370px;
+    height:375px;
+    margin:15px;
+    font-size:30px;
+    font-family:'Berlin Sans FB';
+    color:#FFFFFF; 
+    padding:2px;
+    padding-left:10px;
+    border: 2px solid white;
+    cursor:pointer;
+    background-color:#3399FF;
+    text-align:center;
+    margin-left:225px;
+}
 
 
 
