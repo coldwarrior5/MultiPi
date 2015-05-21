@@ -73,6 +73,9 @@ namespace PPIJ.Models
         public SelectList Instructions { get; set; }
         [Display(Name = "Odaberi temu:")]
         public SelectList Topics { get; set; }
+        [Display(Name = "Odaberi sliku:")]
+        public SelectList Pics { get; set; }
+
     }
 
     public class Area

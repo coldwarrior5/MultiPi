@@ -309,11 +309,12 @@
             {
                 <tr>
                     <td style="width: 10%;">@p.id_pitanje</td>
-                    <td style="width: 40%;">@p.pitanje1</td>
+                    <td style="width: 35%;">@p.pitanje1</td>
                     <td>@p.id_slika</td>
                     <td>@p.uputa.uputa1</td>
                     <td>@p.tema.tema1</td>
-                    <td><a href="@Url.Action("PitanjeEdit", "Admin", new {id = p.id_pitanje})">Edit</a></td>
+                    <td><a href="@Url.Action("PitanjeEdit", "Admin", new {id = p.id_pitanje})">Edit</a> |
+                        <a href="@Url.Action("PitanjeInsert", "Admin")">Add new</a></td>
                 </tr>
             }
         </table>

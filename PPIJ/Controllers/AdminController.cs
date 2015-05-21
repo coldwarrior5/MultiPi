@@ -428,6 +428,11 @@ namespace PPIJ.Controllers
                               select p).ToList();
                 model.Topics = new SelectList(query2, "id_tema", "tema1", query.id_tema);
 
+                var query3 = (from p in db.slika
+                              orderby p.slika1
+                              select p).ToList();
+                model.Pics = new SelectList(query3, "id_slika", "slika1", query.id_slika);
+
                 model.ChosenQuestion = query.pitanje1;
 
             }
@@ -455,21 +460,71 @@ namespace PPIJ.Controllers
                     query.id_tema = Convert.ToInt32(tema);
                 }
 
+                if (Request["PicturesDD"].Any())
+                {
+                    var fotka = Request["PicturesDD"];
+                    query.id_slika = Convert.ToInt32(fotka);
+                }
+
                 db.Entry(query).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Pitanje", "Admin");
             }
         }
 
-        public ActionResult PitanjeInsert(int id)
+        public ActionResult PitanjeInsert()
         {
-            return View();
+            Question model = new Question();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query1 = (from p in db.uputa
+                              orderby p.uputa1
+                              select p).ToList();
+                model.Instructions = new SelectList(query1, "id_uputa", "uputa1");
+
+                var query2 = (from p in db.tema
+                              orderby p.tema1
+                              select p).ToList();
+                model.Topics = new SelectList(query2, "id_tema", "tema1");
+
+                var query3 = (from p in db.slika
+                              orderby p.slika1
+                              select p).ToList();
+                model.Pics = new SelectList(query3, "id_slika", "slika1");
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("PitanjeInsert")]
-        public async Task<ActionResult> PitanjeInserting(int id)
+        public async Task<ActionResult> PitanjeInserting(Question model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.pitanje.Create();
+
+                query.pitanje1 = model.ChosenQuestion;
+                if (Request["InstructionsDD"].Any())
+                {
+                    var uputa = Request["InstructionsDD"];
+                    query.id_uputa = Convert.ToInt32(uputa);
+                }
+
+                if (Request["TopicsDD"].Any())
+                {
+                    var tema = Request["TopicsDD"];
+                    query.id_tema = Convert.ToInt32(tema);
+                }
+
+                if (Request["PicturesDD"].Any())
+                {
+                    var fotka = Request["PicturesDD"];
+                    query.id_slika = Convert.ToInt32(fotka);
+                }
+
+                db.pitanje.Add(query);
+                db.SaveChanges();
+                return RedirectToAction("Pitanje", "Admin");
+            }
         }
 
         public ActionResult PodrucjeEdit(int id)
