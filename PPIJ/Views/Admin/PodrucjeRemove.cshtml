@@ -295,40 +295,41 @@
         </div>
         <!-- /.navbar-static-side -->
     </nav>
-<div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Jeste li sigurni da želite ovo izbrisati?</h1>
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Area table</h1>
+            </div>
+            <!-- /.col-lg-12 -->
         </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Jeste li sigurni da želite ovo izbrisati?</h1>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-    <div class = "text-center">
-        <input type="submit" class="btn btn-success" value="Da" />
-        @Html.ActionLink("Ne", "Podrucje", new { area = "" }, new { @class = "btn btn-danger" })
-    </div>
-    }
-</div>
-    <!-- /#page-wrapper -->
-</div>
+                    <div class="text-center">
+                        <input type="submit" class="btn btn-success" value="Da" />
+                        @Html.ActionLink("Ne", "Podrucje", new { area = "" }, new { @class = "btn btn-danger" })
+                    </div>
+                }
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
 
-<!-- /#wrapper -->
-<!-- jQuery -->
-<script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="~/Content/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="~/Content/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<!-- Metis Menu Plugin JavaScript -->
-<script src="~/Content/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="~/Content/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-<!-- Morris Charts JavaScript -->
-<script src="~/Content/bower_components/raphael/raphael-min.js"></script>
-<script src="~/Content/bower_components/morrisjs/morris.min.js"></script>
-<script src="~/Scripts/morris-data.js"></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="~/Scripts/sb-admin-2.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="~/Scripts/sb-admin-2.js"></script>

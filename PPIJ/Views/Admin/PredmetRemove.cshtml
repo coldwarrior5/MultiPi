@@ -295,23 +295,29 @@
         </div>
         <!-- /.navbar-static-side -->
     </nav>
-    <div id="page-wrapper">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Jeste li sigurni da želite ovo izbrisati?</h1>
-            </div>
-            <!-- /.col-lg-12 -->
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Subjects table</h1>
         </div>
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="text-center">
-                <input type="submit" class="btn btn-success" value="Da" />
-                @Html.ActionLink("Ne", "Predmet", new { area = "" }, new { @class = "btn btn-danger" })
-            </div>
-        }
+        <!-- /.col-lg-12 -->
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Jeste li sigurni da želite ovo izbrisati?</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="text-center">
+            <input type="submit" class="btn btn-success" value="Da"/>
+            @Html.ActionLink("Ne", "Predmet", new {area = ""}, new {@class = "btn btn-danger"})
+        </div>
+    }
+</div>
     <!-- /#page-wrapper -->
 </div>
 
@@ -324,11 +330,6 @@
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="~/Content/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-<!-- Morris Charts JavaScript -->
-<script src="~/Content/bower_components/raphael/raphael-min.js"></script>
-<script src="~/Content/bower_components/morrisjs/morris.min.js"></script>
-<script src="~/Scripts/morris-data.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="~/Scripts/sb-admin-2.js"></script>

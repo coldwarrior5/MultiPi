@@ -263,85 +263,182 @@ namespace PPIJ.Controllers
 
         public ActionResult Pitanje()
         {
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                var query = (from k in db.pitanje
-                             select k).Include(c => c.uputa).Include(c => c.tema).Include(c => c.slika).ToList();
-                TablesContentModel model = new TablesContentModel
+                AdminModel modelA = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
                 {
-                    Questions = query
-                };
-                return View(model);
+                    string username = User.Identity.GetUserName();
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+
+                    modelA.Admin = user.administrator;
+                    if (!modelA.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
+
+                    var query = (from k in db.pitanje
+                        select k).Include(c => c.uputa).Include(c => c.tema).Include(c => c.slika).ToList();
+                    TablesContentModel model = new TablesContentModel
+                    {
+                        Questions = query
+                    };
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
             }
         }
 
         public ActionResult Podrucje()
         {
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                var query = (from k in db.podrucje
-                             select k).Include(c => c.predmet).ToList();
-                TablesContentModel model = new TablesContentModel
+                AdminModel modelA = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
                 {
-                    Areas = query
-                };
-                return View(model);
+                    string username = User.Identity.GetUserName();
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+
+                    modelA.Admin = user.administrator;
+                    if (!modelA.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
+                    var query = (from k in db.podrucje
+                        select k).Include(c => c.predmet).ToList();
+                    TablesContentModel model = new TablesContentModel
+                    {
+                        Areas = query
+                    };
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
             }
         }
 
         public ActionResult Predmet()
         {
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                var query = (from k in db.predmet
-                             select k).ToList();
-                TablesContentModel model = new TablesContentModel
+                AdminModel modelA = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
                 {
-                    Subjects = query
-                };
-                return View(model);
+                    string username = User.Identity.GetUserName();
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+
+                    modelA.Admin = user.administrator;
+                    if (!modelA.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
+                    var query = (from k in db.predmet
+                        select k).ToList();
+                    TablesContentModel model = new TablesContentModel
+                    {
+                        Subjects = query
+                    };
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
             }
         }
 
         public ActionResult Slika()
         {
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                var query = (from k in db.slika
-                             select k).ToList();
-                TablesContentModel model = new TablesContentModel
+                AdminModel modelA = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
                 {
-                    Pictures = query
-                };
-                return View(model);
+                    string username = User.Identity.GetUserName();
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+
+                    modelA.Admin = user.administrator;
+                    if (!modelA.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
+                    var query = (from k in db.slika
+                        select k).ToList();
+                    TablesContentModel model = new TablesContentModel
+                    {
+                        Pictures = query
+                    };
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
             }
         }
 
         public ActionResult Tema()
         {
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                var query = (from k in db.tema
-                             select k).Include(c => c.podrucje).ToList();
-                TablesContentModel model = new TablesContentModel
+                AdminModel modelA = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
                 {
-                    Topics = query
-                };
-                return View(model);
+                    string username = User.Identity.GetUserName();
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+
+                    modelA.Admin = user.administrator;
+                    if (!modelA.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
+                    var query = (from k in db.tema
+                        select k).Include(c => c.podrucje).ToList();
+                    TablesContentModel model = new TablesContentModel
+                    {
+                        Topics = query
+                    };
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
             }
         }
 
         public ActionResult Uputa()
         {
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                var query = (from k in db.uputa
-                             select k).ToList();
-                TablesContentModel model = new TablesContentModel
+                AdminModel modelA = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
                 {
-                    Instructions = query
-                };
-                return View(model);
+                    string username = User.Identity.GetUserName();
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+
+                    modelA.Admin = user.administrator;
+                    if (!modelA.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
+                    var query = (from k in db.uputa
+                        select k).ToList();
+                    TablesContentModel model = new TablesContentModel
+                    {
+                        Instructions = query
+                    };
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
             }
         }
 
