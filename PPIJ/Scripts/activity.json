@@ -265,13 +265,31 @@
             "trueAnswer": "3"
         },
          {
-            "question": "Najmanji broj je 11, 7, 17, 16, 10",
-            "option1": "11",
-            "option2": "7",
-            "option3": "17",
-            "option4": "16",
-            "option5": "10",
+            "question": "Luka, Matko i Ivan skupljaju pikule. Luka je skupio 30 pikula. Matko je skupio 40 pikula. Ivan je skupio 20 pikula. Koliko pikula imaju Luka i Matko zajedno? Koliko pikula još moraju skupiti sva trojica da imaju 100 pikula?",
+            "option1": "70,10",
+            "option2": "60,20",
+            "option3": "50,30",
+            "option4": "70,5",
+            "option5": "80,10",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "Rimski broj V je broj",
+            "option1": "5",
+            "option2": "4",
+            "option3": "7",
+            "option4": "6",
+            "option5": "1",
             "trueAnswer": "2"
+        },
+         {
+            "question": "Razlici brojeva 49 i 27 dodaj broj 17.",
+            "option1": "40",
+            "option2": "42",
+            "option3": "38",
+            "option4": "39",
+            "option5": "35",
+            "trueAnswer": "4"
         }
 		
     ]
