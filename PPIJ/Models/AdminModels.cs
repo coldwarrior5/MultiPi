@@ -59,6 +59,8 @@ namespace PPIJ.Models
         public bool IsCorrect { get; set; }
         [Display(Name = "Odaberi pitanje:")]
         public SelectList Questions { get; set; }
+        [Display(Name = "Odaberi sliku:")]
+        public SelectList Pics { get; set; }
     }
 
     public class Question

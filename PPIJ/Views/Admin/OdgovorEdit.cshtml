@@ -315,10 +315,18 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.Questions, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.Questions, htmlAttributes: new {@class = "control-label col-md-2"})
                 <div class="col-md-10">
-                    @Html.DropDownList("QuestionsDD", Model.Questions, "Select one of the options:", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Questions, "", new { @class = "text-danger" })
+                    @Html.DropDownList("QuestionsDD", Model.Questions, "Select one of the options:", new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.Questions, "", new {@class = "text-danger"})
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Pics, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("PicturesDD", Model.Pics, "Select one of the options:", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Pics, "", new { @class = "text-danger" })
                 </div>
             </div>
 
