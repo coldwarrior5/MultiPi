@@ -9,6 +9,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Globalization;
+using System.Web.Mvc;
 using System.Web.Security;
 
 namespace PPIJ.Models
@@ -50,19 +51,28 @@ namespace PPIJ.Models
     public class Answer
     {
         public int ID { get; set; }
+        [Display(Name = "Odabrani odgovor")]
         public string ChosenAnswer { get; set; }
         public int IDpic { get; set; }
         public int IDquestion { get; set; }
+        [Display(Name = "Točno?")]
         public bool IsCorrect { get; set; }
+        [Display(Name = "Odaberi pitanje:")]
+        public SelectList Questions { get; set; }
     }
 
     public class Question
     {
         public int ID { get; set; }
+        [Display(Name = "Izabrano pitanje:")]
         public string ChosenQuestion { get; set; }
         public int IDpic { get; set; }
         public int IDinstruction { get; set; }
         public int IDtopic { get; set; }
+        [Display(Name = "Odaberi uputu:")]
+        public SelectList Instructions { get; set; }
+        [Display(Name = "Odaberi temu:")]
+        public SelectList Topics { get; set; }
     }
 
     public class Area

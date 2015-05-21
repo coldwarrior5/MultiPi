@@ -303,6 +303,7 @@
                 <th>Broj slike</th>
                 <th>Uputa</th>
                 <th>Tema</th>
+                <th>Actions</th>
             </tr>
             @foreach (pitanje p in Model.Questions)
             {
@@ -312,6 +313,7 @@
                     <td>@p.id_slika</td>
                     <td>@p.uputa.uputa1</td>
                     <td>@p.tema.tema1</td>
+                    <td><a href="@Url.Action("PitanjeEdit", "Admin", new {id = p.id_pitanje})">Edit</a></td>
                 </tr>
             }
         </table>

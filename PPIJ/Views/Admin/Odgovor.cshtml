@@ -311,6 +311,7 @@
                         <th>Broj slike</th>
                         <th>Pitanje</th>
                         <th>Točan?</th>
+                        <th>Actions</th>
                     </tr>
                     @foreach (odgovor o in Model.Answers)
             {
@@ -320,6 +321,7 @@
                             <td>@o.id_slika</td>
                             <td>@o.pitanje.pitanje1</td>
                             <td style="width: 10%;">@o.tocan</td>
+                            <td><a href="@Url.Action("OdgovorEdit", "Admin", new {id = o.id_odgovor})">Edit</a></td>
                         </tr>
                     }
                 </table>

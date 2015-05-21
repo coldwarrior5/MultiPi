@@ -220,7 +220,7 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = (from k in db.odgovor
-                                select k).Include(c => c.pitanje).ToList();
+                                select k).Include(c => c.pitanje).Include(c => c.slika).ToList();
                 TablesContentModel model = new TablesContentModel
                 {
                     Answers = query
@@ -234,7 +234,7 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = (from k in db.pitanje
-                             select k).Include(c => c.uputa).Include(c => c.tema).ToList();
+                             select k).Include(c => c.uputa).Include(c => c.tema).Include(c => c.slika).ToList();
                 TablesContentModel model = new TablesContentModel
                 {
                     Questions = query
@@ -381,13 +381,43 @@ namespace PPIJ.Controllers
 
         public ActionResult OdgovorEdit(int id)
         {
-            return View();
+            Answer model = new Answer();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.odgovor.FirstOrDefault(k => k.id_odgovor.Equals(id));
+
+                var query2 = (from p in db.pitanje
+                              orderby p.pitanje1
+                              select p).ToList();
+                model.Questions = new SelectList(query2, "id_pitanje", "pitanje1", query.id_pitanja);
+
+                model.ChosenAnswer = query.odgovor1;
+                model.IsCorrect = query.tocan;
+
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("OdgovorEdit")]
-        public async Task<ActionResult> OdgovorEditing(int id)
+        public async Task<ActionResult> OdgovorEditing(int id, Answer model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.odgovor.FirstOrDefault(k => k.id_odgovor.Equals(id));
+
+                query.odgovor1 = model.ChosenAnswer;
+                query.tocan = model.IsCorrect;
+
+                if (Request["QuestionsDD"].Any())
+                {
+                    var pageSel = Request["QuestionsDD"];
+                    query.id_pitanja = Convert.ToInt32(pageSel);
+                }
+
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Odgovor", "Admin");
+            }
         }
 
         public ActionResult OdgovorInsert(int id)
@@ -414,13 +444,52 @@ namespace PPIJ.Controllers
 
         public ActionResult PitanjeEdit(int id)
         {
-            return View();
+            Question model = new Question();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.pitanje.FirstOrDefault(k => k.id_pitanje.Equals(id));
+
+                var query1 = (from p in db.uputa
+                              orderby p.uputa1
+                              select p).ToList();
+                model.Instructions = new SelectList(query1, "id_uputa", "uputa1", query.id_uputa);
+
+                var query2 = (from p in db.tema
+                              orderby p.tema1
+                              select p).ToList();
+                model.Topics = new SelectList(query2, "id_tema", "tema1", query.id_tema);
+
+                model.ChosenQuestion = query.pitanje1;
+
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("PitanjeEdit")]
-        public async Task<ActionResult> PitanjeEditing(int id)
+        public async Task<ActionResult> PitanjeEditing(int id, Question model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.pitanje.FirstOrDefault(k => k.id_pitanje.Equals(id));
+
+                query.pitanje1 = model.ChosenQuestion;
+
+                if (Request["InstructionsDD"].Any())
+                {
+                    var uputa = Request["InstructionsDD"];
+                    query.id_uputa = Convert.ToInt32(uputa);
+                }
+
+                if (Request["TopicsDD"].Any())
+                {
+                    var tema = Request["TopicsDD"];
+                    query.id_tema = Convert.ToInt32(tema);
+                }
+
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Pitanje", "Admin");
+            }
         }
 
         public ActionResult PitanjeInsert(int id)
