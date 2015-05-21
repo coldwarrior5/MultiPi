@@ -203,29 +203,61 @@ namespace PPIJ.Controllers
 
         public ActionResult Korisnik()
         {
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                var query = (from k in db.korisnik
-                    select k).ToList();
-                TablesContentModel model = new TablesContentModel
+                AdminModel modelA = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
                 {
-                    Users = query
-                };
-                return View(model);
+                    string username = User.Identity.GetUserName();
+
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+                    modelA.Admin = user.administrator;
+                    if (!modelA.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
+                    var query = (from k in db.korisnik
+                                 select k).ToList();
+                    TablesContentModel model = new TablesContentModel
+                    {
+                        Users = query
+                    };
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
             }
         }
 
         public ActionResult Odgovor()
         {
-            using (ppijEntities db = new ppijEntities())
+            if (User.Identity.IsAuthenticated)
             {
-                var query = (from k in db.odgovor
-                                select k).Include(c => c.pitanje).Include(c => c.slika).ToList();
-                TablesContentModel model = new TablesContentModel
+                AdminModel modelA = new AdminModel();
+                using (ppijEntities db = new ppijEntities())
                 {
-                    Answers = query
-                };
-                return View(model);
+                    string username = User.Identity.GetUserName();
+
+                    var user = db.korisnik.FirstOrDefault(u => u.korisnicko_ime.Equals(username));
+                    modelA.Admin = user.administrator;
+                    if (!modelA.Admin)
+                    {
+                        return RedirectToAction("Login", "Admin");
+                    }
+                    var query = (from k in db.odgovor
+                                 select k).Include(c => c.pitanje).Include(c => c.slika).ToList();
+                    TablesContentModel model = new TablesContentModel
+                    {
+                        Answers = query
+                    };
+                    return View(model);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Admin");
             }
         }
 
