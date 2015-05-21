@@ -414,6 +414,11 @@ namespace PPIJ.Controllers
                               select p).ToList();
                 model.Questions = new SelectList(query2, "id_pitanje", "pitanje1", query.id_pitanja);
 
+                var query3 = (from p in db.slika
+                              orderby p.slika1
+                              select p).ToList();
+                model.Pics = new SelectList(query3, "id_slika", "slika1", query.id_slika);
+
                 model.ChosenAnswer = query.odgovor1;
                 model.IsCorrect = query.tocan;
 
@@ -435,6 +440,12 @@ namespace PPIJ.Controllers
                 {
                     var pageSel = Request["QuestionsDD"];
                     query.id_pitanja = Convert.ToInt32(pageSel);
+                }
+
+                if (Request["PicturesDD"].Any())
+                {
+                    var fotka = Request["PicturesDD"];
+                    query.id_slika = Convert.ToInt32(fotka);
                 }
 
                 db.Entry(query).State = EntityState.Modified;
