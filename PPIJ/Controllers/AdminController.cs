@@ -538,19 +538,42 @@ namespace PPIJ.Controllers
 
                 db.Entry(query).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Pitanje", "Admin");
+                return RedirectToAction("Podrucje", "Admin");
             }
         }
 
-        public ActionResult PodrucjeInsert(int id)
+        public ActionResult PodrucjeInsert()
         {
-            return View();
+            Area model = new Area();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query1 = (from p in db.predmet
+                              orderby p.predmet1
+                              select p).ToList();
+                model.Subjects = new SelectList(query1, "id_predmet", "predmet1");
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("PodrucjeInsert")]
-        public async Task<ActionResult> PodrucjeInserting(int id)
+        public async Task<ActionResult> PodrucjeInserting(Area model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.podrucje.Create();
+
+                query.podrucje1 = model.ChosenArea;
+
+                if (Request["SubjectsDD"].Any())
+                {
+                    var pred = Request["SubjectsDD"];
+                    query.id_predmet = Convert.ToInt32(pred);
+                }
+
+                db.podrucje.Add(query);
+                db.SaveChanges();
+                return RedirectToAction("Podrucje", "Admin");
+            }
         }
 
         public ActionResult PodrucjeRemove(int id)
