@@ -326,13 +326,26 @@ namespace PPIJ.Controllers
 
         public ActionResult KorisnikEdit(int id)
         {
-            return View();
+            User model = new User();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.korisnik.FirstOrDefault(k => k.id_korisnik.Equals(id));
+
+                model.Username = query.korisnicko_ime;
+                model.FirstName = query.ime;
+                model.LastName = query.prezime;
+                model.Email = query.email;
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("KorisnikEdit")]
-        public async Task<ActionResult> KorisnikEditing(int id)
+        public async Task<ActionResult> KorisnikEditing(int id, User model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                return View();
+            }
         }
 
         public ActionResult KorisnikInsert(int id)

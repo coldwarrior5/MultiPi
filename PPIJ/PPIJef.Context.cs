@@ -33,10 +33,10 @@ namespace PPIJ
         public DbSet<povijest_pitanje> povijest_pitanje { get; set; }
         public DbSet<povijest_test> povijest_test { get; set; }
         public DbSet<predmet> predmet { get; set; }
-        public DbSet<slika> slika { get; set; }
         public DbSet<tema> tema { get; set; }
         public DbSet<test> test { get; set; }
         public DbSet<test_pitanje> test_pitanje { get; set; }
         public DbSet<uputa> uputa { get; set; }
+        public DbSet<slika> slika { get; set; }
     }
 }

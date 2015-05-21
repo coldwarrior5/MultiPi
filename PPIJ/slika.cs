@@ -21,7 +21,7 @@ namespace PPIJ
         }
     
         public int id_slika { get; set; }
-        public byte[] slika1 { get; set; }
+        public string slika1 { get; set; }
     
         public virtual ICollection<odgovor> odgovor { get; set; }
         public virtual ICollection<pitanje> pitanje { get; set; }

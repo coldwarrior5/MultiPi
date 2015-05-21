@@ -26,7 +26,7 @@ namespace PPIJ
         public bool tocan { get; set; }
     
         public virtual pitanje pitanje { get; set; }
-        public virtual slika slika { get; set; }
         public virtual ICollection<povijest_odgovor> povijest_odgovor { get; set; }
+        public virtual slika slika { get; set; }
     }
 }

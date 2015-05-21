@@ -27,9 +27,9 @@ namespace PPIJ
         public int id_tema { get; set; }
     
         public virtual ICollection<odgovor> odgovor { get; set; }
-        public virtual slika slika { get; set; }
         public virtual tema tema { get; set; }
         public virtual uputa uputa { get; set; }
         public virtual ICollection<test_pitanje> test_pitanje { get; set; }
+        public virtual slika slika { get; set; }
     }
 }
