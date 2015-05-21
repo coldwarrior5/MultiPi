@@ -584,7 +584,14 @@ namespace PPIJ.Controllers
         [HttpPost, ActionName("PodrucjeRemove")]
         public async Task<ActionResult> PodrucjeRemoving(int id)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var podrDelete = db.podrucje.Find(id);
+                db.podrucje.Remove(podrDelete);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Podrucje", "Admin");
         }
 
         public ActionResult PredmetEdit(int id)

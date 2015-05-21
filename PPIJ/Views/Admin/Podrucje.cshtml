@@ -317,8 +317,10 @@
                             <td style="width: 10%;">@p.id_podrucje</td>
                             <td>@p.podrucje1</td>
                             <td>@p.predmet.predmet1</td>
-                            <td><a href="@Url.Action("PodrucjeEdit", "Admin", new {id = p.id_podrucje})">Edit</a> | 
-                                <a href="@Url.Action("PodrucjeInsert", "Admin")">Add new</a></td>
+                            <td><a href="@Url.Action("PodrucjeEdit", "Admin", new {id = p.id_podrucje})">Edit</a> |
+                                <a href="@Url.Action("PodrucjeInsert", "Admin")">Add new</a> |
+                                <a href="@Url.Action("PodrucjeRemove", "Admin", new {id = p.id_podrucje})">Remove</a>
+                            </td>
                         </tr>
                     }
                 </table>
