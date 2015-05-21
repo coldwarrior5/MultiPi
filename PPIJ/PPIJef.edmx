@@ -86,7 +86,7 @@
           <Key>
             <PropertyRef Name="id_slika" />
           </Key>
-          <Property Name="id_slika" Type="int" Nullable="false" />
+          <Property Name="id_slika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="slika" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tema">

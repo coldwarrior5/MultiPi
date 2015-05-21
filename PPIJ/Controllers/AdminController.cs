@@ -596,24 +596,49 @@ namespace PPIJ.Controllers
 
         public ActionResult PredmetEdit(int id)
         {
-            return View();
+            Subject model = new Subject();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.predmet.FirstOrDefault(k => k.id_predmet.Equals(id));
+
+                model.ChosenSubject = query.predmet1;
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("PredmetEdit")]
-        public async Task<ActionResult> PredmetEditing(int id)
+        public async Task<ActionResult> PredmetEditing(int id, Subject model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.predmet.FirstOrDefault(k => k.id_predmet.Equals(id));
+
+                query.predmet1 = model.ChosenSubject;
+
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Predmet", "Admin");
+            }
         }
 
-        public ActionResult PredmetInsert(int id)
+        public ActionResult PredmetInsert()
         {
             return View();
         }
 
         [HttpPost, ActionName("PredmetInsert")]
-        public async Task<ActionResult> PredmetInserting(int id)
+        public async Task<ActionResult> PredmetInserting(Subject model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.predmet.Create();
+
+                query.predmet1 = model.ChosenSubject;
+
+                db.predmet.Add(query);
+                db.SaveChanges();
+                return RedirectToAction("Predmet", "Admin");
+            }
         }
 
         public ActionResult PredmetRemove(int id)
@@ -624,29 +649,60 @@ namespace PPIJ.Controllers
         [HttpPost, ActionName("PredmetRemove")]
         public async Task<ActionResult> PredmetRemoving(int id)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var predDelete = db.predmet.Find(id);
+                db.predmet.Remove(predDelete);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Predmet", "Admin");
         }
 
         public ActionResult SlikaEdit(int id)
         {
-            return View();
+            Picture model = new Picture();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.slika.FirstOrDefault(k => k.id_slika.Equals(id));
+
+                model.Pic = query.slika1;
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("SlikaEdit")]
-        public async Task<ActionResult> SlikaEditing(int id)
+        public async Task<ActionResult> SlikaEditing(int id, Picture model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.slika.FirstOrDefault(k => k.id_slika.Equals(id));
+
+                query.slika1 = model.Pic;
+
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Slika", "Admin");
+            }
         }
 
-        public ActionResult SlikaInsert(int id)
+        public ActionResult SlikaInsert()
         {
             return View();
         }
 
         [HttpPost, ActionName("SlikaInsert")]
-        public async Task<ActionResult> SlikaInserting(int id)
+        public async Task<ActionResult> SlikaInserting(Picture model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.slika.Create();
+
+                query.slika1 = model.Pic;
+                db.slika.Add(query);
+                db.SaveChanges();
+                return RedirectToAction("Slika", "Admin");
+            }
         }
 
         public ActionResult SlikaRemove(int id)
@@ -655,9 +711,16 @@ namespace PPIJ.Controllers
         }
 
         [HttpPost, ActionName("SlikaRemove")]
-        public async Task<ActionResult> SlikaRemoving(int id)
+        public async Task<ActionResult> SlikaRemoving(int id, Picture model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var slikaDelete = db.slika.Find(id);
+                db.slika.Remove(slikaDelete);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Slika", "Admin");
         }
 
         public ActionResult TemaEdit(int id)

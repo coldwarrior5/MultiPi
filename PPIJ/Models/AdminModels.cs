@@ -88,12 +88,14 @@ namespace PPIJ.Models
     public class Subject
     {
         public int ID { get; set; }
+        [Display(Name = "Predmet:")]
         public string ChosenSubject { get; set; }
     }
 
     public class Picture
     {
         public int ID { get; set; }
+        [Display(Name = "Slika:")]
         public string Pic { get; set; }
     }
 

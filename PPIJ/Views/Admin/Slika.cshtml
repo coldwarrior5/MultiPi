@@ -308,12 +308,18 @@
                     <tr>
                         <th>#</th>
                         <th>Slika</th>
+                        <th>Actions</th>
                     </tr>
                     @foreach (slika s in Model.Pictures)
-            {
+                    {
                         <tr>
                             <td style="width: 10%;">@s.id_slika</td>
                             <td>@s.slika1</td>
+                            <td>
+                                <a href="@Url.Action("SlikaEdit", "Admin", new {id = s.id_slika})">Edit</a> |
+                                <a href="@Url.Action("SlikaInsert", "Admin")">Add new</a> |
+                                <a href="@Url.Action("SlikaRemove", "Admin", new {id = s.id_slika})">Remove</a>
+                            </td>
                         </tr>
                     }
                 </table>

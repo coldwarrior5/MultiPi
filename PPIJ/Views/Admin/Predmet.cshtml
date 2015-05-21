@@ -308,12 +308,18 @@
                     <tr>
                         <th>#</th>
                         <th>Predmet</th>
+                        <th>Actions</th>
                     </tr>
                     @foreach (predmet p in Model.Subjects)
             {
                         <tr>
                             <td style="width: 10%;">@p.id_predmet</td>
                             <td>@p.predmet1</td>
+                            <td>
+                                <a href="@Url.Action("PredmetEdit", "Admin", new {id = p.id_predmet})">Edit</a> |
+                                <a href="@Url.Action("PredmetInsert", "Admin")">Add new</a> |
+                                <a href="@Url.Action("PredmetRemove", "Admin", new {id = p.id_predmet})">Remove</a>
+                            </td>
                         </tr>
                     }
                 </table>
