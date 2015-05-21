@@ -505,13 +505,41 @@ namespace PPIJ.Controllers
 
         public ActionResult PodrucjeEdit(int id)
         {
-            return View();
+            Area model = new Area();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.podrucje.FirstOrDefault(k => k.id_podrucje.Equals(id));
+
+                var query1 = (from p in db.predmet
+                              orderby p.predmet1
+                              select p).ToList();
+                model.Subjects = new SelectList(query1, "id_predmet", "predmet1", query.id_predmet);
+
+                model.ChosenArea = query.podrucje1;
+
+            }
+            return View(model);
         }
 
         [HttpPost, ActionName("PodrucjeEdit")]
-        public async Task<ActionResult> PodrucjeEditing(int id)
+        public async Task<ActionResult> PodrucjeEditing(int id, Area model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.podrucje.FirstOrDefault(k => k.id_podrucje.Equals(id));
+
+                query.podrucje1 = model.ChosenArea;
+
+                if (Request["SubjectsDD"].Any())
+                {
+                    var pred = Request["SubjectsDD"];
+                    query.id_predmet = Convert.ToInt32(pred);
+                }
+
+                db.Entry(query).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Pitanje", "Admin");
+            }
         }
 
         public ActionResult PodrucjeInsert(int id)

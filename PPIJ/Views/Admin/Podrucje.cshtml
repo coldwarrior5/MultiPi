@@ -309,6 +309,7 @@
                         <th>#</th>
                         <th>Područje</th>
                         <th>Predmet</th>
+                        <th>Actions</th>
                     </tr>
                     @foreach (podrucje p in Model.Areas)
             {
@@ -316,6 +317,7 @@
                             <td style="width: 10%;">@p.id_podrucje</td>
                             <td>@p.podrucje1</td>
                             <td>@p.predmet.predmet1</td>
+                            <td><a href="@Url.Action("PodrucjeEdit", "Admin", new {id = p.id_podrucje})">Edit</a></td>
                         </tr>
                     }
                 </table>

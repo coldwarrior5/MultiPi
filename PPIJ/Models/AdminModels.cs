@@ -78,8 +78,11 @@ namespace PPIJ.Models
     public class Area
     {
         public int ID { get; set; }
+        [Display(Name = "Područje:")]
         public string ChosenArea { get; set; }
         public int IDsubject { get; set; }
+        [Display(Name = "Odaberi predmet:")]
+        public SelectList Subjects { get; set; }
     }
 
     public class Subject
