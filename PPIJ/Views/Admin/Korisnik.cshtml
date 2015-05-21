@@ -323,7 +323,8 @@
                             <td>@k.prezime</td>
                             <td>@k.email</td>
                             <td style="width: 15%;">@k.administrator</td>
-                            <td><a href="@Url.Action("KorisnikEdit", "Admin", new {id = k.id_korisnik})">Edit</a></td>
+                            <td><a href="@Url.Action("KorisnikEdit", "Admin", new {id = k.id_korisnik})">Edit</a> |
+                                <a href="@Url.Action("KorisnikInsert", "Admin")">Add new</a></td>
                         </tr>
                     }
                 </table>

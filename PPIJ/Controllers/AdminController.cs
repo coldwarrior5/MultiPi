@@ -346,15 +346,28 @@ namespace PPIJ.Controllers
             }
         }
 
-        public ActionResult KorisnikInsert(int id)
+        public ActionResult KorisnikInsert()
         {
             return View();
         }
 
         [HttpPost, ActionName("KorisnikInsert")]
-        public async Task<ActionResult> KorisnikInserting(int id)
+        public async Task<ActionResult> KorisnikInserting(User model)
         {
-            return View();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = db.korisnik.Create();
+
+                query.korisnicko_ime = model.Username;
+                query.email = model.Email;
+                query.ime = model.FirstName;
+                query.prezime = model.LastName;
+                query.administrator = model.IsAdmin;
+
+                db.korisnik.Add(query);
+                db.SaveChanges();
+                return RedirectToAction("Korisnik", "Admin");
+            }
         }
 
         public ActionResult OdgovorEdit(int id)
