@@ -296,38 +296,45 @@
         <!-- /.navbar-static-side -->
     </nav>
     <div id="page-wrapper">
-        <table class="table">
-            <tr>
-                <th>#</th>
-                <th>Uputa</th>
-                <th>Jedan točan odgovor?</th>
-            </tr>
-            @foreach (uputa u in Model.Instructions)
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Instructions table</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Uputa</th>
+                        <th>Jedan točan odgovor?</th>
+                    </tr>
+                    @foreach (uputa u in Model.Instructions)
             {
-                <tr>
-                    <td style="width: 10%;">@u.id_uputa</td>
-                    <td>@u.uputa1</td>
-                    <td>@u.jedan_tocan_odgovor</td>
-                </tr>
-            }
-        </table>
-    </div>
-    <!-- /#page-wrapper -->
-</div>
-<!-- /#wrapper -->
-<!-- jQuery -->
-<script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
+                        <tr>
+                            <td style="width: 10%;">@u.id_uputa</td>
+                            <td>@u.uputa1</td>
+                            <td>@u.jedan_tocan_odgovor</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+            </div>
+        </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="~/Content/bower_components/jquery/dist/jquery.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="~/Content/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="~/Content/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<!-- Metis Menu Plugin JavaScript -->
-<script src="~/Content/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="~/Content/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-<!-- Morris Charts JavaScript -->
-<script src="~/Content/bower_components/raphael/raphael-min.js"></script>
-<script src="~/Content/bower_components/morrisjs/morris.min.js"></script>
-<script src="~/Scripts/morris-data.js"></script>
+        <!-- Morris Charts JavaScript -->
 
-<!-- Custom Theme JavaScript -->
-<script src="~/Scripts/sb-admin-2.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="~/Scripts/sb-admin-2.js"></script>

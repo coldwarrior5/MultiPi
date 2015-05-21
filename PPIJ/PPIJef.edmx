@@ -487,7 +487,7 @@
             <PropertyRef Name="id_slika" />
           </Key>
           <Property Name="id_slika" Type="Int32" Nullable="false" />
-          <Property Name="slika1" Type="Binary" MaxLength="50" FixedLength="false" />
+          <Property Name="slika1" Type="String" />
           <NavigationProperty Name="odgovor" Relationship="Self.FK_odgovor_slika" FromRole="slika" ToRole="odgovor" />
           <NavigationProperty Name="pitanje" Relationship="Self.FK_pitanje_slika" FromRole="slika" ToRole="pitanje" />
         </EntityType>

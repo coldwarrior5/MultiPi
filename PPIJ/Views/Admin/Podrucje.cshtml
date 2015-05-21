@@ -296,21 +296,31 @@
         <!-- /.navbar-static-side -->
     </nav>
     <div id="page-wrapper">
-        <table class="table">
-            <tr>
-                <th>#</th>
-                <th>Područje</th>
-                <th>Predmet</th>
-            </tr>
-            @foreach (podrucje p in Model.Areas)
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Math course table</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table">
+                    <tr>
+                        <th>#</th>
+                        <th>Područje</th>
+                        <th>Predmet</th>
+                    </tr>
+                    @foreach (podrucje p in Model.Areas)
             {
-                <tr>
-                    <td style="width: 10%;">@p.id_podrucje</td>
-                    <td>@p.podrucje1</td>
-                    <td>@p.predmet.predmet1</td>
-                </tr>
-            }
-        </table>
+                        <tr>
+                            <td style="width: 10%;">@p.id_podrucje</td>
+                            <td>@p.podrucje1</td>
+                            <td>@p.predmet.predmet1</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
     </div>
     <!-- /#page-wrapper -->
 </div>
@@ -325,9 +335,7 @@
 <script src="~/Content/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Morris Charts JavaScript -->
-<script src="~/Content/bower_components/raphael/raphael-min.js"></script>
-<script src="~/Content/bower_components/morrisjs/morris.min.js"></script>
-<script src="~/Scripts/morris-data.js"></script>
+
 
 <!-- Custom Theme JavaScript -->
 <script src="~/Scripts/sb-admin-2.js"></script>
