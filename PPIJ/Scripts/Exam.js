@@ -41,17 +41,8 @@
 			correct[i] = parseInt(data.quizlist[i].trueAnswer);
         }
         numberOfQuestions = questionBank.length;
-        var rnd = Math.random() * numberOfQuestions;
-        rnd = Math.floor(rnd);
-        var rnd3;
-        if (rnd == 1) {
-            rnd += 2;
-        }
-        var rnd4=Math.random() * (numberOfQuestions-rnd);
-        rnd3 = numberOfQuestions - rnd - rnd4;
-        numberOfQuestions = rnd;
-        questionNumber = rnd3;
 
+        displayQuestion(3);
         })
       
 
@@ -82,12 +73,12 @@
                 questionLock = true;
                 //correct answer
                 if (parseInt(this.id) == correct[questionNumber]) {
-                    $(stage).append('<div class="feedback1">CORRECT</div>');
+                    $(stage).append('<div class="feedback1">Tocno</div>');
                     score++;
                 }
                 //wrong answer	
                 if (parseInt(this.id) != correct[questionNumber]) {
-                    $(stage).append('<div class="feedback2">WRONG</div>');
+                    $(stage).append('<div class="feedback2">Krivo</div>');
                 }
                 setTimeout(function () { changeQuestion() }, 1000);
             }
