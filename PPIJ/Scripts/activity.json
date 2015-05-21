@@ -57,7 +57,222 @@
             "option2": "8 – 1 = 9     UMANJENIK JE 8.",
             "option3": "8 – 1 = 7     UMANJENIK JE 8.",
             "trueAnswer": "3"
+        },
+		{
+            "question": "+ OVAJ ZNAK ZOVE SE ________ .?",
+            "option1": "PLUS",
+            "option2": "MINUS",
+            "option3": "JEDNAKO",
+            "trueAnswer": "1"
+        },
+		{
+            "question": "= OVAJ ZNAK ZOVE SE ________ .",
+            "option1": "PLUS",
+            "option2": "MINUS",
+            "option3": "JEDNAKO",
+            "trueAnswer": "3"
+        },
+		{
+            "question": "KOJA GEOMETRIJSKA TIJELA IMAJU ŠEST PLOHA?",
+            "option1": "KUGLA",
+            "option2": "KOCKA",
+            "option3": "PIRAMIDA",
+            "trueAnswer": "2"
+        },
+		{
+            "question": "KOJIM SU GEOMETRIJSKIM TIJELIMA SVE PLOHE RAVNE?",
+            "option1": "VALJAK",
+            "option2": "KUGLA",
+            "option3": "KVADAR",
+            "trueAnswer": "1"
+        },
+		{
+            "question": "KOJE GEOMETRIJSKO TIJELO IMA ZAKRIVLJENE PLOHE?",
+            "option1": "VALJAK",
+            "option2": "KOCKA",
+            "option3": "PIRAMIDA",
+            "trueAnswer": "1"
+        },
+		{
+            "question": "USPOREDI BROJEVE. 5 ___ 3",
+            "option1": ">",
+            "option2": "<",
+            "option3": "=",
+            "trueAnswer": "2"
+        },
+		{
+            "question": "3_________ 1 JE 2",
+            "option1": "MINUS",
+            "option2": "PLUS",
+            "option3": "PUTA",
+            "trueAnswer": "1"
+        },
+		{
+            "question": "3 MANJE __ JE 1",
+            "option1": "2",
+            "option2": "3",
+            "option3": "5",
+            "trueAnswer": "1"
+        },
+		{
+            "question": "5 < 8",
+            "option1": "TOCNO",
+            "option2": "NETOCNO",
+            "trueAnswer": "1"
+        },
+		{
+            "question": "Najveæi broj je 15, 17, 14, 9, 7",
+            "option1": "17",
+            "option2": "15",
+            "option3": "59",
+            "trueAnswer": "1"
+        },
+		{
+            "question": "Prvi je pribrojnik 7. Drugi pribrojnik je 2. Koliki je zbroj? ",
+            "option1": "9",
+            "option2": "8",
+            "option3": "10",
+            "trueAnswer": "1"
+        },
+		{
+            "question": "Umanjenik je 9, razlika je 2. Koliki je umanjitelj?",
+            "option1": "6",
+            "option2": "7",
+            "option3": "8",
+            "trueAnswer": "2"
+        },
+		{
+            "question": "Luka je imao 7 krušaka. Tri je kruške dao Lini. Koliko mu je krušaka ostalo?",
+            "option1": "5",
+            "option2": "3",
+            "option3": "4",
+            "trueAnswer": "3"
+        },
+		{
+            "question": "Odaberi broj koji ima 6D 7J.",
+            "option1": "76",
+            "option2": "67",
+            "option3": "55",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "3 - 1 =___     ",
+            "option1": "3",
+            "option2": "2",
+            "option3": "1",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "5 + 3 = ___",
+            "option1": "8",
+            "option2": "9",
+            "option3": "10",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "3 * 2 = ___",
+            "option1": "5",
+            "option2": "12",
+            "option3": "6",
+            "trueAnswer": "3"
+        },
+         {
+            "question": "10 / 5 = ___",
+            "option1": "5",
+            "option2": "2",
+            "option3": "3",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "PRVI JE PRIBROJNIK 5. DRUGI PRIBROJNIK JE 1. KOLIKI JE ZBROJ?  ",
+            "option1": "7",
+            "option2": "9",
+            "option3": "6",
+            "trueAnswer": "3"
+        },
+         {
+            "question": "PRVI JE PRIBROJNIK 2. DRUGI PRIBROJNIK JE 7. KOLIKI JE ZBROJ?  ",
+            "option1": "7",
+            "option2": "8",
+            "option3": "9",
+            "trueAnswer": "3"
+        },
+         {
+            "question": "UMANJENIK JE 9, RAZLIKA JE 2. KOLIKI JE UMANJITELJ?",
+            "option1": "7",
+            "option2": "5",
+            "option3": "3",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "2 < 7",
+            "option1": "TOÈNO",
+            "option2": "NETOÈNO",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "9 < 5",
+            "option1": "TOÈNO",
+            "option2": "NETOÈNO",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "9 > 5",
+            "option1": "TOÈNO",
+            "option2": "NETOÈNO",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "14 > 25",
+            "option1": "TOÈNO",
+            "option2": "NETOÈNO",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "Najveæi broj je 15, 17, 14, 9, 7",
+            "option1": "15",
+            "option2": "17",
+            "option3": "14",
+            "option4": "9",
+            "option5": "7",
+            "trueAnswer": "2"
+        },
+         {
+            "question": "Najveæi broj je 11, 13, 8, 18, 20",
+            "option1": "11",
+            "option2": "13",
+            "option3": "8",
+            "option4": "18",
+            "option5": "20",
+            "trueAnswer": "5"
+        },
+         {
+            "question": "Najveæi broj je 11, 7, 17, 16, 10",
+            "option1": "11",
+            "option2": "7",
+            "option3": "17",
+            "option4": "16",
+            "option5": "10",
+            "trueAnswer": "3"
+        },
+         {
+            "question": "Najmanji broj je 11, 13, 8, 18, 20",
+            "option1": "11",
+            "option2": "13",
+            "option3": "8",
+            "option4": "18",
+            "option5": "20",
+            "trueAnswer": "3"
+        },
+         {
+            "question": "Najmanji broj je 11, 7, 17, 16, 10",
+            "option1": "11",
+            "option2": "7",
+            "option3": "17",
+            "option4": "16",
+            "option5": "10",
+            "trueAnswer": "2"
         }
-
+		
     ]
 }
