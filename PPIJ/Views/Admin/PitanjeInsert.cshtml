@@ -310,7 +310,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Instructions, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("InstructionsDD", Model.Instructions, "Select your content type:", new { @class = "form-control" })
+                    @Html.DropDownList("InstructionsDD", Model.Instructions, "Select one of the options:", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Instructions, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -318,7 +318,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Topics, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("TopicsDD", Model.Topics, "Select your content type:", new { @class = "form-control" })
+                    @Html.DropDownList("TopicsDD", Model.Topics, "Select one of the options:", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Topics, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -326,7 +326,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Pics, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("PicturesDD", Model.Pics, "Select your content type:", new { @class = "form-control" })
+                    @Html.DropDownList("PicturesDD", Model.Pics, "Select one of the options:", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Pics, "", new { @class = "text-danger" })
                 </div>
             </div>

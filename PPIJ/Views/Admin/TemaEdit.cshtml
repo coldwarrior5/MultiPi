@@ -322,7 +322,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.AvailableAreas, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.DropDownList("AreasDD", Model.AvailableAreas, "Select your content type:", new { @class = "form-control" })
+                    @Html.DropDownList("AreasDD", Model.AvailableAreas, "Select one of the options:", new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.AvailableAreas, "", new { @class = "text-danger" })
                 </div>
             </div>
