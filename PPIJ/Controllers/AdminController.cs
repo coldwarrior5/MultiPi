@@ -313,17 +313,6 @@ namespace PPIJ.Controllers
             }
         }
 
-        public ActionResult KorisnikDelete(int id)
-        {
-            return View();
-        }
-
-        [HttpPost, ActionName("KorisnikDelete")]
-        public async Task<ActionResult> KorisnikDeleting(int id)
-        {
-            return View();
-        }
-
         public ActionResult KorisnikEdit(int id)
         {
             User model = new User();
@@ -368,17 +357,6 @@ namespace PPIJ.Controllers
             return View();
         }
 
-        public ActionResult OdgovorDelete(int id)
-        {
-            return View();
-        }
-
-        [HttpPost, ActionName("OdgovorDelete")]
-        public async Task<ActionResult> OdgovorDeleting(int id)
-        {
-            return View();
-        }
-
         public ActionResult OdgovorEdit(int id)
         {
             Answer model = new Answer();
@@ -418,28 +396,6 @@ namespace PPIJ.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Odgovor", "Admin");
             }
-        }
-
-        public ActionResult OdgovorInsert(int id)
-        {
-            return View();
-        }
-
-        [HttpPost, ActionName("OdgovorInsert")]
-        public async Task<ActionResult> OdgovorInserting(int id)
-        {
-            return View();
-        }
-
-        public ActionResult PitanjeDelete(int id)
-        {
-            return View();
-        }
-
-        [HttpPost, ActionName("PitanjeDelete")]
-        public async Task<ActionResult> PitanjeDeleting(int id)
-        {
-            return View();
         }
 
         public ActionResult PitanjeEdit(int id)

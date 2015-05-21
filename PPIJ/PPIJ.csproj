@@ -1275,14 +1275,10 @@
     <Content Include="Views\Admin\Tema.cshtml" />
     <Content Include="Views\Admin\Uputa.cshtml" />
     <Content Include="Views\Admin\KorisnikInsert.cshtml" />
-    <Content Include="Views\Admin\KorisnikDelete.cshtml" />
-    <Content Include="Views\Admin\OdgovorInsert.cshtml" />
-    <Content Include="Views\Admin\OdgovorDelete.cshtml" />
     <Content Include="Views\Admin\KorisnikEdit.cshtml" />
     <Content Include="Views\Admin\OdgovorEdit.cshtml" />
     <Content Include="Views\Admin\PitanjeInsert.cshtml" />
     <Content Include="Views\Admin\PitanjeEdit.cshtml" />
-    <Content Include="Views\Admin\PitanjeDelete.cshtml" />
     <Content Include="Views\Admin\PodrucjeInsert.cshtml" />
     <Content Include="Views\Admin\PodrucjeEdit.cshtml" />
     <Content Include="Views\Admin\PodrucjeRemove.cshtml" />
