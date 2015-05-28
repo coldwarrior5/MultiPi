@@ -284,7 +284,9 @@
       <DependentUpon>PPIJef.tt</DependentUpon>
     </Compile>
     <Content Include="App_Data\aspnet-PPIJ-20150404224400.mdf" />
-    <Content Include="App_Data\aspnet-PPIJ-20150404224400_log.ldf" />
+    <Content Include="App_Data\aspnet-PPIJ-20150404224400_log.ldf">
+      <DependentUpon>aspnet-PPIJ-20150404224400.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bower_components\bootstrap-social\.gitignore" />
     <Content Include="Content\bower_components\bootstrap-social\bootstrap-social.css" />
     <Content Include="Content\bower_components\bootstrap\dist\css\bootstrap-theme.css" />

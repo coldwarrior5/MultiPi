@@ -43,14 +43,6 @@ namespace PPIJ.Controllers
                 model.Instructions = query2;
                 var query3 = (from k in db.slika
                              select k).ToList();
-          * 
-          *     model.Instructions = query2;
-                var query3 = (from k in db.slika
-                             select k).ToList();
-          * 
-          *     model.Instructions = query2;
-                var query3 = (from k in db.slika
-                             select k).ToList();
 
                 model.Pictures = query3;
                 var query4 = (from k in db.pitanje
