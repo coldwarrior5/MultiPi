@@ -345,6 +345,35 @@
             "option2": "3",
             "option3": "0",
             "trueAnswer": "3"
+        },
+         {
+            "question": "20 : 5 =",
+            "option1": "4",
+            "option2": "5",
+            "option3": "3",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "15 : 5 =",
+            "option1": "3",
+            "option2": "5",
+            "option3": "4",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "Broj 42 podijeli brojem 7.",
+            "option1": "6",
+            "option2": "5",
+            "option3": "7",
+            "trueAnswer": "1"
+        },
+         {
+            "question": "9 · 8 =",
+            "option1": "72",
+            "option2": "63",
+            "option3": "90",
+            "option4": "81",
+            "trueAnswer": "1"
         }
     ]
 }

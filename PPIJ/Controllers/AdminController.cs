@@ -464,6 +464,11 @@ namespace PPIJ.Controllers
             {
                 korisnik query = db.korisnik.FirstOrDefault(k => k.id_korisnik.Equals(id));
 
+                if (model.Username == null || model.Email == null || model.FirstName == null || model.LastName == null)
+                {
+                    return RedirectToAction("Korisnik", "Admin");
+                }
+
                 query.korisnicko_ime = model.Username;
                 query.email = model.Email;
                 query.ime = model.FirstName;
@@ -486,6 +491,11 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = db.korisnik.Create();
+
+                if (model.Username == null || model.Email == null || model.FirstName == null || model.LastName == null)
+                {
+                    return RedirectToAction("Korisnik", "Admin");
+                }
 
                 query.korisnicko_ime = model.Username;
                 query.email = model.Email;
@@ -529,6 +539,11 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = db.odgovor.FirstOrDefault(k => k.id_odgovor.Equals(id));
+
+                if (model.ChosenAnswer == null || (!Request["QuestionsDD"].Any() && !Request["PicturesDD"].Any()))
+                {
+                    return RedirectToAction("Odgovor", "Admin");
+                }
 
                 query.odgovor1 = model.ChosenAnswer;
                 query.tocan = model.IsCorrect;
@@ -586,6 +601,11 @@ namespace PPIJ.Controllers
             {
                 var query = db.pitanje.FirstOrDefault(k => k.id_pitanje.Equals(id));
 
+                if (model.ChosenQuestion == null || (!Request["TopicsDD"].Any() && !Request["PicturesDD"].Any()))
+                {
+                    return RedirectToAction("Pitanje", "Admin");
+                }
+
                 query.pitanje1 = model.ChosenQuestion;
 
                 if (Request["InstructionsDD"].Any())
@@ -642,6 +662,11 @@ namespace PPIJ.Controllers
             {
                 var query = db.pitanje.Create();
 
+                if (model.ChosenQuestion == null || (!Request["TopicsDD"].Any() && !Request["PicturesDD"].Any()))
+                {
+                    return RedirectToAction("Pitanje", "Admin");
+                }
+
                 query.pitanje1 = model.ChosenQuestion;
                 if (Request["InstructionsDD"].Any())
                 {
@@ -692,6 +717,11 @@ namespace PPIJ.Controllers
             {
                 var query = db.podrucje.FirstOrDefault(k => k.id_podrucje.Equals(id));
 
+                if (model.ChosenArea == null || !Request["SubjectsDD"].Any())
+                {
+                    return RedirectToAction("Podrucje", "Admin");
+                }
+
                 query.podrucje1 = model.ChosenArea;
 
                 if (Request["SubjectsDD"].Any())
@@ -725,6 +755,11 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = db.podrucje.Create();
+
+                if (model.ChosenArea == null || !Request["SubjectsDD"].Any())
+                {
+                    return RedirectToAction("Podrucje", "Admin");
+                }
 
                 query.podrucje1 = model.ChosenArea;
 
@@ -777,6 +812,11 @@ namespace PPIJ.Controllers
             {
                 var query = db.predmet.FirstOrDefault(k => k.id_predmet.Equals(id));
 
+                if (model.ChosenSubject == null)
+                {
+                    return RedirectToAction("Predmet", "Admin");
+                }
+
                 query.predmet1 = model.ChosenSubject;
 
                 db.Entry(query).State = EntityState.Modified;
@@ -796,6 +836,11 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = db.predmet.Create();
+
+                if (model.ChosenSubject == null)
+                {
+                    return RedirectToAction("Predmet", "Admin");
+                }
 
                 query.predmet1 = model.ChosenSubject;
 
@@ -842,7 +887,12 @@ namespace PPIJ.Controllers
             {
                 var query = db.slika.FirstOrDefault(k => k.id_slika.Equals(id));
 
-                query.slika1 = model.Pic;
+                if (model.Pic == null)
+                {
+                    return RedirectToAction("Slika", "Admin");
+                }
+
+            query.slika1 = model.Pic;
 
                 db.Entry(query).State = EntityState.Modified;
                 db.SaveChanges();
@@ -861,6 +911,11 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = db.slika.Create();
+
+                if (model.Pic == null)
+                {
+                    return RedirectToAction("Slika", "Admin");
+                }
 
                 query.slika1 = model.Pic;
                 db.slika.Add(query);
@@ -913,6 +968,11 @@ namespace PPIJ.Controllers
             {
                 var query = db.tema.FirstOrDefault(k => k.id_tema.Equals(id));
 
+                if (model.ChosenTopic == null || model.Description == null || !Request["AreasDD"].Any())
+                {
+                    return RedirectToAction("Tema", "Admin");
+                }
+
                 query.tema1 = model.ChosenTopic;
                 query.opis = model.Description;
                 query.razred = model.Class;
@@ -948,6 +1008,11 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = db.tema.Create();
+
+                if (model.ChosenTopic == null || model.Description == null || !Request["AreasDD"].Any())
+                {
+                    return RedirectToAction("Tema", "Admin");
+                }
 
                 query.tema1 = model.ChosenTopic;
                 query.opis = model.Description;
@@ -1003,6 +1068,11 @@ namespace PPIJ.Controllers
             {
                 var query = db.uputa.FirstOrDefault(k => k.id_uputa.Equals(id));
 
+                if (model.ChosenInstruction == null)
+                {
+                    return RedirectToAction("Uputa", "Admin");
+                }
+
                 query.uputa1 = model.ChosenInstruction;
                 query.jedan_tocan_odgovor = model.OneCorrect;
 
@@ -1023,6 +1093,11 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = db.uputa.Create();
+
+                if (model.ChosenInstruction == null)
+                {
+                    return RedirectToAction("Uputa", "Admin");
+                }
 
                 query.uputa1 = model.ChosenInstruction;
                 query.jedan_tocan_odgovor = model.OneCorrect;
