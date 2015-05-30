@@ -21,7 +21,7 @@
     var maxNumQuestions = 50;
     var chosenNumQuestions = minNumQuestions;
 
-    /*
+    
     if (logged) {
         choiceNumber = 0
         displayOptions("Novi ispit", "Stari ispiti");
@@ -29,7 +29,7 @@
     else {
         choiceNumber = 1;
         displayOptions("Kartice za učenje", "Ispit");
-    }*/
+    }/*
     $.getJSON('../../Scripts/activity.json', function (data) {
         answered = data.answered;
         for (i = 0; i < data.quizlist.length; i++) {
@@ -45,7 +45,7 @@
         displayQuestion(3);
         })
       
-
+      */
     function displayQuestion(numberOfQuestions) {
         var correctAnswer = correct[questionNumber];
         $(stage).append('<div class="questionText">' + questionBank[questionNumber][0]);
@@ -94,14 +94,14 @@
         }
         
         if (choice2 != "") {
-            $(stage).append('<div class="scrollText"><span>' + choice1 + '</span><div> @using (Ajax.BeginForm("ChooseSubject", "Home", new AjaxOptions { HttpMethod = "post"})){');
+            $(stage).append('<div class="scrollText"><span>' + choice1 + '</span><div>');
             $(stage).append('<select name="Area" onChange="chosenArea(this.value)">');
             $(stage).append('</select><select name ="Subject" onChange=chosenSubject(this.value)>');
             $(stage).append('</select><select name ="Number" onChange=chosenNumber(this.value)>');
-            $(stage).append('</select><div id="true" class="begin">Započni</div>}</div></div><div class="scrollText"><span>' + choice2 + '</span><div>@using (Ajax.BeginForm("ChooseClass", "Home", new AjaxOptions { HttpMethod = "post"})){');
+            $(stage).append('</select><form><div id="true" class="begin">Započni</div></form></div></div><div class="scrollText"><span>' + choice2 + '</span><div>');
             $(stage).append('<select name="Class" onChange="chosenClass(this.value)">');
             $(stage).append('</select><select name ="Number" onChange=chosenNumber(this.value)>');
-            $(stage).append('</select><div id="false" class="begin">Započni</div></div>}</div>');
+            $(stage).append('</select><form><div id="false" class="begin">Započni</div></form></div></div>');
         }
         else {
             $(stage).append('<div class="scrollTextSingle"><span>' + choice1 + '</span><div><form>');
