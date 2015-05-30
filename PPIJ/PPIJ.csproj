@@ -1296,6 +1296,7 @@
     <Content Include="Views\Admin\UputaEdit.cshtml" />
     <Content Include="Views\Admin\UputaInsert.cshtml" />
     <Content Include="Views\Admin\UputaRemove.cshtml" />
+    <Content Include="Views\Account\ExamPartial.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
