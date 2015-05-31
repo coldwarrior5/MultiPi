@@ -1,0 +1,39 @@
+﻿<div class="scrollText">
+    <span>Područje</span>
+    <div>
+    @using (Ajax.BeginForm("Register", "Home", new AjaxOptions { HttpMethod = "post" }))
+    {
+        <select name="Area" onchange="chosenArea(this.value)">
+        </select>
+        <select name="Subject" onchange="chosenSubject(this.value)">
+        </select><select name="Number" onchange="chosenNumber(this.value)">
+        @for (int i = 10; i <= 30; i++)
+        {
+            <option>@i</option>
+        }
+        </select>
+        <div id="true" class="begin">Započni</div>
+    }
+    </div>
+</div>
+<div class="scrollText">
+    <span>Razred</span>
+    <div>
+    @using (Ajax.BeginForm("Register", "Home", new AjaxOptions { HttpMethod = "post" }))
+    { 
+        <select name="Class" onchange="chosenClass(this.value)">
+            <option id="first">1. Razred</option>
+            <option id="second">2. Razred</option>
+            <option id="third">3. Razred</option>
+            <option id="foutth">4. Razred</option>
+        </select>
+        <select name="Number" onchange=chosenNumber(this.value)>
+            @for(int i=10; i<=30;i++)
+            {
+                <option>@i</option>
+            }
+        </select>
+        <div id="false" class="begin">Započni</div>
+    }
+    </div>
+</div>

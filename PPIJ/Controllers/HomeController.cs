@@ -25,15 +25,15 @@ namespace PPIJ.Controllers
         }
 
         public ActionResult Exam()
-        {/*
+        {
             using (ppijEntities db = new ppijEntities())
             {
                 var query = (from k in db.podrucje
                              select k).Include(c => c.predmet).ToList();
-                TablesContentModel model = new TablesContentModel
-                {
-                    Areas = query
-                };
+                TablesContentModel model = new TablesContentModel();
+                model.Areas = query;
+
+                /*
                 var query1 = (from k in db.tema
                              select k).Include(c => c.podrucje).ToList();
                 model.Topics = query1;
@@ -53,9 +53,16 @@ namespace PPIJ.Controllers
                              select k).Include(c => c.pitanje).Include(c => c.slika).ToList();
 
                 model.Answers = query5;
+                */
                 return View(model);
-            }*/
+            }
             return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult ExamPartial()
+        {
+            return PartialView();
         }
 
         // POST: /Home/Index
