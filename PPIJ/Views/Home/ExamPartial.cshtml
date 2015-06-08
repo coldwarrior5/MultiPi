@@ -1,39 +1,46 @@
-﻿<div class="scrollText">
+﻿@using PPIJ
+@model PPIJ.Models.TablesContentModel
+<div class="scrollText">
+    <span style="padding-bottom:10px"></span><br />
     <span>Područje</span>
-    <div>
+    <div class="main">
     @using (Ajax.BeginForm("Register", "Home", new AjaxOptions { HttpMethod = "post" }))
     {
-        <select name="Area" onchange="chosenArea(this.value)">
-        </select>
-        <select name="Subject" onchange="chosenSubject(this.value)">
-        </select><select name="Number" onchange="chosenNumber(this.value)">
-        @for (int i = 10; i <= 30; i++)
-        {
-            <option>@i</option>
-        }
-        </select>
-        <div id="true" class="begin">Započni</div>
+        <select name="Area" onchange="chosenArea(this.value)" class="scrolls">
+            <option style="display:none;">Odaberi područje</option>
+            @foreach (podrucje p in Model.Areas)
+            {
+                <option value="@p.id_podrucje">@p.podrucje1</option>
+            }
+        </select><br/><span style="padding-bottom:10px"></span><br/>
+        <select id="subjectSelect" disabled name="Subject" onchange="chosenSubject(this.value)" class="scrolls">
+            <option selected="true" style="display:none;">Odaberi temu</option>
+
+        </select><br/><span style="padding-bottom:10px"></span><br/>
+        <select id="noQS" disabled name="Number" onchange="chosenNumber(this.value,'true')" class="scrolls">
+            <option style="display:none;">Odaberi broj pitanja</option>
+        </select><br/>
     }
+        <div id="true" class="begin">Započni</div>
     </div>
 </div>
 <div class="scrollText">
+    <span style="padding-bottom:10px"></span><br />
     <span>Razred</span>
-    <div>
+    <div class="main">
     @using (Ajax.BeginForm("Register", "Home", new AjaxOptions { HttpMethod = "post" }))
     { 
-        <select name="Class" onchange="chosenClass(this.value)">
-            <option id="first">1. Razred</option>
-            <option id="second">2. Razred</option>
-            <option id="third">3. Razred</option>
-            <option id="foutth">4. Razred</option>
-        </select>
-        <select name="Number" onchange=chosenNumber(this.value)>
-            @for(int i=10; i<=30;i++)
-            {
-                <option>@i</option>
-            }
-        </select>
-        <div id="false" class="begin">Započni</div>
+        <select name="Class" onchange="chosenClass(this.value)" class="scrolls">
+            <option style="display:none;">Odaberi razred</option>
+            <option value="first">1. Razred</option>
+            <option value="second">2. Razred</option>
+            <option value="third">3. Razred</option>
+            <option value="fourth">4. Razred</option>
+        </select><br/><span style="padding-bottom:10px"></span><br/>
+        <select id="noQC" disabled name="Number" onchange="chosenNumber(this.value,'false')" class="scrolls">
+            <option style="display:none;">Odaberi broj pitanja</option>
+        </select><br/>
     }
+        <div id="false" class="begin">Započni</div>
     </div>
 </div>

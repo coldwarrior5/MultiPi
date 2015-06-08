@@ -1,34 +1,34 @@
 ﻿html, body {
-	margin: 0;
-	padding: 0;
-  background-image:url(../../Images/exam.jpg);
-	  font-family: Arial, Helvetica, sans-serif;
-	    }
+    margin: 0;
+    padding: 0;
+    background-image:url(../../Images/exam.jpg);
+    font-family: optima;
+}
 
 #navContent{
-margin:auto;	
-width:800px;
-height:400px;
-position:relative;
-overflow:hidden;
+    margin:auto;	
+    width:800px;
+    height:400px;
+    position:relative;
+    overflow:hidden;
 }
 
 #game1{
-margin:auto;
-width:800px;
-height:400px;
-right:0px;
-position:absolute;
-background-color:white;
+    margin:auto;
+    width:800px;
+    height:400px;
+    right:0px;
+    position:absolute;
+    background-color:white;
 }
 
 #game2{
-margin:auto;	
-width:800px;
-height:400px;
-right:-800px;
-position:absolute;
-background-color:white;
+    margin:auto;	
+    width:800px;
+    height:400px;
+    right:-800px;
+    position:absolute;
+    background-color:white;
 } 
 
 
@@ -37,40 +37,42 @@ background-color:white;
     height:375px;
     margin:15px;
     font-size:30px;
-    font-family:'Berlin Sans FB';
     color:#FFFFFF; 
     padding:2px;
     padding-left:10px;
     border: 2px solid white;
+    border-radius:20px;
     cursor:pointer;
-    background-color:#3399FF;
+    background-color:#2D882D;
     float:left;
     text-align:center;
     line-height: 400px;
 }
  
 span {
-  display: inline-block;
-  vertical-align: middle;
+    display: inline-block;
+    vertical-align: middle;
+    padding-bottom:50px;
 }
 
 .questionText{
-padding:10px;
-padding-left:10px;
-font-size:30px;
-color:#007600;
+    padding:10px;
+    padding-left:10px;
+    font-size:30px;
+    color:#007600;
 }
 
-.option{width:400px;
-height:30px;
-margin:15px;
-font-size:18px;
-color:#FFFFFF; 
-padding:2px;
-padding-left:10px;
-border: 2px solid white;
-cursor:pointer;
-background-color:#3399FF;
+.option{
+    width:400px;
+    height:30px;
+    margin:15px;
+    font-size:18px;
+    color:#FFFFFF; 
+    padding:2px;
+    padding-left:10px;
+    border: 2px solid white;
+    cursor:pointer;
+    background-color:#3399FF;
 }
 
 .optionText:hover{
@@ -84,37 +86,45 @@ color:#FC0;
 }
 
 .begin{
-    width:50px;
+    width:100px;
     height:40px;
-    margin-top:50px;
+    margin-top:30px;
     font-size:18px;
-    color:#FFFFFF; 
-    padding:2px;
-    padding-left:10px;
+    color:#FFFFFF;
+    border-radius:10px;
+    padding:5px;
+    margin-right:20px;
     border: 2px solid white;
     cursor:pointer;
     pointer-events: none;
     float:right;
-    background-color:#3399FF;
+    background-color:#303D74;
 }
 
 .begin:hover{
-border:#FC0 solid 2px;
-color:#FC0;
+    border:#FC0 solid 2px;
+    color:#FC0;
 }
-		
+	
+.scrolls{
+    width:300px;
+}
+
+.scrolls:disabled{
+    color:#bab4b4;
+}
+	
 .scrollText{
     width:370px;
     height:375px;
     margin:15px;
     font-size:30px;
-    font-family:'Berlin Sans FB';
     color:#FFFFFF; 
+    border-radius:20px;
     padding:2px;
     padding-left:10px;
     border: 2px solid white;
-    cursor:pointer;
-    background-color:#3399FF;
+    background-color:#2D882D;
     float:left;
     text-align:center;
 }
@@ -124,19 +134,20 @@ color:#FC0;
     height:375px;
     margin:15px;
     font-size:30px;
-    font-family:'Berlin Sans FB';
     color:#FFFFFF; 
     padding:2px;
     padding-left:10px;
     border: 2px solid white;
+    border-radius:20px;
     cursor:pointer;
-    background-color:#3399FF;
+    background-color:#2D882D;
     text-align:center;
     margin-left:225px;
 }
 
-
-
+.main{
+    color:#000000; 
+}
 
  
 

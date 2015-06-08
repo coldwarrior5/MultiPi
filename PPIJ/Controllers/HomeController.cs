@@ -13,10 +13,11 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Data.Entity;
-
+using System.Runtime.Serialization.Json;
+using System.Text;
 
 namespace PPIJ.Controllers
-{
+{  
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -26,43 +27,136 @@ namespace PPIJ.Controllers
 
         public ActionResult Exam()
         {
-            using (ppijEntities db = new ppijEntities())
-            {
-                var query = (from k in db.podrucje
-                             select k).Include(c => c.predmet).ToList();
-                TablesContentModel model = new TablesContentModel();
-                model.Areas = query;
-
-                /*
-                var query1 = (from k in db.tema
-                             select k).Include(c => c.podrucje).ToList();
-                model.Topics = query1;
-                var query2 = (from k in db.uputa
-                             select k).ToList();
-
-                model.Instructions = query2;
-                var query3 = (from k in db.slika
-                             select k).ToList();
-
-                model.Pictures = query3;
-                var query4 = (from k in db.pitanje
-                             select k).Include(c => c.uputa).Include(c => c.tema).Include(c => c.slika).ToList();
-
-                    model.Questions = query4;
-                var query5 = (from k in db.odgovor
-                             select k).Include(c => c.pitanje).Include(c => c.slika).ToList();
-
-                model.Answers = query5;
-                */
-                return View(model);
-            }
             return View();
         }
+
 
         [AllowAnonymous]
         public ActionResult ExamPartial()
         {
-            return PartialView();
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.podrucje
+                             select k).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Areas = query
+                };
+                return PartialView(model);
+            }
+        }
+
+        [AllowAnonymous]
+        public ActionResult SubjectPartial(int area)
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.tema
+                             select k).Where(k => k.id_podrucje == area).OrderBy(k => k.id_tema).ToList();
+                TablesContentModel model = new TablesContentModel
+                {
+                    Topics = query
+                };
+                return PartialView(model);
+            }
+        }
+
+        [AllowAnonymous]
+        public ActionResult QuestionPartial(int subject, int min, int max)
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.pitanje
+                         select k).Where(k => k.id_tema == subject).OrderBy(k => k.id_tema).ToList();
+                if(query.Count<min)
+                {
+                    min =max= query.Count;
+                }
+                else if (query.Count<max)
+                {
+                    max = query.Count;
+                }
+                TablesContentModel model = new TablesContentModel();
+                model.minNumQuestions = min;
+                model.maxNumQuestions = max;
+                return PartialView(model);
+            }
+        }
+
+        [AllowAnonymous]
+        public ActionResult QuestionPartialC(int chosenClass)
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query = (from k in db.pitanje
+                             select k).Where(k => k.id_tema == chosenClass).OrderBy(k => k.id_tema).ToList();
+                TablesContentModel model = new TablesContentModel();
+                return PartialView(model);
+            }
+        }
+
+        [AllowAnonymous]
+        public string LoadQuestionsSubject(int idSubject)
+        {
+            using (ppijEntities db = new ppijEntities())
+            {
+                var query1 = (from c in db.pitanje select c).Where(c => c.id_tema == idSubject).ToList();
+                var query2 = (from c in db.odgovor select c).ToList();
+                var query3 = (from c in db.slika select c).ToList();
+                var query4 = (from c in db.uputa select c).ToList();
+                StringBuilder jsonString = new StringBuilder("{ \"quizlist\" : [");
+                
+                foreach (pitanje element in query1)
+                {
+                    jsonString.Append("{ \"idQuestion\" : \"");
+                    jsonString.Append(element.id_pitanje);
+                    jsonString.Append("\",\"question\" : \"");
+                    jsonString.Append(element.pitanje1);
+                    jsonString.Append("\",\"picture\" : \"");
+                    if(element.id_slika!=null)
+                    {
+                        slika item = query3.Find(x => x.id_slika == element.id_slika);
+                        jsonString.Append(item.slika1);
+                    }
+                    else
+                    {
+                        jsonString.Append("null");
+                    }
+                    uputa item2 = query4.Find(x => x.id_uputa == element.id_uputa);
+                    jsonString.Append("\",\"idInstruction\" : \"");
+                    jsonString.Append(item2.uputa1);
+                    jsonString.Append("\",\"singleChoice\" : \"");
+                    jsonString.Append(item2.jedan_tocan_odgovor);
+                    jsonString.Append("\", \"answers\" : [");
+                    IList<odgovor> hits = query2.FindAll(x => x.id_pitanja == element.id_pitanje);
+                    
+                    foreach(odgovor o in hits)
+                    {
+                        jsonString.Append("{ \"idAnswer\" : \"");
+                        jsonString.Append(o.id_odgovor);
+                        jsonString.Append("\",\"answer\" : \"");
+                        jsonString.Append(o.odgovor1);
+                        jsonString.Append("\",\"picture\" : \"");
+                        if (o.id_slika != null)
+                        {
+                            slika item = query3.Find(x => x.id_slika == o.id_slika);
+                            jsonString.Append(item.slika1);
+                        }
+                        else
+                        {
+                            jsonString.Append("null");
+                        }
+                        jsonString.Append("\",\"correct\" : \"");
+                        jsonString.Append(o.tocan);
+                        jsonString.Append("\"},");
+                    }
+                    jsonString.Length--;
+                    jsonString.Append("]},");
+                }
+                jsonString.Length--;
+                jsonString.Append("]}");
+                return jsonString.ToString();
+            }
         }
 
         // POST: /Home/Index

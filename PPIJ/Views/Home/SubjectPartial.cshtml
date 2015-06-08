@@ -1,0 +1,8 @@
+﻿@using PPIJ
+@model PPIJ.Models.TablesContentModel
+
+<option style="display:none;">Odaberi temu</option>
+@foreach (tema p in Model.Topics)
+            {
+    <option value="@p.id_tema">@p.tema1</option>
+}

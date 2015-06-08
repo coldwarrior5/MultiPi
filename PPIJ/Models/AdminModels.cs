@@ -32,6 +32,8 @@ namespace PPIJ.Models
         public IList<slika> Pictures { get; set; }
         public IList<tema> Topics{ get; set; }
         public IList<uputa> Instructions { get; set; }
+        public int minNumQuestions { get; set; }
+        public int maxNumQuestions { get; set; }
     }
 
     public class User
@@ -126,4 +128,5 @@ namespace PPIJ.Models
         [Display(Name = "Više točnih odgovora?")]
         public bool OneCorrect { get; set; }
     }
+
 }
