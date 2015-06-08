@@ -237,6 +237,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\combined.cs" />
     <Compile Include="korisnik.cs">
       <DependentUpon>PPIJef.tt</DependentUpon>
     </Compile>
@@ -1593,6 +1594,7 @@
     <Content Include="Views\Home\ExamPartial.cshtml" />
     <Content Include="Views\Home\SubjectPartial.cshtml" />
     <Content Include="Views\Home\QuestionPartial.cshtml" />
+    <Content Include="Views\Home\QuestionPartialC.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

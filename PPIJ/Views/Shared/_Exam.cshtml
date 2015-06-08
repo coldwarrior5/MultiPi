@@ -44,7 +44,7 @@
                     noClass = 4;
                     break;
             }
-            $("#noQC").load("/Home/QuestionPartialC", {chosenClass : noClass});
+            $("#noQC").load("/Home/QuestionPartialC", {chosenClass : noClass, min : minNumQuestions, max : maxNumQuestions});
             document.getElementById("noQC").disabled = false;
         }
 

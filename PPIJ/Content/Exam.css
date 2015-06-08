@@ -8,7 +8,7 @@
 #navContent{
     margin:auto;	
     width:800px;
-    height:400px;
+    height:500px;
     position:relative;
     overflow:hidden;
 }
@@ -163,7 +163,7 @@ border-bottom:solid white 1px;
 }
  
 .spacer{
-height:100px;
+height:50px;
 }
 
 

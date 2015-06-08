@@ -79,6 +79,19 @@ namespace PPIJ.Models
         public SelectList Topics { get; set; }
         [Display(Name = "Odaberi sliku:")]
         public SelectList Pics { get; set; }
+    }
+
+    public class cobined
+    {
+        public int ID { get; set; }
+        public string ChosenQuestion { get; set; }
+        public int IDpic { get; set; }
+        public int IDinstruction { get; set; }
+        public int IDtopic { get; set; }
+        public SelectList Instructions { get; set; }
+        public SelectList Topics { get; set; }
+        public SelectList Pics { get; set; }
+        public int Class { get; set; }
 
     }
 
