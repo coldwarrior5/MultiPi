@@ -70,10 +70,10 @@ $(document).ready(function () {
                     if (correctAnswers === iterate) {
                         correct[questionNumber] = rnd;
                     }
-                    questionArray[rnd] = questionBank[questionNumber][5][iterate][1];
-                    if (questionBank[questionNumber][5][iterate][2] != "null")
+                    questionArray[rnd] = questionBank[questionNumber][5][iterate-1][1];
+                    if (questionBank[questionNumber][5][iterate-1][2] != "null")
                     {
-                        questionPicture[rnd] = questionBank[questionNumber][5][iterate][2]
+                        questionPicture[rnd] = questionBank[questionNumber][5][iterate-1][2]
                     }
                     else {
                         questionPicture[rnd] = "";
