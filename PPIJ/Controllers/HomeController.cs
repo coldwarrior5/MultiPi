@@ -67,7 +67,7 @@ namespace PPIJ.Controllers
             using (ppijEntities db = new ppijEntities())
             {
                 var query = (from k in db.pitanje
-                         select k).Where(k => k.id_tema == subject).OrderBy(k => k.id_tema).ToList();
+                         select k).Where(k => k.id_tema == subject && k.id_uputa != 11).OrderBy(k => k.id_tema).ToList();
                 if(query.Count<min)
                 {
                     min =max= query.Count;
@@ -90,7 +90,7 @@ namespace PPIJ.Controllers
             {
                 var query = (from k in db.pitanje
                              join u in db.tema on k.id_tema equals u.id_tema
-                             select new{k,u.razred}).Where(u => u.razred  == chosenClass).ToList();
+                             select new{k,u.razred}).Where(u => u.razred  == chosenClass && u.k.id_uputa != 11).ToList();
                 if (query.Count < min)
                 {
                     min = max = query.Count;
@@ -111,7 +111,7 @@ namespace PPIJ.Controllers
         {
             using (ppijEntities db = new ppijEntities())
             {
-                var query1 = (from c in db.pitanje select c).Where(c => c.id_tema == idSubject).ToList();
+                var query1 = (from c in db.pitanje select c).Where(c => c.id_tema == idSubject && c.id_uputa != 11).ToList();
                 var query2 = (from c in db.odgovor select c).ToList();
                 var query3 = (from c in db.slika select c).ToList();
                 var query4 = (from c in db.uputa select c).ToList();
@@ -177,7 +177,7 @@ namespace PPIJ.Controllers
             {
 
                 var query1 = (from c in db.pitanje
-                              join k in db.tema on c.id_tema equals k.id_tema select new {output=c,k.razred}).Where(k => k.razred == idClass).ToList();
+                              join k in db.tema on c.id_tema equals k.id_tema select new {output=c,k.razred}).Where(k => k.razred == idClass && k.output.id_uputa != 11).ToList();
                 var query2 = (from c in db.odgovor select c).ToList();
                 
                 var query3 = (from c in db.slika select c).ToList();
@@ -186,7 +186,7 @@ namespace PPIJ.Controllers
                  var ex = query1.ToList();
                  var result = new List<pitanje>();
                  foreach(var bn in ex){
-                      result.Add(new pitanje{ id_pitanje = bn.output.id_pitanje, id_slika=bn.output.id_slika,id_tema=bn.output.id_tema,id_uputa=bn.output.id_uputa});
+                      result.Add(new pitanje{ id_pitanje = bn.output.id_pitanje,pitanje1=bn.output.pitanje1 , id_slika=bn.output.id_slika,id_tema=bn.output.id_tema,id_uputa=bn.output.id_uputa});
                  }
 
                 foreach (pitanje element2 in result)

@@ -3,6 +3,10 @@ var noClass = 1;
 var idSubject = 0;
 var questionNumber = -1;
 var correctAnswer = 0;
+var chosenNumQuestions = 0;
+var minNumQuestions = 10;
+var maxNumQuestions = 30;
+var RandomizeArray = [];
 $(document).ready(function () {
     var questionBank = new Array();
     var correct = new Array();
@@ -17,10 +21,7 @@ $(document).ready(function () {
     var numberOfQuestions = 0;
     var userChoice = new Array();
     var choiceNumber = 0;
-    var chosenNumQuestions = 0;
-    var minNumQuestions = 10;
-    var maxNumQuestions = 30;
-    
+
     if (logged=="true") {
         choiceNumber = 0
         displayOptions("Novi ispit", "Stari ispiti");
@@ -46,32 +47,32 @@ $(document).ready(function () {
       
       */
     function displayQuestion() {
-        var questionPicture = new Array(questionBank[questionNumber][5].length);
-        for(var i = 0; i<questionBank[questionNumber][5].length; i++)
+        var questionPicture = new Array(questionBank[currentQuestion][5].length);
+        for(var i = 0; i<questionBank[currentQuestion][5].length; i++)
         {
-            if(questionBank[questionNumber][5][i][3]=="True")
+            if(questionBank[currentQuestion][5][i][3]=="True")
             {
                 correctAnswer=i;
             }
         }
-        $(stage).append('<div class="questionText">' + questionBank[questionNumber][1] + '<br/><br/>' + questionBank[questionNumber][3]);
-        if (questionBank[questionNumber][2] != "null")
+        $(stage).append('<div class="questionText">' + questionBank[currentQuestion][1] + '<br/><br/>' + questionBank[currentQuestion][3]);
+        if (questionBank[currentQuestion][2] != "null")
         {
-            $(stage).append('<br/><img src="../../Images/Exam/' + questionBank[questionNumber][2]+'.jpg"/><br/>');
+            $(stage).append('<br/><img src="../../Images/Exam/' + questionBank[currentQuestion][2]+'.jpg"/><br/>');
         }
-        var questionArray = new Array(questionBank[questionNumber][5].length);
-        for (var iterate = 0; iterate < questionBank[questionNumber][5].length; iterate++) {
+        var questionArray = new Array(questionBank[currentQuestion][5].length);
+        for (var iterate = 0; iterate < questionBank[currentQuestion][5].length; iterate++) {
             while (true) {
-                var rnd = Math.random() * questionBank[questionNumber][5].length;
+                var rnd = Math.random() * questionBank[currentQuestion][5].length;
                 rnd = Math.ceil(rnd);
                 if (typeof questionArray[rnd] === 'undefined') {
                     if (correctAnswer === iterate) {
-                        correct[questionNumber] = rnd;
+                        correct[currentQuestion] = rnd;
                     }
-                    questionArray[rnd] = questionBank[questionNumber][5][iterate][1];
-                    if (questionBank[questionNumber][5][iterate][2] != "null")
+                    questionArray[rnd] = questionBank[currentQuestion][5][iterate][1];
+                    if (questionBank[currentQuestion][5][iterate][2] != "null")
                     {
-                        questionPicture[rnd] = questionBank[questionNumber][5][iterate][2]
+                        questionPicture[rnd] = questionBank[currentQuestion][5][iterate][2]
                     }
                     else {
                         questionPicture[rnd] = "";
@@ -80,7 +81,7 @@ $(document).ready(function () {
                 }
             }
         }
-        for (var iterate = 1; iterate <= questionBank[questionNumber][5].length; iterate++) {
+        for (var iterate = 1; iterate <= questionBank[currentQuestion][5].length; iterate++) {
             if (questionArray[iterate] == "") {
                 $(stage).append('<img id="' + iterate + '"class="picture" src="../../Images/Exam/' + questionPicture[iterate] + '.jpg"/>');
             }
@@ -93,12 +94,12 @@ $(document).ready(function () {
             if (questionLock == false) {
                 questionLock = true;
                 //correct answer
-                if (parseInt(this.id) == correct[questionNumber]) {
+                if (parseInt(this.id) == correct[currentQuestion]) {
                     $(stage).append('<div class="feedback1">Točno</div>');
                     score++;
                 }
                 //wrong answer	
-                if (parseInt(this.id) != correct[questionNumber]) {
+                if (parseInt(this.id) != correct[currentQuestion]) {
                     $(stage).append('<div class="feedback2">Krivo</div>');
                 }
                 setTimeout(function () { changeQuestion() }, 1000);
@@ -108,12 +109,12 @@ $(document).ready(function () {
             if (questionLock == false) {
                 questionLock = true;
                 //correct answer
-                if (parseInt(this.id) == correct[questionNumber]) {
+                if (parseInt(this.id) == correct[currentQuestion]) {
                     $(stage).append('<div class="feedback1">Tocno</div>');
                     score++;
                 }
                 //wrong answer	
-                if (parseInt(this.id) != correct[questionNumber]) {
+                if (parseInt(this.id) != correct[currentQuestion]) {
                     $(stage).append('<div class="feedback2">Krivo</div>');
                 }
                 setTimeout(function () { changeQuestion() }, 1000);
@@ -122,7 +123,10 @@ $(document).ready(function () {
     }//display question
 
     function scrollOptions(choice1, choice2) {
-       
+        questionNumber = -1;
+        RandomizeArray.length = 0;
+        minNumQuestions = 10;
+        maxNumQuestions = 30;
         if (choice2 != "") {
             $(stage).load("/Home/ExamPartial", function (responseText, textStatus, XMLHttpRequest) {
               
@@ -136,7 +140,7 @@ $(document).ready(function () {
                             result = true;
                         }
                         if (result) {
-                            $.getJSON('http://localhost:2170/Home/LoadQuestionsSubject?idSubject=' + idSubject, function (data) {
+                            $.getJSON('../Home/LoadQuestionsSubject?idSubject=' + idSubject, function (data) {
                                 for (i = 0; i < data.quizlist.length; i++) {
                                     questionBank[i] = new Array;
                                     questionBank[i][0] = data.quizlist[i].idQuestion;
@@ -156,7 +160,7 @@ $(document).ready(function () {
                             });
                         }
                         else {
-                            $.getJSON('http://localhost:2170/Home/LoadQuestionsClass?idClass=' + noClass, function (data) {
+                            $.getJSON('../Home/LoadQuestionsClass?idClass=' + noClass, function (data) {
                                 for (i = 0; i < data.quizlist.length; i++) {
                                     questionBank[i] = new Array;
                                     questionBank[i][0] = data.quizlist[i].idQuestion;
@@ -269,11 +273,28 @@ $(document).ready(function () {
     function changeQuestion() {
 
         questionNumber++;
+        
+        while (true) {
+            if (questionNumber >= chosenNumQuestions) {
+                break;
+            }
+            var rnd = Math.random() * questionBank.length;
+            rnd = Math.ceil(rnd)-1;
+            if (RandomizeArray.lastIndexOf(rnd) === -1) {
+                RandomizeArray.push(rnd);
+                currentQuestion = rnd;
+                break;
+            }
+            else
+            {
+                continue;
+            }    
+        }
 
         if (stage == "#game1") { stage2 = "#game1"; stage = "#game2"; }
         else { stage2 = "#game2"; stage = "#game1"; }
-        numberOfQuestions = questionBank.length;
-        if (questionNumber < numberOfQuestions) { displayQuestion(); } else { displayFinalSlide(); }
+
+        if (questionNumber < chosenNumQuestions) { displayQuestion(); } else { displayFinalSlide(); }
 
         $(stage2).animate({ "right": "+=800px" }, "slow", function () { $(stage2).css('right', '-800px'); $(stage2).empty(); });
         $(stage).animate({ "right": "+=800px" }, "slow", function () { questionLock = false; });
@@ -281,7 +302,7 @@ $(document).ready(function () {
 
     function displayFinalSlide() {
 
-        $(stage).append('<div class="questionText">Završili ste kviz!<br><br>Ukupno pitanja: ' + numberOfQuestions + '<br>Točnih odgovora: ' + score + '</div>');
+        $(stage).append('<div class="questionText">Završili ste kviz!<br><br>Ukupno pitanja: ' + chosenNumQuestions + '<br>Točnih odgovora: ' + score + '</div>');
 
     }//display final slide
 
