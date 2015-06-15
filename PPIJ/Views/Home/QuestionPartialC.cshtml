@@ -1,8 +1,16 @@
 ﻿@using PPIJ
 @model PPIJ.Models.TablesContentModel
 
-<option style="display:none;">Odaberi broj pitanja</option>
-@for (int i = Model.minNumQuestions; i <= Model.maxNumQuestions; i++)
-            {
-    <option value="@i">@i</option>
+@if (Model.minNumQuestions != 0)
+{
+    <option style="display:none;">Odaberi broj pitanja</option>
+    for (int i = Model.minNumQuestions; i <= Model.maxNumQuestions; i++)
+    {
+            <option value="@i">@i</option>
+    }
 }
+else
+{
+    <option style="display:none;">Nema još pitanja</option>
+}
+

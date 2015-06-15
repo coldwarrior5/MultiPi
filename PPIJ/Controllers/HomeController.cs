@@ -16,6 +16,7 @@ using System.Data.Entity;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
+
 namespace PPIJ.Controllers
 {  
     public class HomeController : Controller
@@ -116,13 +117,16 @@ namespace PPIJ.Controllers
                 var query3 = (from c in db.slika select c).ToList();
                 var query4 = (from c in db.uputa select c).ToList();
                 StringBuilder jsonString = new StringBuilder("{ \"quizlist\" : [");
-                
+
+                bool any = false;
                 foreach (pitanje element in query1)
                 {
+                    any = true;
                     jsonString.Append("{ \"idQuestion\" : \"");
                     jsonString.Append(element.id_pitanje);
                     jsonString.Append("\",\"question\" : \"");
-                    jsonString.Append(element.pitanje1);
+                    string question = element.pitanje1.Replace("\"", "'");
+                    jsonString.Append(question);
                     jsonString.Append("\",\"picture\" : \"");
                     if(element.id_slika!=null)
                     {
@@ -164,7 +168,10 @@ namespace PPIJ.Controllers
                     jsonString.Length--;
                     jsonString.Append("]},");
                 }
-                jsonString.Length--;
+                if (any)
+                {
+                    jsonString.Length--;
+                }
                 jsonString.Append("]}");
                 return jsonString.ToString();
             }
@@ -189,12 +196,15 @@ namespace PPIJ.Controllers
                       result.Add(new pitanje{ id_pitanje = bn.output.id_pitanje,pitanje1=bn.output.pitanje1 , id_slika=bn.output.id_slika,id_tema=bn.output.id_tema,id_uputa=bn.output.id_uputa});
                  }
 
+                bool any = false;
                 foreach (pitanje element2 in result)
                 {
+                    any = true;
                     jsonString.Append("{ \"idQuestion\" : \"");
                     jsonString.Append(element2.id_pitanje);
                     jsonString.Append("\",\"question\" : \"");
-                    jsonString.Append(element2.pitanje1);
+                    string question = element2.pitanje1.Replace("\"", "'");
+                    jsonString.Append(question);
                     jsonString.Append("\",\"picture\" : \"");
                     if (element2.id_slika != null)
                     {
@@ -236,7 +246,10 @@ namespace PPIJ.Controllers
                     jsonString.Length--;
                     jsonString.Append("]},");
                 }
-                jsonString.Length--;
+                if (any)
+                {
+                    jsonString.Length--;
+                }
                 jsonString.Append("]}");
                 return jsonString.ToString();
             }
